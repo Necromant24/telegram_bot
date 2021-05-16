@@ -40,47 +40,6 @@
             <div class="mesgs" id="chat">
                 <div class="msg_history">
 
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                           alt="sunil"></div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Test which is a new approach to have all
-                                    solutions</p>
-                                <span class="time_date"> 11:01 AM    |    June 9</span></div>
-                        </div>
-                    </div>
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>Test which is a new approach to have all
-                                solutions</p>
-                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
-                    </div>
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                           alt="sunil"></div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Test, which is a new approach to have</p>
-                                <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
-                        </div>
-                    </div>
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>Apollo University, Delhi, India Test</p>
-                            <span class="time_date"> 11:01 AM    |    Today</span></div>
-                    </div>
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
-                                                           alt="sunil"></div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>We work directly with our designers and suppliers,
-                                    and sell direct to you, which means quality, exclusive
-                                    products, at a price anyone can afford.</p>
-                                <span class="time_date"> 11:01 AM    |    Today</span></div>
-                        </div>
-                    </div>
 
 
                     <div v-for="(message,index) in messages" :key="index">
@@ -108,6 +67,19 @@
                             </div>
                         </div>
 
+
+                        <div v-if="message.from === 'bot_cmd'" class="incoming_msg">
+                            <div class="incoming_msg_img"></div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <button @click="(e)=>{ sendCmd(message.cmd);  }" class="btn btn-primary">
+                                        {{ message.message }}
+                                    </button>
+                                    <!--                                    <span class="time_date"> 11:01 AM    |    Today</span>-->
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -116,7 +88,7 @@
                 <div>
                     <div class="input-group">
                         <input v-model="messageText" list="cmdss" type="text" class="form-control"
-                               aria-label="Dollar amount (with dot and two decimal places)">
+                               aria-label="Dollar amount (with dot and two decimal places)" style="min-width: 300px">
 
 
                         <datalist id="cmdss">
@@ -151,7 +123,7 @@
 
                                             <div class="dropdown-item"
                                                  v-for="(cmd, i) in commands" :key="i"
-                                                    @click="(e)=>{ sendCmd(cmd); }">
+                                                 @click="(e)=>{ sendCmd(cmd); }">
                                                 {{ cmd }}
                                             </div>
 
@@ -196,7 +168,7 @@
 
             sendMessage() {
 
-                if(this.messageText.trim()===''){
+                if (this.messageText.trim() === '') {
                     return;
                 }
 
@@ -229,17 +201,16 @@
                     return await response.json(); // parses JSON response into native JavaScript objects
                 }
 
-                 postData('/chat', {command: this.messageText})
-                     .then((data) => {
-                         let answer = {from: 'bot', message: ''}
-                         console.log(data); // JSON data parsed by `response.json()` call
-                     });
+                postData('/chat', {command: this.messageText})
+                    .then((data) => {
+                        let answer = {from: 'bot', message: ''}
+                        console.log(data); // JSON data parsed by `response.json()` call
+                    });
             },
 
 
-            sendCmd(cmd){
-                let userMessage = {from: 'user', message: '/'+cmd}
-
+            sendCmd(cmd) {
+                let userMessage = {from: 'user', message: cmd}
 
                 console.log(userMessage);
 
@@ -263,13 +234,51 @@
                     return await response.json(); // parses JSON response into native JavaScript objects
                 }
 
+                const processMessage = (bot_message) => {
+
+                    let message = {from: 'bot', 'message': bot_message.answer};
+
+
+                    let cmd_messages = bot_message.commands;
+
+                    this.messages.push(message);
+
+                    for (let i = 0; i < cmd_messages.length; i++) {
+                        this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                    }
+
+                    console.log(this.messages);
+
+                }
+
 
                 postData('/chat', {command: cmd})
-                     .then((data) => {
-                         let answer = {from: 'bot', message: ''}
-                         console.log(data); // JSON data parsed by `response.json()` call
-                     });
+                    .then((data) => {
 
+                        processMessage(data);
+
+                        console.log(data); // JSON data parsed by `response.json()` call
+                    });
+
+
+            },
+
+
+            processMessage(bot_message) {
+
+                let message = {from: 'bot', 'message': bot_message.answer};
+
+
+                let cmd_messages = bot_message.commands;
+
+                let cmds = [];
+
+                for (let i = 0; i < cmd_messages.length; i++) {
+                    cmds.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                }
+
+                this.messages.push(message);
+                this.messages.push(cmds);
 
             },
 
@@ -292,11 +301,11 @@
         },
 
 
-         created: () => {
+        created: () => {
             console.log('created');
 
 
-            const getCmds = function (){
+            const getCmds = function () {
                 fetch('/commands')
                     .then((response) => {
                         return response.json();

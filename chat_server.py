@@ -36,3 +36,4 @@ def serve_static(path):
 def all_commands():
     answer = { 'data': list(ds.all_commands) }
     return  answer
+
