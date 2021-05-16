@@ -1,0 +1,322 @@
+<html>
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/chat5.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+</head>
+<body>
+<div class="container">
+
+    <h3 class=" text-center">Messaging</h3>
+
+
+    <div class="messaging">
+        <div class="inbox_msg">
+
+            <div class="mesgs" id="chat">
+                <div class="msg_history">
+
+                    <div class="incoming_msg">
+                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                           alt="sunil"></div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>Test which is a new approach to have all
+                                    solutions</p>
+                                <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                        </div>
+                    </div>
+                    <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>Test which is a new approach to have all
+                                solutions</p>
+                            <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                    </div>
+                    <div class="incoming_msg">
+                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                           alt="sunil"></div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>Test, which is a new approach to have</p>
+                                <span class="time_date"> 11:01 AM    |    Yesterday</span></div>
+                        </div>
+                    </div>
+                    <div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>Apollo University, Delhi, India Test</p>
+                            <span class="time_date"> 11:01 AM    |    Today</span></div>
+                    </div>
+                    <div class="incoming_msg">
+                        <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                           alt="sunil"></div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>We work directly with our designers and suppliers,
+                                    and sell direct to you, which means quality, exclusive
+                                    products, at a price anyone can afford.</p>
+                                <span class="time_date"> 11:01 AM    |    Today</span></div>
+                        </div>
+                    </div>
+
+
+                    <div v-for="(message,index) in messages" :key="index">
+
+                        <div v-if="message.from === 'user'" class="outgoing_msg">
+                            <div class="sent_msg">
+                                <p>
+                                    {{ message.message }}
+                                </p>
+                                <!--                                <span class="time_date"> 11:01 AM    |    Today</span>-->
+                            </div>
+                        </div>
+
+
+                        <div v-if="message.from === 'bot'" class="incoming_msg">
+                            <div class="incoming_msg_img"><img src="https://ptetutorials.com/images/user-profile.png"
+                                                               alt="sunil"></div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>
+                                        {{ message.message }}
+                                    </p>
+                                    <!--                                    <span class="time_date"> 11:01 AM    |    Today</span>-->
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <div class="input-group">
+                        <input v-model="messageText" list="cmdss" type="text" class="form-control"
+                               aria-label="Dollar amount (with dot and two decimal places)">
+
+
+                        <datalist id="cmdss">
+                            <option v-for="(cmd, i) in commands" :key="i">
+                                {{ cmd }}
+                            </option>
+                        </datalist>
+
+                        <div class="input-group-addon">
+                            <div style="margin-right: 1px">
+                                <button @click="sendMessage" class="btn btn-info" type="button">
+                                    send
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="input-group-addon">
+                            <div style="margin-right: 1px">
+                                <div class="bd-example">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                id="dropdownMenuButton3"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            commands
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                             x-placement="bottom-start">
+
+                                            <a class="dropdown-item" href="#">Action</a>
+                                            <a class="dropdown-item" href="#">Another action</a>
+                                            <a class="dropdown-item" href="#">Something else here</a>
+
+                                            <div class="dropdown-item"
+                                                 v-for="(cmd, i) in commands" :key="i"
+                                                    @click="(e)=>{ sendCmd(cmd); }">
+                                                {{ cmd }}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript">
+
+    var app = new Vue({
+
+        el: '#chat',
+        data: () => {
+            return {
+                message: 'Hello Vue!',
+                messages: [
+                    {from: 'bot', message: 'hello i am bot!'},
+                    {from: 'user', message: 'Command1'}
+                ],
+
+                commands: ["/cmd1", "/cmd2", "/cmd3"],
+
+                messageText: ''
+            }
+
+        },
+        methods: {
+
+            sendMessage() {
+
+                if(this.messageText.trim()===''){
+                    return;
+                }
+
+                console.log(this.messageText);
+
+                let userMessage = {from: 'user', message: this.messageText}
+
+
+                console.log(userMessage);
+
+                this.messages.push(userMessage);
+
+                this.messageText = ''
+
+                async function postData(url = '/chat', data = {}) {
+                    // Default options are marked with *
+                    const response = await fetch(url, {
+                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                        mode: 'cors', // no-cors, *cors, same-origin
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *client
+                        body: JSON.stringify(data) // body data type must match "Content-Type" header
+                    });
+                    return await response.json(); // parses JSON response into native JavaScript objects
+                }
+
+                 postData('/chat', {command: this.messageText})
+                     .then((data) => {
+                         let answer = {from: 'bot', message: ''}
+                         console.log(data); // JSON data parsed by `response.json()` call
+                     });
+            },
+
+
+            sendCmd(cmd){
+                let userMessage = {from: 'user', message: '/'+cmd}
+
+
+                console.log(userMessage);
+
+                this.messages.push(userMessage);
+
+                async function postData(url = '/chat', data = {}) {
+                    // Default options are marked with *
+                    const response = await fetch(url, {
+                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                        mode: 'cors', // no-cors, *cors, same-origin
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *client
+                        body: JSON.stringify(data) // body data type must match "Content-Type" header
+                    });
+                    return await response.json(); // parses JSON response into native JavaScript objects
+                }
+
+
+                postData('/chat', {command: cmd})
+                     .then((data) => {
+                         let answer = {from: 'bot', message: ''}
+                         console.log(data); // JSON data parsed by `response.json()` call
+                     });
+
+
+            },
+
+
+            getAvailableCommands() {
+
+                fetch('/commands')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+
+                        console.log(data);
+                        this.commands = data['data']
+                    });
+
+            }
+
+
+        },
+
+
+         created: () => {
+            console.log('created');
+
+
+            const getCmds = function (){
+                fetch('/commands')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+
+                        console.log(data);
+                        app.commands = data['data']
+                    });
+            }
+
+            setTimeout(getCmds, 1000);
+
+            setTimeout(getCmds, 3000);
+
+
+        },
+
+    });
+
+
+</script>
+</html>
