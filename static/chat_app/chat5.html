@@ -27,6 +27,16 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+          crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="container">
@@ -75,10 +85,23 @@
                                     <button @click="(e)=>{ sendCmd(message.cmd);  }" class="btn btn-primary">
                                         {{ message.message }}
                                     </button>
-                                    <!--                                    <span class="time_date"> 11:01 AM    |    Today</span>-->
+
                                 </div>
                             </div>
                         </div>
+
+
+                        <div v-if="message.from === 'bot_link'" class="incoming_msg">
+                            <div class="incoming_msg_img"></div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <pre>{{ message.message }}</pre>
+                                    <a href="message.cmd">{{ message.cmd }}</a>
+
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -243,8 +266,18 @@
 
                     this.messages.push(message);
 
+                    const regex = new RegExp('^http.://.');
+
                     for (let i = 0; i < cmd_messages.length; i++) {
-                        this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+
+
+                        if(cmd_messages[i][1].match(regex)!=null){
+                            this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+
+                        }else{
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                        }
+
                     }
 
                     console.log(this.messages);
