@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return redirect("/static/chat_app_2/chat.html", code=302)
+    return redirect("/static/chat_app_2/chat2.html", code=302)
 
 
 
@@ -34,6 +34,6 @@ def serve_static(path):
 
 @app.route('/commands')
 def all_commands():
-    answer = { 'data': list(ds.all_commands) }
+    answer = { 'data': list(ds.viewed_cmds) }
     return  answer
 

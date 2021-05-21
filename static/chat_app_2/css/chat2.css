@@ -10,7 +10,9 @@
     -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
     -webkit-transition: .5s;
-    transition: .5s
+    transition: .5s;
+
+    overflow-x: hidden;
 }
 
 .padding {
@@ -303,4 +305,138 @@ textarea {
 
 .text-info {
     color: #48b0f7 !important
+}
+
+
+/*
+------------------------------------------------------------------
+*/
+
+.send-email-btn {
+    margin-bottom: 0px;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright: 0px;
+}
+
+.send-email-input {
+    margin-top: 0px;
+    display: flex;
+}
+
+.email-input-group {
+    background-color: #d1d1d1;
+    display: block;
+    width: 400px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.email-input {
+    background-color: #d1d1d1;
+    border: none;
+    width: 330px;
+}
+
+.clickable:hover {
+    padding-left: 10px;
+    margin-left: 1px;
+    text-shadow: #48b0f7;
+}
+
+.email-btn {
+    background-color: #5278FF;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+
+/*
+
+-----------------------------------------------------------------
+
+*/
+
+.hidden-menu {
+  display: block;
+  /*position: fixed;*/
+    position: absolute;
+
+  list-style:none;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  width: 200px;
+  background-color: #eee;
+  height: 100%;
+  top: 0;
+  left: -200px;
+  transition: left .2s;
+  z-index: 2;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+.hidden-menu-ticker {
+  display: none;
+}
+
+.btn-menu {
+  color: #fff;
+  background-color: #0058B9;
+  padding: 7px;
+  /*position: fixed;*/
+    position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  transition: left .23s;
+  z-index: 3;
+  width: 25px;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+.btn-menu span {
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0 0;
+  transition: all .1s linear .23s;
+  position: relative;
+}
+.btn-menu span.first {
+  margin-top: 0;
+}
+
+.hidden-menu-ticker:checked ~ .btn-menu {
+  left: 160px;
+}
+.hidden-menu-ticker:checked ~ .hidden-menu {
+  left: 0;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.first {
+  -webkit-transform: rotate(45deg);
+  top: 8px;
+
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.second {
+  opacity: 0;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.third {
+  -webkit-transform: rotate(-45deg);
+  top: -8px;
+}
+
+/*
+-------------------------------------------
+ */
+
+
+
+.msg-input-wrapper{
+    width: 100%;
+    position: relative;
+
 }

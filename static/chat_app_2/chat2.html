@@ -23,18 +23,36 @@
 
 
         <div class="row container d-flex justify-content-center">
+
+
             <div class="col-md-6">
+
+
                 <div class="card card-bordered">
+
+                    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+                        <label class="btn-menu" for="hmt">
+                            <span class="first"></span>
+                            <span class="second"></span>
+                            <span class="third"></span>
+                        </label>
+
+                        <ul class="hidden-menu">
+                            <li><a href="">Link 1</a></li>
+                            <li><a href="">Link 2</a></li>
+                            <li><a href="">Link 3</a></li>
+                        </ul>
+
+
                     <div class="card-header">
-
-
-
 
                         <h4 class="card-title"><strong>Chat</strong></h4>
 
                         <a class="btn btn-xs btn-secondary" href="#"
                            data-abc="true">Let's Chat App</a>
                     </div>
+
+
                     <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
                          style="overflow-y: scroll !important; height:400px !important;">
 
@@ -93,7 +111,8 @@
                                 {{ startMessage }}
                             </div>
                             <div>
-                                <div class="email-input-group " v-bind:style="{ backgroundColor: emailColor }">
+                                <div class="email-input-group "
+                                     v-bind:style="{ backgroundColor: emailColor }">
                                     <div class="input-group  send-email-input"
                                          style="margin-left: 20px; margin-bottom: 1px;">
                                         <input v-model="enteringEmail" type="text" class="email-input"
@@ -120,7 +139,10 @@
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
                     </div>
-                    <div class="publisher bt-1 border-light">
+
+
+                    <div class="msg-input-wrapper">
+                        <div class="publisher bt-1 border-light">
                         <img class="avatar avatar-xs"
                              src="https://img.icons8.com/color/36/000000/administrator-male.png"
                              alt="...">
@@ -128,7 +150,8 @@
                                placeholder="Write something"
                                v-model="messageText"/>
                         <span
-                                class="publisher-btn file-group"> <i class="fa fa-paperclip file-browser"></i> <input
+                                class="publisher-btn file-group"> <i
+                                class="fa fa-paperclip file-browser"></i> <input
                                 type="file">
                         </span>
 
@@ -139,14 +162,14 @@
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
                                                 id="dropdownMenuButton3"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">
                                             <div class="publisher-btn" data-abc="true"><i
                                                     class="fa fa-smile"></i>
                                             </div>
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                              x-placement="bottom-start">
-
 
                                             <div class="dropdown-item"
                                                  v-for="(cmd, i) in commands" :key="i"
@@ -169,11 +192,22 @@
 
 
                     </div>
+                    </div>
+
+
+
+
                 </div>
+
+
             </div>
+
         </div>
+
+
     </div>
 </div>
+
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
