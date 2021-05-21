@@ -258,9 +258,7 @@
                 }
 
                 const processMessage = (bot_message) => {
-
                     let message = {from: 'bot', 'message': bot_message.answer};
-
 
                     let cmd_messages = bot_message.commands;
 
@@ -270,18 +268,14 @@
 
                     for (let i = 0; i < cmd_messages.length; i++) {
 
-
                         if(cmd_messages[i][1].match(regex)!=null){
                             this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
 
                         }else{
                             this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
                         }
-
                     }
-
                     console.log(this.messages);
-
                 }
 
 

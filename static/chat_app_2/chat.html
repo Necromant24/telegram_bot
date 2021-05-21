@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snippet - BBBootstrap</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/chat2.css">
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"></script>
+</head>
+<body oncontextmenu="return false" class="snippet-body">
+<div class="page-content page-container" id="page-content">
+    <div class="padding" id="v-app">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card card-bordered">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong>Chat</strong></h4> <a class="btn btn-xs btn-secondary" href="#"
+                                                                             data-abc="true">Let's Chat App</a>
+                    </div>
+                    <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+                         style="overflow-y: scroll !important; height:400px !important;">
+
+                        <div class="media media-chat">
+
+                            <div class="media-body">
+                                <p>How are you ...???</p>
+                            </div>
+                        </div>
+
+
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>Hiii, I'm good.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>Hiii, I'm good.</p>
+                            </div>
+                        </div>
+
+
+                        <div class="media media-chat">
+
+                            <div class="media-body">
+                                <p> hi garry </p>
+
+                            </div>
+                        </div>
+
+
+                        <div v-for="(message, index) in messages" :key="index">
+
+                            <div v-if="message.from==='user'" class="media media-chat media-chat-reverse">
+                                <div class="media-body">
+                                    <p>{{ message.message }}</p>
+                                </div>
+                            </div>
+
+
+                            <div v-if="message.from==='bot'" class="media media-chat">
+                                <div class="media-body">
+                                    <p> {{ message.message }} </p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <div class="publisher bt-1 border-light">
+                        <img class="avatar avatar-xs"
+                             src="https://img.icons8.com/color/36/000000/administrator-male.png"
+                             alt="...">
+                        <input class="publisher-input" type="text"
+                               placeholder="Write something"
+                               v-model="messageText"/>
+                        <span
+                                class="publisher-btn file-group"> <i class="fa fa-paperclip file-browser"></i> <input
+                                type="file">
+                        </span>
+                        <a class="publisher-btn" href="#" data-abc="true"><i
+                                class="fa fa-smile"></i>
+                        </a>
+                        <div @click="sendMessage" class="publisher-btn text-info" data-abc="true">
+                            <i
+                                    class="fa fa-paper-plane"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<script type="text/javascript">
+
+
+    var app = new Vue({
+        el: '#v-app',
+        data: {
+            messageText: '',
+            messages: [
+                {from: 'bot', message: 'hello i am bot!'},
+                {from: 'user', message: 'Command1'}
+            ],
+
+        },
+        created: () => {
+
+            console.log('created');
+
+
+            const getCmds = function () {
+                fetch('/commands')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+
+                        console.log(data);
+                        app.commands = data['data']
+                    });
+            }
+
+            setTimeout(getCmds, 1000);
+
+            setTimeout(getCmds, 3000);
+
+        },
+
+        methods: {
+
+
+            sendMessage() {
+
+                if (this.messageText.trim() === '') {
+                    return;
+                }
+
+                console.log(this.messageText);
+
+                let userMessage = {from: 'user', message: this.messageText}
+
+                console.log(userMessage);
+
+                this.messages.push(userMessage);
+
+
+
+                async function postData(url = '/chat', data = {}) {
+                    // Default options are marked with *
+                    const response = await fetch(url, {
+                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+                        mode: 'cors', // no-cors, *cors, same-origin
+                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                        credentials: 'same-origin', // include, *same-origin, omit
+                        headers: {
+                            'Content-Type': 'application/json'
+                            // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        redirect: 'follow', // manual, *follow, error
+                        referrerPolicy: 'no-referrer', // no-referrer, *client
+                        body: JSON.stringify(data) // body data type must match "Content-Type" header
+                    });
+                    return await response.json(); // parses JSON response into native JavaScript objects
+                }
+
+                const processMessage = (bot_message) => {
+                    let message = {from: 'bot', 'message': bot_message.answer};
+
+                    let cmd_messages = bot_message.commands;
+
+                    this.messages.push(message);
+
+                    const regex = new RegExp('^http.://.');
+
+                    for (let i = 0; i < cmd_messages.length; i++) {
+
+                        if(cmd_messages[i][1].match(regex)!=null){
+                            this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+
+                        }else{
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                        }
+                    }
+                    console.log(this.messages);
+                }
+
+                postData('/chat', {message: this.messageText})
+                    .then((data) => {
+                        let answer = {from: 'bot', message: ''};
+                        processMessage(data);
+                        console.log(data); // JSON data parsed by `response.json()` call
+                    });
+
+
+                this.messageText = '';
+
+
+
+
+            },
+
+        }
+    })
+
+
+</script>
+
+
+</html>

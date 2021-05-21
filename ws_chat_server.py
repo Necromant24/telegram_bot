@@ -19,7 +19,19 @@ async def hello(websocket, path):
     await websocket.send(greeting)
     print(f"> {greeting}")
 
-start_server = websockets.serve(hello, "localhost", 5500)
+
+async def accept(websocket, path):
+    print("ok"+path)
+    async for message in websocket:
+        await websocket.send(message)
+
+
+    await websocket.send("connected")
+
+
+
+
+start_server = websockets.serve(accept, "localhost", 5500)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()

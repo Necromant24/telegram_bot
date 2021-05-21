@@ -9,13 +9,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return redirect("/static/chat_app/chat5.html", code=302)
+    return redirect("/static/chat_app_2/chat.html", code=302)
 
 
 
 @app.route('/chat', methods = ['POST'])
 def chat_message():
-    command = request.json['command']
+    command = request.json['message']
     answer = ''
 
     if(command in ds.all_commands):
