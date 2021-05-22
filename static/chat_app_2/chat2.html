@@ -8,6 +8,7 @@
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/chat2.css">
+    <link rel="stylesheet" href="css/elements.css">
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,25 +32,85 @@
                 <div class="card card-bordered">
 
                     <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-                        <label class="btn-menu" for="hmt">
-                            <span class="first"></span>
-                            <span class="second"></span>
-                            <span class="third"></span>
-                        </label>
+                    <label class="btn-menu" for="hmt">
+                        <img src="icons/Union.svg"/>
+                        <!--
+                        <span class="first"></span>
+                        <span class="second"></span>
+                        <span class="third"></span>
+                        -->
 
-                        <ul class="hidden-menu">
-                            <li><a href="">Link 1</a></li>
-                            <li><a href="">Link 2</a></li>
-                            <li><a href="">Link 3</a></li>
-                        </ul>
+                    </label>
+
+                    <ul class="hidden-menu hidden-menu-text">
+                        <h6>Выберите действие</h6>
+
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/shopping-cart%201.svg">
+                                <span class="pull-left">ZGC SHOP</span>
+
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/turkmenistan%201.svg">
+                                <span class="pull-left">Для Туркменистана</span>
+
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/key%201.svg">
+                                <span class="pull-left">Пробный период</span>
+
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/customer-service%201.svg">
+                                <span class="pull-left hidden-menu-text" >Связаться с поддержкой</span>
+
+                            </button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/Vector.svg">
+                                <span class="pull-left">Оплата</span>
+
+                            </button>
+                        </div>
+
+
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/info-button%201.svg">
+                                <span class="pull-left">Узнать больше</span>
+
+                            </button>
+                        </div>
+
+                        <div class="row">
+                            <button class="btn btn-lg btn-success col-xs-12">
+                                <img src="icons/hand-shake%201.svg">
+                                <span class="pull-left">Сотрудничество</span>
+
+                            </button>
+                        </div>
+
+                    </ul>
 
 
                     <div class="card-header">
 
-                        <h4 class="card-title"><strong>Chat</strong></h4>
+                        <h4 class="card-title" style="margin-left: 15px"><strong>Chat</strong></h4>
 
-                        <a class="btn btn-xs btn-secondary" href="#"
-                           data-abc="true">Let's Chat App</a>
+                        <div class="close-btn">
+                            <img src="icons/close.svg"/>
+                        </div>
+
                     </div>
 
 
@@ -131,6 +192,14 @@
                             </div>
                         </div>
 
+                        <div v-if="showSupportSelect">
+                            <div v-for="(operator, index) in supportOperators" :key="index">
+                                <button class="btn btn-primary" @click="(e)=>{ selectSupport(operator); }">
+                                    {{ operator }}
+                                </button>
+                            </div>
+                        </div>
+
 
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
@@ -143,58 +212,53 @@
 
                     <div class="msg-input-wrapper">
                         <div class="publisher bt-1 border-light">
-                        <img class="avatar avatar-xs"
-                             src="https://img.icons8.com/color/36/000000/administrator-male.png"
-                             alt="...">
-                        <input class="publisher-input" type="text"
-                               placeholder="Write something"
-                               v-model="messageText"/>
-                        <span
-                                class="publisher-btn file-group"> <i
-                                class="fa fa-paperclip file-browser"></i> <input
-                                type="file">
+
+                            <input class="publisher-input" type="text"
+                                   placeholder="Введите сообщение..."
+                                   v-model="messageText"/>
+                            <span
+                                    class="publisher-btn file-group"> <i
+                                    class="fa fa-paperclip file-browser"></i> <input
+                                    type="file">
                         </span>
 
 
-                        <div class="input-group-addon">
-                            <div style="margin-right: 1px">
-                                <div class="bd-example">
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                id="dropdownMenuButton3"
-                                                data-toggle="dropdown" aria-haspopup="true"
-                                                aria-expanded="false">
-                                            <div class="publisher-btn" data-abc="true"><i
-                                                    class="fa fa-smile"></i>
-                                            </div>
-                                        </button>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                             x-placement="bottom-start">
+                            <div class="input-group-addon">
+                                <div style="margin-right: 1px">
+                                    <div class="bd-example">
+                                        <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button"
+                                                    id="dropdownMenuButton3"
+                                                    data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                <div class="publisher-btn" data-abc="true"><i
+                                                        class="fa fa-smile"></i>
+                                                </div>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                                                 x-placement="bottom-start">
 
-                                            <div class="dropdown-item"
-                                                 v-for="(cmd, i) in commands" :key="i"
-                                                 @click="(e)=>{ sendMessage(cmd); }">
-                                                {{ cmd }}
-                                            </div>
+                                                <div class="dropdown-item"
+                                                     v-for="(cmd, i) in commands" :key="i"
+                                                     @click="(e)=>{ sendMessage(cmd); }">
+                                                    {{ cmd }}
+                                                </div>
 
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
-
                             </div>
+
+
+                            <div @click="sendMessage" class="publisher-btn text-info" data-abc="true">
+                                <img src="icons/send%201.svg"/>
+                            </div>
+
+
                         </div>
-
-
-                        <div @click="sendMessage" class="publisher-btn text-info" data-abc="true">
-                            <i
-                                    class="fa fa-paper-plane"></i>
-                        </div>
-
-
                     </div>
-                    </div>
-
-
 
 
                 </div>
@@ -215,6 +279,58 @@
 <script type="text/javascript">
 
 
+    async function postData(url = '/chat', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
+    }
+
+
+    function initWS() {
+
+        let socket = new WebSocket("ws://localhost:5500/");
+
+        socket.onopen = function (e) {
+            alert("[open] Соединение установлено");
+            alert("Отправляем данные на сервер");
+            socket.send("Меня зовут Джон");
+        };
+
+        socket.onmessage = function (event) {
+            alert(`[message] Данные получены с сервера: ${event.data}`);
+        };
+
+        socket.onclose = function (event) {
+            if (event.wasClean) {
+                alert(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+            } else {
+                // например, сервер убил процесс или сеть недоступна
+                // обычно в этом случае event.code 1006
+                alert('[close] Соединение прервано');
+            }
+        };
+
+        socket.onerror = function (error) {
+            alert(`[error] ${error.message}`);
+        };
+
+        return socket;
+
+    }
+
+
     var app = new Vue({
         el: '#v-app',
         data: {
@@ -225,12 +341,17 @@
             ],
 
             emailValid: true,
+            showSupportSelect: false,
 
             userEmail: '',
 
             enteringEmail: '',
 
             commands: [],
+
+            ws: null,
+            supportOperator: '',
+            supportOperators: [],
 
             startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту'
 
@@ -255,6 +376,22 @@
 
             setTimeout(getCmds, 3000);
 
+            const getSupportOperators = () => {
+                fetch('/operators')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+
+                        console.log(data);
+                        app.supportOperators = data['data']
+                    });
+            }
+
+            setTimeout(getSupportOperators, 1000);
+
+            setTimeout(getSupportOperators, 3000);
+
         },
 
         computed: {
@@ -271,7 +408,41 @@
 
         methods: {
 
+
+            selectSupport(operator) {
+
+                postData('/operator', {operator: operator, email: this.userEmail})
+                    .then((data) => {
+                        let answer = {from: 'bot', message: ''};
+
+                        console.log(data); // JSON data parsed by `response.json()` call
+                    });
+
+            },
+
+            connectToSupport() {
+                this.ws = initWS();
+            },
+
             sendMessage(msg = '') {
+
+
+                if (this.ws !== null && this.supportOperator === '') {
+
+                }
+
+
+                if (this.ws !== null) {
+
+
+                    msg = {message: this.messageText, operator: this.supportOperator};
+
+
+                    ws.send(this.messageText);
+                    this.messageText = '';
+                    return;
+                }
+
 
                 if (msg !== '') {
                     this.messageText = msg;
@@ -281,32 +452,12 @@
                     return;
                 }
 
-                console.log(this.messageText);
-
                 let userMessage = {from: 'user', message: this.messageText}
 
                 console.log(userMessage);
 
                 this.messages.push(userMessage);
 
-
-                async function postData(url = '/chat', data = {}) {
-                    // Default options are marked with *
-                    const response = await fetch(url, {
-                        method: 'POST', // *GET, POST, PUT, DELETE, etc.
-                        mode: 'cors', // no-cors, *cors, same-origin
-                        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-                        credentials: 'same-origin', // include, *same-origin, omit
-                        headers: {
-                            'Content-Type': 'application/json'
-                            // 'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        redirect: 'follow', // manual, *follow, error
-                        referrerPolicy: 'no-referrer', // no-referrer, *client
-                        body: JSON.stringify(data) // body data type must match "Content-Type" header
-                    });
-                    return await response.json(); // parses JSON response into native JavaScript objects
-                }
 
                 const processMessage = (bot_message) => {
                     let message = {from: 'bot', 'message': bot_message.answer};
@@ -337,6 +488,10 @@
                     });
 
                 this.messageText = '';
+
+                if (msg === '/Связаться с поддержкой') {
+                    this.showSupportSelect = true;
+                }
 
             },
 

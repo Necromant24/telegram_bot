@@ -39,13 +39,58 @@ command_answers = \
 viewed_cmds = [ "/Оплата", "/Пробный период", "/Узнать больше",  "/Для Туркменистана", "/Сотрудничество", "/ZGC SHOP", "/Связаться с поддержкой" ]
 
 
+operators = ['operator1', 'operator2']
+
+# support operator with client pairs
+ws_operator_client = { 'op1': [] }
+
+
+# client email - key ; websocket object - value
+client_ws = {}
+
+
+# operator name - key ; websocket object - value
+operator_ws = {}
+
+
+ws_conn = 'object of websocket connection'
+
+ws_email_wsClient = {'client_email': ws_conn}
+
+
+def send_ws_msg(who, client_email, operator, message):
+
+    if who == 'operator':
+
+        client_ws[client_email].send(message)
+
+    elif who == 'client':
+        operator_ws[operator].send(message)
+
+
+
+
+# waterfall of client and support messages
+# where key - email
+# key - (operator_name, client_email) ; value - [ {'who': 'operator', message: 'some'}, {'who': 'client', message: 'some2'},  ]
+ws_dialog = {}
+
+def addDialogMsg(operator_name, client_email, who_sended, message):
+    ws_dialog[(operator_name, client_email)].append( { 'who': who_sended, 'message': message } )
 
 callback_cmd_list = ['/urgent', '/install', '/other', '/market', '/rub', '/yuan', '/sup', '/pay']
 
+def addWsConn(from_who, email_or_name, ws_conn):
 
+    if from_who == 'operator':
+        operator_ws[email_or_name] = ws_conn
+
+    elif from_who == 'client':
+        client_ws[email_or_name] = ws_conn
+
+    else:
+        raise Exception('from_who - unknown type')
 
 all_commands = command_answers.keys()
 print(all_commands)
 
-
-ws_admin_client_pairs = {'admin1': ['client1', 'client2']}

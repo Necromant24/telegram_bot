@@ -1,5 +1,8 @@
 import asyncio
+import json
+
 import websockets
+import data_structs as ds
 
 
 unauthed_sockets = set()
@@ -20,9 +23,17 @@ async def hello(websocket, path):
     print(f"> {greeting}")
 
 
+
+#unused
 async def accept(websocket, path):
     print("ok"+path)
     async for message in websocket:
+
+        msg = json.loads(message)
+
+
+
+
         await websocket.send(message)
 
 
@@ -31,7 +42,18 @@ async def accept(websocket, path):
 
 
 
-start_server = websockets.serve(accept, "localhost", 5500)
+
+async def initWsConn(ws, path):
+
+    ws_msg = await ws.recv()
+    msg = json.loads(ws_msg)
+
+    ds.addWsConn(msg['from'], msg['email_or_name'], ws )
+
+    await ws.send('connected succsessfully')
+
+
+start_server = websockets.serve(initWsConn, "localhost", 5500)
 
 asyncio.get_event_loop().run_until_complete(start_server)
 asyncio.get_event_loop().run_forever()
