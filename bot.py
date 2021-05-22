@@ -676,7 +676,6 @@ def telegram():
         # Suppose user entered email, look for it in database
         email_info = db_find_value("email", email)
 
-
         # Email not found, insert new row in DB with that email and user ID
         if not email_info:
             new_client(email, "tg_id", message.chat.id)
@@ -2051,24 +2050,23 @@ if __name__ == '__main__':
         vk = vk_session.get_api()
 
         # Facebook bot
-        #fb_bot = Bot(config.fb_access_token)
+        fb_bot = Bot(config.fb_access_token)
 
         # Google sheets authorization
-        #gc = gspread.service_account(filename=config.cred_final)
-        #acc = gc.open_by_key("key").worksheet('v2clients')
+        gc = gspread.service_account(filename=config.cred_final)
+        acc = gc.open_by_key("key").worksheet('v2clients')
 
         t1 = threading.Thread(target=tg_init)
-        #t2 = threading.Thread(target=vk_init)
-        #t3 = threading.Thread(target=fb_init)
-        #t4 = threading.Thread(target=db_init)
+        t2 = threading.Thread(target=vk_init)
+        t3 = threading.Thread(target=fb_init)
+        t4 = threading.Thread(target=db_init)
 
         t1.start()
-        #t2.start()
-        #t3.start()
-        #t4.start()
+        t2.start()
+        t3.start()
+        t4.start()
 
         t1.join()
-        #t2.join()
-        #t3.join()
-        #t4.join()
-
+        t2.join()
+        t3.join()
+        t4.join()
