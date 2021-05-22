@@ -46,7 +46,8 @@
                         <h6>Выберите действие</h6>
 
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/ZGC SHOP');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/shopping-cart%201.svg">
                                 <span class="pull-left">ZGC SHOP</span>
 
@@ -54,14 +55,16 @@
                         </div>
 
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Для Туркменистана');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/turkmenistan%201.svg">
                                 <span class="pull-left">Для Туркменистана</span>
 
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Пробный период');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/key%201.svg">
                                 <span class="pull-left">Пробный период</span>
 
@@ -69,14 +72,16 @@
                         </div>
 
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Связаться с поддержкой');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/customer-service%201.svg">
-                                <span class="pull-left hidden-menu-text" >Связаться с поддержкой</span>
+                                <span class="pull-left">Связаться с поддержкой</span>
 
                             </button>
                         </div>
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Оплата');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/Vector.svg">
                                 <span class="pull-left">Оплата</span>
 
@@ -85,7 +90,8 @@
 
 
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Узнать больше');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/info-button%201.svg">
                                 <span class="pull-left">Узнать больше</span>
 
@@ -93,11 +99,21 @@
                         </div>
 
                         <div class="row">
-                            <button class="btn btn-lg btn-success col-xs-12">
+                            <button @click="(e)=>{ sendMessage('/Сотрудничество');  }"
+                                    class="btn btn-lg hidden-menu-btn col-xs-12">
                                 <img src="icons/hand-shake%201.svg">
                                 <span class="pull-left">Сотрудничество</span>
 
                             </button>
+                        </div>
+
+
+                        <div class="hidden-menu-bottom">
+                            <hr/>
+                            <div>
+                                Поддержка в чате отвечает в будние дни с 17:00 до 22:00 по Китаю
+                            </div>
+
                         </div>
 
                     </ul>
@@ -164,6 +180,18 @@
                                 </div>
                             </div>
 
+                            <div v-if="message.from === 'bot_link'" class="incoming_msg">
+                                <div class="incoming_msg_img"></div>
+                                <div class="received_msg">
+                                    <div class="btn-link">
+                                        {{ message.message }}
+                                        <br/>
+                                        <a v-bind:href="message.cmd" target="_blank">{{ message.cmd }}</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
 
@@ -210,7 +238,7 @@
                     </div>
 
 
-                    <div class="msg-input-wrapper">
+                    <div v-if="userEmail !== ''" class="msg-input-wrapper">
                         <div class="publisher bt-1 border-light">
 
                             <input class="publisher-input" type="text"
@@ -367,7 +395,6 @@
                     })
                     .then((data) => {
 
-                        console.log(data);
                         app.commands = data['data']
                     });
             }
@@ -382,8 +409,6 @@
                         return response.json();
                     })
                     .then((data) => {
-
-                        console.log(data);
                         app.supportOperators = data['data']
                     });
             }
@@ -426,7 +451,6 @@
 
             sendMessage(msg = '') {
 
-
                 if (this.ws !== null && this.supportOperator === '') {
 
                 }
@@ -454,7 +478,6 @@
 
                 let userMessage = {from: 'user', message: this.messageText}
 
-                console.log(userMessage);
 
                 this.messages.push(userMessage);
 
@@ -466,7 +489,9 @@
 
                     this.messages.push(message);
 
-                    const regex = new RegExp('^http.://.');
+                    let regex = new RegExp('^http.://.');
+
+                    console.log('in process');
 
                     for (let i = 0; i < cmd_messages.length; i++) {
 
@@ -484,6 +509,7 @@
                     .then((data) => {
                         let answer = {from: 'bot', message: ''};
                         processMessage(data);
+                        console.log('-----------');
                         console.log(data); // JSON data parsed by `response.json()` call
                     });
 

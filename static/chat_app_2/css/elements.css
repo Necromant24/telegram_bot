@@ -13,3 +13,20 @@
     font-size: 15px;
 
 }
+
+.hidden-menu-btn{
+    background-color: #FFCC55;
+    font-size: 19px;
+    margin: 2px;
+}
+
+
+.btn-link{
+    margin-left: 3px;
+    font-size: 15px;
+}
+
+.hidden-menu-bottom{
+    font-size: 14px;
+    color: #8b95a5;
+}

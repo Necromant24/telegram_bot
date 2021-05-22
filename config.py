@@ -10,7 +10,7 @@ fb_verify_token = 'token'
 token_vk = 'token'
 
 # Telegram bot token
-tg_token = 'token'
+tg_token = '493403387:AAGsQne6Pj0NTTQPwYo95gZ23jx5A2t59pw'
 
 # Credentials file for google sheets api
 cred_final = 'path'
@@ -43,7 +43,7 @@ pay_token = 'token'
 ocr_token = 'token'
 
 # Path to database file
-db_file = 'path'
+db_file = 'database.db'
 
 # Developer id
 my_id = 1
