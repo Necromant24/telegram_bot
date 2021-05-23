@@ -22,13 +22,13 @@ fb_group_id = 'id'
 base_file = 'path'
 
 # Path to folder for saved files
-files_path = 'path'
+files_path = 'saved_files'
 
 # Path to folder for saved payment screenshots
-pay_imgs_path = 'path'
+pay_imgs_path = 'pay_imgs'
 
 # Telegram support chat id
-group_id = 1
+group_id = -516594983
 
 # Id of pinned message in TG support group
 pinned_msg = 1

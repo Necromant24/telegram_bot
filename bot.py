@@ -72,7 +72,8 @@ def get_open_dialogues():
         If client has several IDs, pick one with priority tg > vk > fb
         ID is written in monospaced font (`number`) so we can easily copy it for search"""
 
-    with sql.connect("test.db") as con:
+    #test code - change test.db to database.db
+    with sql.connect("database.db") as con:
         cur = con.cursor()
         cur.execute("SELECT tg_id, vk_id, fb_id FROM clients WHERE state in ('OPEN', 'PAY')")
         clients_open[:] = cur.fetchall()
@@ -558,7 +559,8 @@ def telegram():
         return user_check and bot_check and text_check
 
     # --------------------------------------------------
-    def support(message, urgent=False):
+    #test code - changed urgent to true
+    def support(message, urgent=True):
         """ Handles every attempt to open support dialogue. Do not open if not urgent and not in working time """
 
         buttons = types.InlineKeyboardMarkup()
@@ -765,7 +767,7 @@ def telegram():
 
         buttons = types.InlineKeyboardMarkup()
 
-        buttons.add(types.InlineKeyboardButton(text="\U0001F6D2 ZGC SHOP", url='url'))
+        buttons.add(types.InlineKeyboardButton(text="\U0001F6D2 ZGC SHOP", url='https://market.zgc.su/'))
         buttons.add(types.InlineKeyboardButton(text="\U00002753 Связаться с поддержкой", callback_data='market'))
 
         bot.send_message(message.chat.id, messages.shop, reply_markup=buttons)
