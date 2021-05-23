@@ -48,9 +48,20 @@ async def initWsConn(ws, path):
     ws_msg = await ws.recv()
     msg = json.loads(ws_msg)
 
-    ds.addWsConn(msg['from'], msg['email_or_name'], ws )
+    email = msg['email']
 
-    await ws.send('connected succsessfully')
+    ds.add_ws_conn(email, ws)
+
+    await ws.send(json.dumps( {'type': 'cmd', 'message': 'connected succsessfully'}))
+
+    while True:
+        try:
+            await ws.send(json.dumps({'type': 'ping'}))
+        except websockets.exceptions.ConnectionClosed:
+            print("Client disconnected.  Do cleanup")
+            ds.remove_ws_conn(email)
+            break
+        await asyncio.sleep(30)
 
 
 start_server = websockets.serve(initWsConn, "localhost", 5500)

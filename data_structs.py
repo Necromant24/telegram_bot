@@ -58,38 +58,23 @@ ws_conn = 'object of websocket connection'
 ws_email_wsClient = {'client_email': ws_conn}
 
 
-def send_ws_msg(who, client_email, operator, message):
-
-    if who == 'operator':
-
-        client_ws[client_email].send(message)
-
-    elif who == 'client':
-        operator_ws[operator].send(message)
+def send_ws_msg(client_email,message):
+    ws_email_wsClient[client_email].send(message)
 
 
+def add_ws_conn(email, ws):
+    ws_email_wsClient[email] = ws
+
+def remove_ws_conn(email):
+    del ws_email_wsClient[email]
 
 
-# waterfall of client and support messages
-# where key - email
-# key - (operator_name, client_email) ; value - [ {'who': 'operator', message: 'some'}, {'who': 'client', message: 'some2'},  ]
-ws_dialog = {}
 
-def addDialogMsg(operator_name, client_email, who_sended, message):
-    ws_dialog[(operator_name, client_email)].append( { 'who': who_sended, 'message': message } )
+
 
 callback_cmd_list = ['/urgent', '/install', '/other', '/market', '/rub', '/yuan', '/sup', '/pay']
 
-def addWsConn(from_who, email_or_name, ws_conn):
 
-    if from_who == 'operator':
-        operator_ws[email_or_name] = ws_conn
-
-    elif from_who == 'client':
-        client_ws[email_or_name] = ws_conn
-
-    else:
-        raise Exception('from_who - unknown type')
 
 all_commands = command_answers.keys()
 print(all_commands)

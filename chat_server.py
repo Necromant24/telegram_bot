@@ -14,9 +14,6 @@ app = Flask(__name__)
 def hello():
     return redirect("/static/chat_app_2/chat2.html", code=302)
 
-@app.route('/operators')
-def operators():
-    return { 'data': ds.operators }
 
 
 @app.route('/photo', methods=['POST'])
@@ -28,32 +25,21 @@ def photo():
     return { "status": "ok", "url": "/static/web_files/"+ file.filename }
 
 
-#init new WS dialog
-@app.route('/operator', methods = ['POST'])
-def operator():
+@app.route('/support/message', methods=['POST'])
+def support_message():
+    import telebot
+    import config
+    email = request.json['email']
+    message = request.json['message']
 
-    operator = request.json['operator']
-    user_email = request.json['email']
+    message_data = "email - "+email + "message: "+message
 
-    ds.ws_operator_client[operator].append(user_email)
-    ds.ws_dialog[(operator, user_email)] = []
-
-
-    return { 'data': 'ваш оператор  - ' + operators }
-
-
-@app.route('/ws/message', methods = ['POST'])
-def ws_message():
-    from_who = request.json['from']
-
-    client_email = request.json['email']
-    msg = request.json['message']
-    client_operator = request.json['operator']
+    bot = telebot.TeleBot(config.tg_token)
+    bot.send_message(config.group_id, message_data)
 
 
-    ws = ds.ws_email_wsClient
 
-    return {'status': 200}
+
 
 
 @app.route('/chat', methods = ['POST'])
@@ -77,6 +63,6 @@ def serve_static(path):
 
 @app.route('/commands')
 def all_commands():
-    answer = { 'data': list(ds.viewed_cmds) }
-    return  answer
+    answer = {'data': list(ds.viewed_cmds)}
+    return answer
 

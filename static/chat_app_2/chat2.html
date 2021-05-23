@@ -134,8 +134,6 @@
                          style="overflow-y: scroll !important; height:400px !important;">
 
 
-
-
                         <div class="media media-chat media-chat-reverse">
                             <div class="media-body">
                                 <p>Hiii, I'm good.</p>
@@ -183,7 +181,8 @@
                             <div v-if="message.from==='bot_cmd'" class="media media-chat media-chat-btn">
                                 <div class="media-body">
                                     <p>
-                                        <button class="btn btn-primary" @click="(e)=>{ sendMessage(message.cmd); }">{{ message.message }}</button>
+                                        <button class="btn btn-primary"
+                                                @click="(e)=>{ sendMessage(message.cmd); }">{{ message.message }}</button>
                                     </p>
                                 </div>
                             </div>
@@ -192,7 +191,7 @@
                             <div v-if="message.from==='user_img'" class="media media-chat media-chat-reverse">
                                 <div class="media-body">
                                     <p>
-                                        <img v-bind:src="message.url" class="chat-img" />
+                                        <img v-bind:src="message.url" class="chat-img"/>
                                     </p>
                                 </div>
                             </div>
@@ -225,15 +224,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div v-if="showSupportSelect">
-                            <div v-for="(operator, index) in supportOperators" :key="index">
-                                <button class="btn btn-primary" @click="(e)=>{ selectSupport(operator); }">
-                                    {{ operator }}
-                                </button>
-                            </div>
-                        </div>
-
 
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
@@ -318,26 +308,7 @@
     let msg_container = null;
 
 
-    function sendImg1() {
-        let input = document.querySelector('#file-input');
 
-        console.log(input.files[0]);
-
-        let data = new FormData();
-        data.append('file', input.files[0]);
-        data.append('user', app.userEmail);
-
-        console.log(data);
-
-        fetch('/photo', {
-            method: 'POST',
-            body: data
-        }).then((res => {
-            return res.json();
-        }).then((data) => {
-            console.log(data);
-        }));
-    }
 
     async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
@@ -363,22 +334,31 @@
         let socket = new WebSocket("ws://localhost:5500/");
 
         socket.onopen = function (e) {
-            alert("[open] Соединение установлено");
-            alert("Отправляем данные на сервер");
-            socket.send("Меня зовут Джон");
+            console.log("[open] Соединение установлено");
+            console.log("Отправляем данные на сервер+ email - "+this.userEmail);
+
+            let data = JSON.stringify({'email': app.userEmail, 'type': 'init'});
+
+            console.log(data + ' - init data');
+
+            socket.send(data);
         };
 
         socket.onmessage = function (event) {
-            alert(`[message] Данные получены с сервера: ${event.data}`);
+            console.log(`[message] Данные получены с сервера: ${event.data}`);
+
+            let data = JSON.parse(event.data);
+
+            console.log(data);
         };
 
         socket.onclose = function (event) {
             if (event.wasClean) {
-                alert(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+                console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
             } else {
                 // например, сервер убил процесс или сеть недоступна
                 // обычно в этом случае event.code 1006
-                alert('[close] Соединение прервано');
+                console.log('[close] Соединение прервано');
             }
         };
 
@@ -402,7 +382,6 @@
 
 
             emailValid: true,
-            showSupportSelect: false,
 
             userEmail: '',
 
@@ -411,22 +390,16 @@
             commands: [],
 
             ws: null,
-            supportOperator: '',
-            supportOperators: [],
 
             startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
 
 
         },
+
         created: () => {
-
-
             msg_container = document.querySelector('#chat-content');
 
-
-
             console.log(msg_container);
-
             console.log('created');
 
             const getCmds = function () {
@@ -441,22 +414,7 @@
             }
 
             setTimeout(getCmds, 1000);
-
             setTimeout(getCmds, 3000);
-
-            const getSupportOperators = () => {
-                fetch('/operators')
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((data) => {
-                        app.supportOperators = data['data']
-                    });
-            }
-
-            setTimeout(getSupportOperators, 1000);
-
-            setTimeout(getSupportOperators, 3000);
 
         },
 
@@ -473,7 +431,6 @@
         },
 
         methods: {
-
 
             sendImg() {
                 let input = document.querySelector('#file-input');
@@ -493,7 +450,7 @@
                     .then(data => {
                         console.log(data);
                         console.log('omnomnomnom');
-                        if(data.status === "ok"){
+                        if (data.status === "ok") {
 
                             console.log(data);
                             app.messages.push({from: 'user_img', url: data.url});
@@ -501,40 +458,22 @@
                     });
             },
 
-
-            selectSupport(operator) {
-
-                postData('/operator', {operator: operator, email: this.userEmail})
-                    .then((data) => {
-                        let answer = {from: 'bot', message: ''};
-
-                        console.log(data); // JSON data parsed by `response.json()` call
-                    });
-
-            },
-
             connectToSupport() {
                 this.ws = initWS();
             },
 
             sendMessage(msg = '') {
-
-                if (this.ws !== null && this.supportOperator === '') {
-
-                }
-
-
                 if (this.ws !== null) {
+                    msg = {message: this.messageText};
 
+                    postData('/support/message', msg)
+                        .then((data) => {
 
-                    msg = {message: this.messageText, operator: this.supportOperator};
-
-
-                    ws.send(this.messageText);
+                            console.log(data);
+                        });
                     this.messageText = '';
                     return;
                 }
-
 
                 if (msg !== '') {
                     this.messageText = msg;
@@ -544,6 +483,15 @@
                     return;
                 }
 
+
+                if (msg === '/Связаться с поддержкой') {
+                    initWS();
+                    this.messages.push({from: 'user', message: '/Связаться с поддержкой'});
+                    this.messageText = '';
+                    return;
+                }
+
+
                 let userMessage = {from: 'user', message: this.messageText}
 
 
@@ -551,33 +499,34 @@
 
 
                 const processMessage = (bot_message) => {
-                    let message = {from: 'bot', 'message': bot_message.answer};
+        let message = {from: 'bot', 'message': bot_message.answer};
 
-                    let cmd_messages = bot_message.commands;
+        let cmd_messages = bot_message.commands;
 
-                    this.messages.push(message);
+        this.messages.push(message);
 
-                    let regex = new RegExp('^http.://.');
+        let regex = new RegExp('^http.://.');
 
-                    console.log('in process');
+        console.log('in process');
 
-                    for (let i = 0; i < cmd_messages.length; i++) {
+        for (let i = 0; i < cmd_messages.length; i++) {
 
-                        console.log(i);
+            console.log(i);
 
-                        if (cmd_messages[i][1].match(regex) != null) {
-                            this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
-                        }
+            if (cmd_messages[i][1].match(regex) != null) {
+                this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+            }
 
-                        let hash = cmd_messages[i][1][0];
-                        console.log(hash);
+            let hash = cmd_messages[i][1][0];
+            console.log(hash);
 
-                        if (hash === '/') {
-                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
-                        }
-                    }
-                    console.log(this.messages);
-                }
+            if (hash === '/') {
+                this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+            }
+        }
+        console.log(this.messages);
+    }
+
 
                 postData('/chat', {message: this.messageText})
                     .then((data) => {
@@ -601,7 +550,6 @@
             },
 
             sendEmail() {
-
                 let validation = this.validateEmail(this.enteringEmail);
 
                 if (validation === true) {
@@ -609,8 +557,6 @@
                 } else {
                     this.emailValid = false;
                 }
-
-
             },
 
             validateEmail(mail) {
