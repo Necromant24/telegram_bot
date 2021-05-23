@@ -180,6 +180,15 @@
                                 </div>
                             </div>
 
+                            <div v-if="message.from==='bot_cmd'" class="media media-chat media-chat-btn">
+                                <div class="media-body">
+                                    <p>
+                                        <button class="btn btn-primary" @click="(e)=>{ sendMessage(message.cmd); }">{{ message.message }}</button>
+                                    </p>
+                                </div>
+                            </div>
+
+
                             <div v-if="message.from==='user_img'" class="media media-chat media-chat-reverse">
                                 <div class="media-body">
                                     <p>
@@ -306,6 +315,9 @@
 
 <script type="text/javascript">
 
+    let msg_container = null;
+
+
     function sendImg1() {
         let input = document.querySelector('#file-input');
 
@@ -388,6 +400,7 @@
                 {from: 'user', message: 'Command1'}
             ],
 
+
             emailValid: true,
             showSupportSelect: false,
 
@@ -401,11 +414,19 @@
             supportOperator: '',
             supportOperators: [],
 
-            startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту'
+            startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
 
 
         },
         created: () => {
+
+
+            msg_container = document.querySelector('#chat-content');
+
+
+
+            console.log(msg_container);
+
             console.log('created');
 
             const getCmds = function () {
@@ -542,11 +563,17 @@
 
                     for (let i = 0; i < cmd_messages.length; i++) {
 
-                        if (cmd_messages[i][1].match(regex) != null) {
-                            this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                        console.log(i);
 
-                        } else {
-                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]})
+                        if (cmd_messages[i][1].match(regex) != null) {
+                            this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+                        }
+
+                        let hash = cmd_messages[i][1][0];
+                        console.log(hash);
+
+                        if (hash === '/') {
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
                         }
                     }
                     console.log(this.messages);
@@ -556,6 +583,11 @@
                     .then((data) => {
                         let answer = {from: 'bot', message: ''};
                         processMessage(data);
+
+                        console.log(msg_container.scrollTop);
+                        msg_container.scroll(0, msg_container.scrollHeight);
+
+
                         console.log('-----------');
                         console.log(data); // JSON data parsed by `response.json()` call
                     });

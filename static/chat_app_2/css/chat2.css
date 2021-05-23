@@ -379,6 +379,8 @@ textarea {
   z-index: 2;
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
+
+    border-radius: 0px 20px 20px 0px;
 }
 
 .hidden-menu-ticker {

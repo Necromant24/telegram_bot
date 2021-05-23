@@ -107,7 +107,7 @@ def get_open_dialogues():
 
 
 # --------------------------------------------------
-def update_pinned_top():
+#def update_pinned_top():
     """ Update upper part of pinned message that contains IDs of clients with open dialogues """
 
     # Pinned message text is stored in file
@@ -136,7 +136,7 @@ def update_pinned_top():
 
 
 # -------------------------------------------------
-def update_pinned_bottom(emails_list):
+#def update_pinned_bottom(emails_list):
     """ Update bottom part of pinned message that contains emails of clients who were reminded about expiring tariff """
 
     # Pinned message text is stored in file
@@ -237,7 +237,7 @@ def open_dialogue(type_id, id, state="OPEN"):
     """ Change client state in DB to OPEN (or other) and update pinned message with new info"""
 
     update_clients([type_id, id], ["state", state])
-    update_pinned_top()
+    #update_pinned_top()
 
 
 # --------------------------------------------------
@@ -259,7 +259,7 @@ def close_dialogue(type_id, id, pay=False, silent=False, notify_admin_group=True
     if notify_admin_group:
         bot.send_message(config.group_id, f"Диалог закрыт\n{id}")
 
-    update_pinned_top()
+    #update_pinned_top()
 
     # Do not send any message to client
     if silent:
@@ -1031,6 +1031,9 @@ def telegram():
                                                       "Скорее всего это закрытый аккаунт без айди в подписи")
                     return
 
+                #test code
+                print(message.text)
+
                 # Close dialogue
                 if message.text and message.text.lower() in ["пока", "/пока", "off", "конец", "/q"]:
                     close_dialogue("tg_id", tg_id)
@@ -1040,12 +1043,15 @@ def telegram():
                     close_dialogue("tg_id", tg_id, pay=True)
 
                 # Close dialogue silently
-                elif message.text and message.text.lower() == "/закрыть":
+                #elif message.text and message.text.lower() == "/закрыть":
+
+                elif (message.text != None) and (message.text.lower() == "/закрыть"):
                     close_dialogue("tg_id", tg_id, silent=True)
 
                 else:
 
                     # Check if message was forwarded by bot, not by other user
+                    print(message.reply_to_message.from_user.id)
                     if message.reply_to_message.from_user.id == config.bot_id:
                         tg_to_tg(tg_id, message, from_support=True)  # Finally, send answer to client :)
                         open_dialogue("tg_id", tg_id)
@@ -1947,7 +1953,7 @@ def database():
             for i in notified_clients:
                 text += i + "\n"
 
-            update_pinned_bottom(text)
+            #update_pinned_bottom(text)
 
     # --------------------------------------------------
     def notify_clients(type_id, id, time_left):

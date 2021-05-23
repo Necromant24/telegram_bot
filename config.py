@@ -34,7 +34,7 @@ group_id = -516594983
 pinned_msg = 1
 
 # TG bot id
-bot_id = 1
+bot_id = 493403387
 
 # Token for telegram payment (Юкасса)
 pay_token = 'token'
