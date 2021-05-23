@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 
 
+
+
+
 @app.route('/')
 def hello():
     return redirect("/static/chat_app_2/chat2.html", code=302)
@@ -14,6 +17,15 @@ def hello():
 @app.route('/operators')
 def operators():
     return { 'data': ds.operators }
+
+
+@app.route('/photo', methods=['POST'])
+def photo():
+    file = request.files['file']
+
+    file.save("static/web_files/"+ file.filename)
+
+    return { "status": "ok", "url": "/static/web_files/"+ file.filename }
 
 
 #init new WS dialog

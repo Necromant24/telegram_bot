@@ -133,19 +133,7 @@
                     <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
                          style="overflow-y: scroll !important; height:400px !important;">
 
-                        <div class="media media-chat">
 
-                            <div class="media-body">
-                                <p>How are you ...???</p>
-                            </div>
-                        </div>
-
-
-                        <div class="media media-chat media-chat-reverse">
-                            <div class="media-body">
-                                <p>Hiii, I'm good.</p>
-                            </div>
-                        </div>
 
 
                         <div class="media media-chat media-chat-reverse">
@@ -191,6 +179,15 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div v-if="message.from==='user_img'" class="media media-chat media-chat-reverse">
+                                <div class="media-body">
+                                    <p>
+                                        <img v-bind:src="message.url" class="chat-img" />
+                                    </p>
+                                </div>
+                            </div>
+
 
                         </div>
 
@@ -244,11 +241,14 @@
                             <input class="publisher-input" type="text"
                                    placeholder="Введите сообщение..."
                                    v-model="messageText"/>
-                            <span
-                                    class="publisher-btn file-group"> <i
-                                    class="fa fa-paperclip file-browser"></i> <input
-                                    type="file">
-                        </span>
+
+                            <div class="image-upload">
+                                <label for="file-input">
+                                    <img src="icons/clip.svg"/>
+                                </label>
+
+                                <input id="file-input" style="display: none;" type="file" @change="sendImg"/>
+                            </div>
 
 
                             <div class="input-group-addon">
@@ -306,6 +306,26 @@
 
 <script type="text/javascript">
 
+    function sendImg1() {
+        let input = document.querySelector('#file-input');
+
+        console.log(input.files[0]);
+
+        let data = new FormData();
+        data.append('file', input.files[0]);
+        data.append('user', app.userEmail);
+
+        console.log(data);
+
+        fetch('/photo', {
+            method: 'POST',
+            body: data
+        }).then((res => {
+            return res.json();
+        }).then((data) => {
+            console.log(data);
+        }));
+    }
 
     async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
@@ -432,6 +452,33 @@
         },
 
         methods: {
+
+
+            sendImg() {
+                let input = document.querySelector('#file-input');
+
+                console.log(input.files[0]);
+
+                let data = new FormData();
+                data.append('file', input.files[0]);
+                data.append('user', app.userEmail);
+
+                console.log(data);
+
+                fetch('/photo', {
+                    method: 'POST',
+                    body: data
+                }).then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        console.log('omnomnomnom');
+                        if(data.status === "ok"){
+
+                            console.log(data);
+                            app.messages.push({from: 'user_img', url: data.url});
+                        }
+                    });
+            },
 
 
             selectSupport(operator) {
