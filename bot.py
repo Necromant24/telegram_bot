@@ -35,6 +35,10 @@ def db_find_value(col_name, value):
 
     with sql.connect(config.db_file) as con:
         cur = con.cursor()
+        #test code
+        some = cur.execute("SELECT 1;").fetchall()
+        all_data = cur.execute("SELECT * FROM clients;").fetchall()
+
         cur.execute(f"SELECT * FROM clients WHERE {col_name} = ?", (str(value).lower(),))
         res[:] = cur.fetchall()
 
@@ -655,6 +659,10 @@ def telegram():
     @bot.message_handler(commands=["start"])
     def start(message):
         """ Ask user to send his email address if not identified. Otherwise send default message with reply keyboard """
+
+        #test code
+        finded_val = db_find_value("tg_id", message.chat.id)
+
 
         if not db_find_value("tg_id", message.chat.id):
             bot.send_message(message.chat.id, messages.send_email)
@@ -2053,20 +2061,20 @@ if __name__ == '__main__':
         fb_bot = Bot(config.fb_access_token)
 
         # Google sheets authorization
-        gc = gspread.service_account(filename=config.cred_final)
-        acc = gc.open_by_key("key").worksheet('v2clients')
+        # gc = gspread.service_account(filename=config.cred_final)
+        # acc = gc.open_by_key("key").worksheet('v2clients')
 
         t1 = threading.Thread(target=tg_init)
-        t2 = threading.Thread(target=vk_init)
-        t3 = threading.Thread(target=fb_init)
-        t4 = threading.Thread(target=db_init)
+        # t2 = threading.Thread(target=vk_init)
+        # t3 = threading.Thread(target=fb_init)
+        # t4 = threading.Thread(target=db_init)
 
         t1.start()
-        t2.start()
-        t3.start()
-        t4.start()
+        # t2.start()
+        # t3.start()
+        # t4.start()
 
         t1.join()
-        t2.join()
-        t3.join()
-        t4.join()
+        # t2.join()
+        # t3.join()
+        # t4.join()
