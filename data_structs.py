@@ -35,34 +35,14 @@ command_answers = \
 
     }
 
-
 viewed_cmds = [ "/Оплата", "/Пробный период", "/Узнать больше",  "/Для Туркменистана", "/Сотрудничество", "/ZGC SHOP", "/Связаться с поддержкой" ]
 
-
-operators = ['operator1', 'operator2']
-
-# support operator with client pairs
-ws_operator_client = { 'op1': [] }
-
-
-# client email - key ; websocket object - value
-client_ws = {}
-
-
-# operator name - key ; websocket object - value
-operator_ws = {}
-
-
-ws_conn = 'object of websocket connection'
-
-ws_email_wsClient = {'client_email': ws_conn}
-
+ws_email_wsClient = {}
 
 def send_ws_msg(client_email, message):
     ws = ws_email_wsClient[client_email]
 
     return ws.send(message)
-
 
 def add_ws_conn(email, ws):
     ws_email_wsClient[email] = ws
@@ -73,11 +53,7 @@ def remove_ws_conn(email):
 
 
 
-
-
 callback_cmd_list = ['/urgent', '/install', '/other', '/market', '/rub', '/yuan', '/sup', '/pay']
-
-
 
 all_commands = command_answers.keys()
 print(all_commands)

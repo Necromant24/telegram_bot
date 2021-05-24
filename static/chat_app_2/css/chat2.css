@@ -381,6 +381,7 @@ textarea {
   -webkit-backface-visibility: hidden;
 
     border-radius: 0px 20px 20px 0px;
+
 }
 
 .hidden-menu-ticker {
@@ -414,23 +415,30 @@ textarea {
   margin-top: 0;
 }
 
-.hidden-menu-ticker:checked ~ .btn-menu {
-  left: 160px;
-}
+/*.hidden-menu-ticker:checked ~ .btn-menu {*/
+/*  left: 160px;*/
+/*}*/
+
 .hidden-menu-ticker:checked ~ .hidden-menu {
   left: 0;
 }
+
 .hidden-menu-ticker:checked ~ .btn-menu span.first {
   -webkit-transform: rotate(45deg);
   top: 8px;
-
 }
+
 .hidden-menu-ticker:checked ~ .btn-menu span.second {
   opacity: 0;
 }
 .hidden-menu-ticker:checked ~ .btn-menu span.third {
   -webkit-transform: rotate(-45deg);
   top: -8px;
+}
+
+
+.hidden-menu-ticker:checked ~ .hidden-menu {
+  box-shadow: 250px 0 rgba(77, 82, 89, 0.56);
 }
 
 /*
