@@ -9,11 +9,24 @@ def hello():
     return redirect("/static/chat_app_2/chat2.html", code=302)
 
 
+def send_img_to_tg(name, email):
+    import telebot
+    import config
+
+    bot = telebot.TeleBot(config.tg_token)
+
+    with open("static/web_files/" + name, 'rb') as f:
+        bot.send_photo(chat_id=config.group_id, photo=f, caption=email)
+
+
 @app.route('/photo', methods=['POST'])
 def photo():
     file = request.files['file']
+    email = request.form['user']
 
     file.save("static/web_files/" + file.filename)
+
+    send_img_to_tg(file.filename, email)
 
     return {"status": "ok", "url": "/static/web_files/" + file.filename}
 

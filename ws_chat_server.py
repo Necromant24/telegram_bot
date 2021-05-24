@@ -51,10 +51,6 @@ async def initWsConn(ws, path):
     email = msg['email']
     ds.add_ws_conn(email, ws)
 
-    some = ws.send("dsfdddddddds")
-
-    await some
-
     message = json.dumps({'type': 'cmd', 'message': 'connected succsessfully'})
     await ds.send_ws_msg(email, message)
 
@@ -65,7 +61,7 @@ async def initWsConn(ws, path):
             print("Client disconnected.  Do cleanup")
             ds.remove_ws_conn(email)
             break
-        await asyncio.sleep(5)
+        await asyncio.sleep(15)
 
 
 def start_ws_server():
