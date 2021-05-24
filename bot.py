@@ -1089,6 +1089,22 @@ def telegram():
                 else:
                     tg_to_fb(message, fb_id)
 
+            #my code
+            elif client_text and client_text.endswith("Web_client"):
+                import data_structs as ds
+                import helpers
+
+                replied_message = message.reply_to_message.text
+
+                reply_email = helpers.get_email_from_message(replied_message)
+
+                ws_message = json.dumps({'from': 'bot', 'message': message.text})
+
+                import asyncio
+
+                asyncio.run(ds.send_ws_msg(reply_email, ws_message))
+
+
         # Message is not reply to some message
         else:
 
@@ -2043,6 +2059,58 @@ def db_init():
 
 
 # --------------------------------------------------
+
+
+#my code
+def start_bot():
+    # Dict containing timestamp when we added client's tariff information to the message
+    clients_info_time = {}
+
+    # Dict containing all tariffs info (for OCR-based payment handling)
+    tariffs_base = {}
+
+    # Temp data for mailing and DB editing commands
+    temp = {"tariffs": [], "mail_text": "", "wrong_email": "", "true_email": ""}
+
+    # Arrays for different functions
+    res, clients_open, info = [], [], []
+
+    # Telegram bot
+    bot = telebot.TeleBot(config.tg_token, skip_pending=True)
+
+    # Vkontakte bot
+    vk_session = vk_api.VkApi(token=config.token_vk)
+    vk = vk_session.get_api()
+
+    # Facebook bot
+    fb_bot = Bot(config.fb_access_token)
+
+    # Google sheets authorization
+    # gc = gspread.service_account(filename=config.cred_final)
+    # acc = gc.open_by_key("key").worksheet('v2clients')
+
+    t1 = threading.Thread(target=tg_init)
+    # t2 = threading.Thread(target=vk_init)
+    # t3 = threading.Thread(target=fb_init)
+    # t4 = threading.Thread(target=db_init)
+
+    import ws_chat_server as ws_server
+
+    t5 = threading.Thread(target=ws_server.start_ws_server)
+    t5.start()
+
+    t1.start()
+    # t2.start()
+    # t3.start()
+    # t4.start()
+
+    t1.join()
+    # t2.join()
+    # t3.join()
+    # t4.join()
+
+
+
 if __name__ == '__main__':
 
 
@@ -2077,6 +2145,11 @@ if __name__ == '__main__':
         # t3 = threading.Thread(target=fb_init)
         # t4 = threading.Thread(target=db_init)
 
+        import ws_chat_server as ws_server
+
+        t5 = threading.Thread(target=ws_server.start_ws_server)
+        t5.start()
+
         t1.start()
         # t2.start()
         # t3.start()
@@ -2086,3 +2159,10 @@ if __name__ == '__main__':
         # t2.join()
         # t3.join()
         # t4.join()
+
+
+
+
+
+
+

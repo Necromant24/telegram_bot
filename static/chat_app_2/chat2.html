@@ -279,7 +279,7 @@
                             </div>
 
 
-                            <div @click="sendMessage" class="publisher-btn text-info" data-abc="true">
+                            <div @click="(e)=>{ sendMessage(); }" class="publisher-btn text-info" data-abc="true">
                                 <img src="icons/send%201.svg"/>
                             </div>
 
@@ -464,7 +464,7 @@
 
             sendMessage(msg = '') {
                 if (this.ws !== null) {
-                    msg = {message: this.messageText};
+                    msg = {message: this.messageText, email: this.userEmail};
 
                     postData('/support/message', msg)
                         .then((data) => {
@@ -485,7 +485,7 @@
 
 
                 if (msg === '/Связаться с поддержкой') {
-                    initWS();
+                    this.ws = initWS();
                     this.messages.push({from: 'user', message: '/Связаться с поддержкой'});
                     this.messageText = '';
                     return;

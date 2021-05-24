@@ -58,12 +58,15 @@ ws_conn = 'object of websocket connection'
 ws_email_wsClient = {'client_email': ws_conn}
 
 
-def send_ws_msg(client_email,message):
-    ws_email_wsClient[client_email].send(message)
+def send_ws_msg(client_email, message):
+    ws = ws_email_wsClient[client_email]
+
+    return ws.send(message)
 
 
 def add_ws_conn(email, ws):
     ws_email_wsClient[email] = ws
+    print('added ws for - ' + email)
 
 def remove_ws_conn(email):
     del ws_email_wsClient[email]
