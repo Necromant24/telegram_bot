@@ -76,12 +76,12 @@
     width: 60px;
     height: 25px;
 
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 15px 15px 0 0;
 
     background-color: #FFCC55;
 }
 
-.upper-cmds-btn:{
+.upper-cmds-btn{
     position: absolute;
     bottom: 100%;
     right: 25px;
