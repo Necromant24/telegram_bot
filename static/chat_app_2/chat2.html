@@ -604,7 +604,27 @@
                 this.ws = initWS();
             },
 
-            sendMessage(msg = '') {
+            sendMessage(){
+
+                if(this.messageText.trim() === ''){
+                    return;
+                }
+
+                if (this.ws !== null && !this.messageText.startsWith('/')) {
+                    this.sendWsMsg(this.messageText);
+                    this.messageText = '';
+
+                    if(this.conn_to_sup_cmds.includes(this.messageText)){
+                        this.sendCmd(this.messageText);
+                    }
+                    return;
+                }
+
+                this.sendCmd(this.messageText);
+
+            },
+
+            sendMessage2(msg = '') {
                 if (this.ws !== null && !this.messageText.startsWith('/')) {
 
                     this.sendWsMsg(this.messageText);
@@ -753,6 +773,9 @@
                 postData('/chat', {message: msg})
                     .then((data) => {
                         processMessage(data);
+                        if(this.conn_to_sup_cmds.includes(msg)){
+                            this.connectToSupport();
+                        }
                     });
                 this.messageText = '';
             },
