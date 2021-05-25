@@ -45,13 +45,16 @@
                     <ul class="hidden-menu hidden-menu-text">
                         <h6>Выберите действие</h6>
 
-                        <div class="row">
+                        <div class="row btn btn-lg hidden-menu-btn drop-down-btn">
+                            <!--
                             <button @click="(e)=>{ sendMessage('/ZGC SHOP');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
-                                <img src="icons/shopping-cart%201.svg">
-                                <span class="pull-left">ZGC SHOP</span>
+                                    class="btn btn-lg hidden-menu-btn col-xs-12 drop-down-btn">
 
                             </button>
+                            -->
+                            <img src="icons/shopping-cart%201.svg">
+                            <span class="pull-left">ZGC SHOP</span>
+
                         </div>
 
                         <div class="row">
@@ -280,23 +283,87 @@
                             -->
 
 
-                                <button class="btn btn-secondary dropdown-toggle upper-cmds-btn" type="button"
-                                        id="dropdownMenuButton3"
-                                        data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle upper-cmds-btn" type="button"
+                                    id="dropdownMenuButton3"
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
 
-                                </button>
-                                <div class="dropdown-menu" style="width: 100%; right: 0px; background-color: #FFCC55;" aria-labelledby="dropdownMenuButton"
-                                     x-placement="bottom-start">
+                            </button>
+                            <div class="dropdown-menu upper-drop-down"
+                                 aria-labelledby="dropdownMenuButton"
+                                 x-placement="bottom-start">
 
-                                    <div class="dropdown-item"
-                                         v-for="(cmd, i) in commands" :key="i"
-                                         @click="(e)=>{ sendMessage(cmd); }">
-                                        {{ cmd }}
-                                    </div>
+                                <!--
+                                <div class="dropdown-item"
+                                     v-for="(cmd, i) in commands" :key="i"
+                                     @click="(e)=>{ sendMessage(cmd); }">
+                                    {{ cmd }}
+                                </div>
+                                -->
 
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/ZGC SHOP');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/shopping-cart%201.svg">
+                                        <span class="pull-left">ZGC SHOP</span>
+
+                                    </button>
                                 </div>
 
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/Для Туркменистана');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/turkmenistan%201.svg">
+                                        <span class="pull-left">Для Туркменистана</span>
+
+                                    </button>
+                                </div>
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/Пробный период');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/key%201.svg">
+                                        <span class="pull-left">Пробный период</span>
+
+                                    </button>
+                                </div>
+
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/Связаться с поддержкой');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/customer-service%201.svg">
+                                        <span class="pull-left">Связаться с поддержкой</span>
+
+                                    </button>
+                                </div>
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/Оплата');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/Vector.svg">
+                                        <span class="pull-left">Оплата</span>
+
+                                    </button>
+                                </div>
+
+
+                                <div class="row dropdown-item">
+                                    <button @click="(e)=>{ sendMessage('/Узнать больше');  }"
+                                            class="btn btn-lg hidden-menu-btn col-xs-12">
+                                        <img src="icons/info-button%201.svg">
+                                        <span class="pull-left">Узнать больше</span>
+
+                                    </button>
+                                </div>
+
+
+                                <button class="row dropdown-item" @click="(e)=>{ sendMessage('/Сотрудничество');  }"
+                                        class="btn btn-lg hidden-menu-btn col-xs-12">
+                                    <img src="icons/hand-shake%201.svg">
+                                    <span class="pull-left">Сотрудничество</span>
+
+                                </button>
+
+
+                            </div>
 
 
                             <div @click="(e)=>{ sendMessage(); }" class="publisher-btn text-info" data-abc="true">

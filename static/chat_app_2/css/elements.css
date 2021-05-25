@@ -77,7 +77,35 @@
     background-color: #FFCC55;
 }
 
+.upper-cmds-btn:{
+    position: absolute;
+    bottom: 100%;
+    right: 25px;
+    width: 60px;
+    height: 25px;
+
+    border-radius: 15px 15px 0px 0px;
+
+    background-color: #FFCC55;
+}
+
+
+.upper-drop-down{
+    width: 95%;
+    right: 0px;
+    background-color: #FFCC55;
+
+}
 
 .dropdown-item:hover{
+    background-color: #fabd28;
+}
+
+
+.drop-down-btn{
+    background-color: inherit;
+}
+
+.drop-down-btn:hover{
     background-color: #fabd28;
 }
