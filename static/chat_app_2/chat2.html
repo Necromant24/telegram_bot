@@ -43,7 +43,7 @@
                     </label>
 
                     <ul class="hidden-menu hidden-menu-text">
-                        <h6>Выберите действие</h6>
+                        <h6 class="hidden-menu-header">Выберите действие</h6>
 
                         <div @click="(e)=>{ sendMessage('/ZGC SHOP'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
@@ -550,8 +550,8 @@
                     });
             }
 
-            setTimeout(getCmds, 1000);
-            setTimeout(getCmds, 3000);
+            //setTimeout(getCmds, 1000);
+            //setTimeout(getCmds, 3000);
 
         },
 
@@ -671,15 +671,14 @@
 
                 postData('/chat', {message: this.messageText})
                     .then((data) => {
+                        console.log('-----------');
+                        console.log(data);
                         let answer = {from: 'bot', message: ''};
                         processMessage(data);
 
                         console.log(msg_container.scrollTop);
                         msg_container.scroll(0, msg_container.scrollHeight);
 
-
-                        console.log('-----------');
-                        console.log(data); // JSON data parsed by `response.json()` call
                     });
 
                 this.messageText = '';

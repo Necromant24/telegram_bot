@@ -48,8 +48,11 @@ def support_message():
     return {'status': 'ok'}
 
 
-@app.route('/chat', methods=['POST'])
+@app.route('/chat', methods=['POST','GET'])
 def chat_message():
+
+    meth = request.method
+
     command = request.json['message']
     answer = {}
 
