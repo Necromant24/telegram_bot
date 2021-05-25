@@ -114,3 +114,8 @@
 .drop-down-btn:hover{
     background-color: #fabd28;
 }
+
+.chat-msg{
+    background-color: #FFBFBF;
+    border-radius: 5px 5px 5px 0;
+}

@@ -73,3 +73,8 @@ def serve_static(path):
 def all_commands():
     answer = {'data': list(ds.viewed_cmds)}
     return answer
+
+
+
+def serve(app, host, port):
+    app.run(host=host,port=port)

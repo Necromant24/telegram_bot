@@ -45,7 +45,7 @@
                     <ul class="hidden-menu hidden-menu-text">
                         <h6 class="hidden-menu-header">Выберите действие</h6>
 
-                        <div @click="(e)=>{ sendMessage('/ZGC SHOP'); }"
+                        <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/shopping-cart%201.svg">
@@ -53,7 +53,7 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendMessage('/Для Туркменистана'); }"
+                        <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/turkmenistan%201.svg">
@@ -62,7 +62,7 @@
                         </div>
 
 
-                        <div @click="(e)=>{ sendMessage('/Пробный период'); }"
+                        <div @click="(e)=>{ sendCmd('/Пробный период'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/key%201.svg">
@@ -70,14 +70,14 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendMessage('/Связаться с поддержкой'); }"
+                        <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/customer-service%201.svg">
                             <span class="pull-left">Связаться с поддержкой</span>
 
                         </div>
-                        <div @click="(e)=>{ sendMessage('/Оплата'); }"
+                        <div @click="(e)=>{ sendCmd('/Оплата'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/Vector.svg">
@@ -86,7 +86,7 @@
                         </div>
 
 
-                        <div @click="(e)=>{ sendMessage('/Узнать больше'); }"
+                        <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/info-button%201.svg">
@@ -94,7 +94,7 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendMessage('/Сотрудничество'); }"
+                        <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img src="icons/hand-shake%201.svg">
@@ -154,8 +154,8 @@
                             </div>
 
                             <div v-if="message.from==='bot'" class="media media-chat">
-                                <div class="media-body">
-                                    <p>
+                                <div class="media-body chat-msg">
+                                    <p class="chat-msg">
                                         {{ message.message }}
                                     </p>
                                 </div>
@@ -164,12 +164,12 @@
                             <div v-if="message.from === 'bot_link'" class="incoming_msg">
                                 <div class="incoming_msg_img"></div>
                                 <div class="received_msg">
-                                    <div class="btn-link">
+                                    <p class="btn btn-link">
                                         {{ message.message }}
                                         <br/>
                                         <a v-bind:href="message.cmd" target="_blank">{{ message.cmd }}</a>
 
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
 
@@ -177,7 +177,7 @@
                                 <div class="media-body">
                                     <p>
                                         <button class="btn btn-primary"
-                                                @click="(e)=>{ sendMessage(message.cmd); }">{{ message.message }}</button>
+                                                @click="(e)=>{ sendCmd(message.cmd); }">{{ message.message }}</button>
                                     </p>
                                 </div>
                             </div>
@@ -356,7 +356,7 @@
                                 -->
 
 
-                                <div @click="(e)=>{ sendMessage('/ZGC SHOP'); }"
+                                <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                                      class="row dropdown-item  btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/shopping-cart%201.svg">
@@ -364,7 +364,7 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendMessage('/Для Туркменистана'); }"
+                                <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/turkmenistan%201.svg">
@@ -373,7 +373,7 @@
                                 </div>
 
 
-                                <div @click="(e)=>{ sendMessage('/Пробный период'); }"
+                                <div @click="(e)=>{ sendCmd('/Пробный период'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/key%201.svg">
@@ -381,14 +381,14 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendMessage('/Связаться с поддержкой'); }"
+                                <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/customer-service%201.svg">
                                     <span class="pull-left">Связаться с поддержкой</span>
 
                                 </div>
-                                <div @click="(e)=>{ sendMessage('/Оплата'); }"
+                                <div @click="(e)=>{ sendCmd('/Оплата'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/Vector.svg">
@@ -397,7 +397,7 @@
                                 </div>
 
 
-                                <div @click="(e)=>{ sendMessage('/Узнать больше'); }"
+                                <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/info-button%201.svg">
@@ -405,7 +405,7 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendMessage('/Сотрудничество'); }"
+                                <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img src="icons/hand-shake%201.svg">
@@ -526,6 +526,9 @@
 
             commands: [],
 
+            conn_to_sup_cmds: ["/market", "/Связаться с поддержкой"],
+            through_msgs: ["/market"],
+
             ws: null,
 
             startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
@@ -570,6 +573,8 @@
         methods: {
 
             sendImg() {
+
+
                 let input = document.querySelector('#file-input');
 
                 console.log(input.files[0]);
@@ -600,16 +605,16 @@
             },
 
             sendMessage(msg = '') {
-                if (this.ws !== null) {
-                    msg = {message: this.messageText, email: this.userEmail};
+                if (this.ws !== null && !this.messageText.startsWith('/')) {
 
-                    postData('/support/message', msg)
-                        .then((data) => {
+                    this.sendWsMsg(this.messageText);
 
-                            console.log(data);
-                        });
-                    this.messageText = '';
-                    return;
+                    if (!this.conn_to_sup_cmds.includes(this.messageText.trim())) {
+                        console.log("in choto");
+                        this.messageText = '';
+                        return;
+                    }
+
                 }
 
                 if (msg !== '') {
@@ -621,9 +626,9 @@
                 }
 
 
-                if (msg === '/Связаться с поддержкой') {
+                if (this.conn_to_sup_cmds.includes(msg)) {
                     this.ws = initWS();
-                    this.messages.push({from: 'user', message: '/Связаться с поддержкой'});
+                    this.messages.push({from: 'user', message: msg});
                     this.messageText = '';
                     return;
                 }
@@ -644,11 +649,9 @@
 
                     let regex = new RegExp('^http.://.');
 
-                    console.log('in process');
 
                     for (let i = 0; i < cmd_messages.length; i++) {
 
-                        console.log(i);
 
                         if (cmd_messages[i][1].match(regex) != null) {
                             this.messages.push({
@@ -709,6 +712,58 @@
             clearEmail() {
                 console.log('clear');
                 this.enteringEmail = '';
+            },
+
+            sendCmd(msg) {
+
+                if (msg.trim() === '') {
+                    console.log('error - command is empty')
+                    return;
+                }
+
+                let userMessage = {from: 'user', message: msg}
+
+                this.messages.push(userMessage);
+
+                const processMessage = (bot_message) => {
+                    let message = {from: 'bot', 'message': bot_message.answer};
+                    let cmd_messages = bot_message.commands;
+                    this.messages.push(message);
+                    let regex = new RegExp('^http.://.');
+
+                    for (let i = 0; i < cmd_messages.length; i++) {
+                        if (cmd_messages[i][1].match(regex) != null) {
+                            this.messages.push({
+                                from: 'bot_link',
+                                message: cmd_messages[i][0],
+                                cmd: cmd_messages[i][1]
+                            });
+                        }
+
+                        let hash = cmd_messages[i][1][0];
+                        console.log(hash);
+
+                        if (hash === '/') {
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+                        }
+                    }
+                    console.log(this.messages);
+                }
+
+                postData('/chat', {message: msg})
+                    .then((data) => {
+                        processMessage(data);
+                    });
+                this.messageText = '';
+            },
+
+            sendWsMsg(msg_text) {
+                let msg = {message: msg_text, email: this.userEmail};
+                postData('/support/message', msg)
+                    .then((data) => {
+
+                    });
+                this.messages.push({from: 'user', message: this.messageText});
             }
 
         }
