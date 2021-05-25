@@ -250,7 +250,8 @@
                             </div>
 
 
-                            <div class="input-group-addon">
+                            <!--
+                            <div class="input-group-addon input-upper-cmds">
                                 <div style="margin-right: 1px">
                                     <div class="bd-example">
                                         <div class="dropdown">
@@ -258,9 +259,7 @@
                                                     id="dropdownMenuButton3"
                                                     data-toggle="dropdown" aria-haspopup="true"
                                                     aria-expanded="false">
-                                                <div class="publisher-btn" data-abc="true"><i
-                                                        class="fa fa-smile"></i>
-                                                </div>
+
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                                                  x-placement="bottom-start">
@@ -277,6 +276,27 @@
 
                                 </div>
                             </div>
+
+                            -->
+
+
+                                <button class="btn btn-secondary dropdown-toggle upper-cmds-btn" type="button"
+                                        id="dropdownMenuButton3"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+
+                                </button>
+                                <div class="dropdown-menu" style="width: 100%; right: 0px; background-color: #FFCC55;" aria-labelledby="dropdownMenuButton"
+                                     x-placement="bottom-start">
+
+                                    <div class="dropdown-item"
+                                         v-for="(cmd, i) in commands" :key="i"
+                                         @click="(e)=>{ sendMessage(cmd); }">
+                                        {{ cmd }}
+                                    </div>
+
+                                </div>
+
 
 
                             <div @click="(e)=>{ sendMessage(); }" class="publisher-btn text-info" data-abc="true">
@@ -308,8 +328,6 @@
     let msg_container = null;
 
 
-
-
     async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
         const response = await fetch(url, {
@@ -335,7 +353,7 @@
 
         socket.onopen = function (e) {
             console.log("[open] Соединение установлено");
-            console.log("Отправляем данные на сервер+ email - "+this.userEmail);
+            console.log("Отправляем данные на сервер+ email - " + this.userEmail);
 
             let data = JSON.stringify({'email': app.userEmail, 'type': 'init'});
 
@@ -501,33 +519,37 @@
 
 
                 const processMessage = (bot_message) => {
-        let message = {from: 'bot', 'message': bot_message.answer};
+                    let message = {from: 'bot', 'message': bot_message.answer};
 
-        let cmd_messages = bot_message.commands;
+                    let cmd_messages = bot_message.commands;
 
-        this.messages.push(message);
+                    this.messages.push(message);
 
-        let regex = new RegExp('^http.://.');
+                    let regex = new RegExp('^http.://.');
 
-        console.log('in process');
+                    console.log('in process');
 
-        for (let i = 0; i < cmd_messages.length; i++) {
+                    for (let i = 0; i < cmd_messages.length; i++) {
 
-            console.log(i);
+                        console.log(i);
 
-            if (cmd_messages[i][1].match(regex) != null) {
-                this.messages.push({from: 'bot_link', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
-            }
+                        if (cmd_messages[i][1].match(regex) != null) {
+                            this.messages.push({
+                                from: 'bot_link',
+                                message: cmd_messages[i][0],
+                                cmd: cmd_messages[i][1]
+                            });
+                        }
 
-            let hash = cmd_messages[i][1][0];
-            console.log(hash);
+                        let hash = cmd_messages[i][1][0];
+                        console.log(hash);
 
-            if (hash === '/') {
-                this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
-            }
-        }
-        console.log(this.messages);
-    }
+                        if (hash === '/') {
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+                        }
+                    }
+                    console.log(this.messages);
+                }
 
 
                 postData('/chat', {message: this.messageText})
