@@ -12,12 +12,16 @@
 
     font-size: 15px;
 
+    padding-right: 2px;
+    padding-left: 0px;
+
 }
 
 .hidden-menu-btn{
     background-color: #FFCC55;
     font-size: 19px;
     margin: 2px;
+    text-align: left;
 }
 
 
@@ -104,6 +108,7 @@
 
 .drop-down-btn{
     background-color: inherit;
+    width: 100%;
 }
 
 .drop-down-btn:hover{

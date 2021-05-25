@@ -45,7 +45,7 @@
                     <ul class="hidden-menu hidden-menu-text">
                         <h6>Выберите действие</h6>
 
-                        <div class="row btn btn-lg hidden-menu-btn drop-down-btn">
+                        <div @click="(e)=>{ sendMessage('/ZGC SHOP'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
                             <!--
                             <button @click="(e)=>{ sendMessage('/ZGC SHOP');  }"
                                     class="btn btn-lg hidden-menu-btn col-xs-12 drop-down-btn">
@@ -57,57 +57,47 @@
 
                         </div>
 
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Для Туркменистана');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+                        <div @click="(e)=>{ sendMessage('/Для Туркменистана'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/turkmenistan%201.svg">
                                 <span class="pull-left">Для Туркменистана</span>
 
-                            </button>
                         </div>
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Пробный период');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+
+
+                        <div @click="(e)=>{ sendMessage('/Пробный период'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/key%201.svg">
                                 <span class="pull-left">Пробный период</span>
 
-                            </button>
                         </div>
 
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Связаться с поддержкой');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+                        <div @click="(e)=>{ sendMessage('/Связаться с поддержкой'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/customer-service%201.svg">
                                 <span class="pull-left">Связаться с поддержкой</span>
 
-                            </button>
                         </div>
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Оплата');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+                        <div @click="(e)=>{ sendMessage('/Оплата'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/Vector.svg">
                                 <span class="pull-left">Оплата</span>
 
-                            </button>
                         </div>
 
 
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Узнать больше');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+                        <div @click="(e)=>{ sendMessage('/Узнать больше'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/info-button%201.svg">
                                 <span class="pull-left">Узнать больше</span>
 
-                            </button>
                         </div>
 
-                        <div class="row">
-                            <button @click="(e)=>{ sendMessage('/Сотрудничество');  }"
-                                    class="btn btn-lg hidden-menu-btn col-xs-12">
+                        <div @click="(e)=>{ sendMessage('/Сотрудничество'); }" class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
                                 <img src="icons/hand-shake%201.svg">
                                 <span class="pull-left">Сотрудничество</span>
 
-                            </button>
                         </div>
 
 
