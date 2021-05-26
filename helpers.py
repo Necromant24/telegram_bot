@@ -1,3 +1,11 @@
+import telebot
+import config
+
+bot = telebot.TeleBot(config.tg_token)
+
+
+def send_msg_to_tg(message_data):
+    bot.send_message(config.group_id, message_data)
 
 
 def get_email_from_message(message):

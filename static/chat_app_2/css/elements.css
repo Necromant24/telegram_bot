@@ -31,8 +31,11 @@
 }
 
 .hidden-menu-bottom{
-    font-size: 14px;
-    color: #8b95a5;
+    font-family: Calibri;
+    font-size: 15px;
+    color: #505050;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 
@@ -99,6 +102,7 @@
     width: 95%;
     right: 0px;
     background-color: #FFCC55;
+    overflow: hidden;
 
 }
 
@@ -133,4 +137,19 @@
     color: white;
     border-radius: 10px 10px 10px 0;
     background-color: #2535BF;
+}
+
+
+
+/*.menu-cmd{*/
+/*    margin-top: 5px;*/
+/*}*/
+
+
+.centered-img{
+    margin-bottom: 3px;
+}
+
+body{
+    font-family: Roboto, sans-serif;
 }

@@ -51,7 +51,9 @@ def add_ws_conn(email, ws):
     print('added ws for - ' + email)
 
 def remove_ws_conn(email):
+    import helpers
     del ws_email_wsClient[email]
+    helpers.send_msg_to_tg("email: "+email + "\n клиент покинул чат")
 
 
 
