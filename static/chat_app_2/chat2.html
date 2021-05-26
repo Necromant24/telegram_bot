@@ -128,21 +128,7 @@
                     <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
                          style="overflow-y: scroll !important; height:400px !important;">
 
-                        <!--
-                        <button onclick="goToBottom();">go to bottom</button>
-                        <div class="media media-chat media-chat-reverse">
-                            <div class="media-body">
-                                <p>Hiii, I'm good.</p>
-                            </div>
-                        </div>
-                        <div class="media media-chat">
 
-                            <div class="media-body">
-                                <p> hi garry </p>
-
-                            </div>
-                        </div>
-                        -->
 
                         <div v-for="(message, index) in messages" :key="index">
 
@@ -194,6 +180,42 @@
 
                         <div id="bottom_msg">.</div>
 
+                        <!--
+                        <div v-if="userEmail === ''">
+                            <div>
+                                {{ startMessage }}
+                            </div>
+                            <div>
+                                <div class="email-input-group "
+                                     v-bind:style="{ backgroundColor: emailColor }">
+                                    <div class="input-group  send-email-input"
+                                         style="margin-left: 20px; margin-bottom: 1px;">
+                                        <input v-model="enteringEmail" type="text" class="email-input"
+                                               placeholder="email..."
+                                               v-bind:style="{ backgroundColor: emailColor }"
+                                        />
+                                        <div @click="clearEmail" class="input-group-append"
+                                             style="cursor: pointer; border: none;">
+                                            <span class="input-group-text"
+                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
+                                        </div>
+                                    </div>
+
+                                    <button class="email-btn" @click="sendEmail"> send</button>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="msg-input-wrapper">
 
                         <div v-if="userEmail === ''">
                             <div>
@@ -220,17 +242,9 @@
                             </div>
                         </div>
 
-                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
-                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
-                        </div>
-                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
-                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
-                        </div>
-                    </div>
 
 
-                    <div v-if="userEmail !== ''" class="msg-input-wrapper">
-                        <div class="publisher bt-1 border-light">
+                        <div v-if="userEmail !== ''"  class="publisher bt-1 border-light">
 
                             <input class="publisher-input" type="text"
                                    placeholder="Введите сообщение..."
@@ -422,8 +436,7 @@
         data: {
             messageText: '',
             messages: [
-                {from: 'bot', message: 'hello i am bot!'},
-                {from: 'user', message: 'Command1'}
+
             ],
 
 
