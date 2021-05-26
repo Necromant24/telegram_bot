@@ -57,8 +57,9 @@
 .hidden-menu-header{
     font-weight: bold;
     font-size: 20px;
-    margin-bottom: 15px;
-    margin-left: 35px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    padding-top: 5px;
 }
 
 .input-upper-cmds{
@@ -116,6 +117,20 @@
 }
 
 .chat-msg{
-    background-color: #FFBFBF;
-    border-radius: 5px 5px 5px 0;
+    border-radius: 10px 10px 10px 0;
+}
+
+.bot-cmd{
+    font-weight: 350;
+    color: #2C2C2C;
+    border-radius: 10px 10px 10px 0;
+    background-color: #9DC4FF;
+    border: none;
+}
+
+.bot-cmd:hover{
+    font-weight: 350;
+    color: white;
+    border-radius: 10px 10px 10px 0;
+    background-color: #2535BF;
 }

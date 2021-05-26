@@ -116,7 +116,7 @@
 
                     <div class="card-header">
 
-                        <h4 class="card-title" style="margin-left: 15px"><strong>Chat</strong></h4>
+                        <h4 class="card-title" style="margin-left: 20px"><strong>Support</strong></h4>
 
                         <div class="close-btn">
                             <img src="icons/close.svg"/>
@@ -155,7 +155,7 @@
 
                             <div v-if="message.from==='bot'" class="media media-chat">
                                 <div class="media-body chat-msg">
-                                    <p class="chat-msg">
+                                    <p>
                                         {{ message.message }}
                                     </p>
                                 </div>
@@ -175,10 +175,8 @@
 
                             <div v-if="message.from==='bot_cmd'" class="media media-chat media-chat-btn">
                                 <div class="media-body">
-                                    <p>
-                                        <button class="btn btn-primary"
+                                        <button class="btn btn-primary bot-cmd"
                                                 @click="(e)=>{ sendCmd(message.cmd); }">{{ message.message }}</button>
-                                    </p>
                                 </div>
                             </div>
 
@@ -245,36 +243,6 @@
                             </div>
 
 
-                            <!--
-                            <div class="input-group-addon input-upper-cmds">
-                                <div style="margin-right: 1px">
-                                    <div class="bd-example">
-                                        <div class="dropdown">
-                                            <button class="btn btn-secondary dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton3"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                                                 x-placement="bottom-start">
-
-                                                <div class="dropdown-item"
-                                                     v-for="(cmd, i) in commands" :key="i"
-                                                     @click="(e)=>{ sendMessage(cmd); }">
-                                                    {{ cmd }}
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            -->
-
-
                             <button class="btn btn-secondary dropdown-toggle upper-cmds-btn" type="button"
                                     id="dropdownMenuButton3"
                                     data-toggle="dropdown" aria-haspopup="true"
@@ -284,76 +252,6 @@
                             <div class="dropdown-menu upper-drop-down"
                                  aria-labelledby="dropdownMenuButton"
                                  x-placement="bottom-start">
-
-                                <!--
-                                <div class="dropdown-item"
-                                     v-for="(cmd, i) in commands" :key="i"
-                                     @click="(e)=>{ sendMessage(cmd); }">
-                                    {{ cmd }}
-                                </div>
-
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/ZGC SHOP');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/shopping-cart%201.svg">
-                                        <span class="pull-left">ZGC SHOP</span>
-
-                                    </button>
-                                </div>
-
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/Для Туркменистана');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/turkmenistan%201.svg">
-                                        <span class="pull-left">Для Туркменистана</span>
-
-                                    </button>
-                                </div>
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/Пробный период');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/key%201.svg">
-                                        <span class="pull-left">Пробный период</span>
-
-                                    </button>
-                                </div>
-
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/Связаться с поддержкой');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/customer-service%201.svg">
-                                        <span class="pull-left">Связаться с поддержкой</span>
-
-                                    </button>
-                                </div>
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/Оплата');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/Vector.svg">
-                                        <span class="pull-left">Оплата</span>
-
-                                    </button>
-                                </div>
-
-
-                                <div class="row dropdown-item">
-                                    <button @click="(e)=>{ sendMessage('/Узнать больше');  }"
-                                            class="btn btn-lg hidden-menu-btn col-xs-12">
-                                        <img src="icons/info-button%201.svg">
-                                        <span class="pull-left">Узнать больше</span>
-
-                                    </button>
-                                </div>
-
-
-                                <div class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn" @click="(e)=>{ sendMessage('/Сотрудничество');  }"
-                                        class="btn btn-lg hidden-menu-btn col-xs-12">
-                                    <img src="icons/hand-shake%201.svg">
-                                    <span class="pull-left">Сотрудничество</span>
-
-                                </div>
-
-                                -->
 
 
                                 <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"

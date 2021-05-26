@@ -218,15 +218,20 @@ h4.card-title {
     clear: right;
     background-color: #FFCC55;
     color: #2C2C2C;
+    font-weight: 350;
+    border-radius: 10px 10px 0 10px;
+    font-family: Roboto, sans-serif;
 }
 
 .media-chat .media-body p {
     position: relative;
     padding: 6px 8px;
     margin: 4px 0;
-    background-color: #FFBFBF;
-    border-radius: 3px;
+    background-color: #FF7C74;
+    border-radius: 10px 10px 10px 0;
     color: #2C2C2C;
+    font-weight: 350;
+    font-family: Roboto, sans-serif;
 }
 
 .border-light {
@@ -307,7 +312,8 @@ textarea {
 }
 
 .text-info {
-    color: #48b0f7 !important
+    color: #48b0f7 !important;
+    margin-bottom: 0.5em;
 }
 
 
