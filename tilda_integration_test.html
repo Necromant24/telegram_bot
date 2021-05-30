@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .chat-pop-up {
+            background-color: #FFCC55;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chat-popuper {
+            width: inherit;
+            height: inherit;
+        }
+
+        .chat-popuper:checked ~ .chat-pop-up {
+            background-color: #48b0f7;
+
+        }
+
+        label {
+            width: 32px; /* Ширина рисунка */
+            height: 26px; /* Высота рисунка */
+            display: block; /* Блочный элемент */
+            position: relative; /* Относительное позиционирование */
+        }
+
+
+        input[type="checkbox"] + span {
+            position: absolute; /* Абсолютное позиционирование */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url(chat-icon.png) no-repeat; /* Фоновый рисунок */
+            cursor: pointer; /* Курсор в виде руки */
+        }
+
+
+        input[type="checkbox"]:checked + span {
+            background-position: 0 -26px;
+        }
+
+
+        .chat-window-opened {
+            display: block;
+        }
+
+        .chat-window-closed {
+            display: none;
+        }
+
+        .opened-chat {
+            background-color: #48b0f7;
+            width: 50px;
+            height: 50px;
+        }
+
+        .closed-chat {
+            background-color: #FFCC55;
+            width: 50px;
+            height: 50px;
+        }
+
+
+        #chat-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        #chat-window {
+            position: fixed;
+            top: 400px;
+            width: 400px;
+            height: 600px;
+            background-color: #4d5259;
+
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+
+<div>
+    <label class="chat-pop-up">
+        <img src="chat-icon.png" style="width: inherit;height: inherit;">
+        <input class="chat-popuper" type="checkbox" style="visibility: hidden;" value="1" name="k">
+        <span></span>
+    </label>
+</div>
+
+
+<div>
+    <div id="chat-icon">
+        <img onclick="open_close_chat();" style="width: 100%;height: 100%; cursor: pointer;" src="chat-icon.png"/>
+    </div>
+
+    <div id="chat-window">
+        sdv;oihjv;odis
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    let chat_open = false;
+
+    function open_close_chat() {
+        let chat_icon = document.getElementById('chat-icon');
+        let chat_window = document.getElementById('chat-window');
+
+        if (chat_open) {
+            chat_open = !chat_open;
+            chat_icon.classList.add("closed-chat");
+            chat_icon.classList.remove("opened-chat");
+
+
+            chat_window.classList.add("chat-window-closed");
+            chat_window.classList.remove("chat-window-opened");
+        } else {
+            chat_open = !chat_open;
+            chat_icon.classList.add("opened-chat");
+            chat_icon.classList.remove("closed-chat");
+
+            chat_window.classList.add("chat-window-opened");
+            chat_window.classList.remove("chat-window-closed");
+        }
+    }
+
+
+</script>
+
+<div>
+    .
+</div>
+<div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+    <div>tosts!</div>
+
+</div>
+
+
+</body>
+</html>

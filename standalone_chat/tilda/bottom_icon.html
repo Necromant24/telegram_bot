@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+    <style>
+
+
+        .bottom-icon {
+            background-color: #FFCC00;
+            width: 167px;
+            height: 49px;
+            border-radius: 15px 15px 0 0;
+            left: 30px;
+
+            position: fixed;
+        }
+
+        .b-icon-container {
+            display: flex;
+            margin-top: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .b-icon-text{
+            font-family: Arial,Helvetica,sans-serif !important;
+            margin-left: 10px;
+            white-space: nowrap!important;
+            padding-top: 3px;
+            color: #595959 !important;
+            font-size: 18px !important;
+        }
+
+
+    </style>
+
+
+    <style>
+
+        .chat-pop-up {
+            background-color: #FFCC55;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chat-popuper {
+            width: inherit;
+            height: inherit;
+        }
+
+        .chat-popuper:checked ~ .chat-pop-up {
+            background-color: #48b0f7;
+
+        }
+
+        label {
+            width: 32px; /* Ширина рисунка */
+            height: 26px; /* Высота рисунка */
+            display: block; /* Блочный элемент */
+            position: relative; /* Относительное позиционирование */
+        }
+
+
+
+
+        .chat-window-opened {
+            display: block;
+        }
+
+        .chat-window-closed {
+            display: none;
+        }
+
+        .opened-chat {
+            background-color: #48b0f7;
+            width: 50px;
+            height: 50px;
+        }
+
+        .closed-chat {
+            background-color: #FFCC55;
+            width: 50px;
+            height: 50px;
+        }
+
+
+        #chat-window {
+            position: fixed;
+            top: 12px;
+            left: 50px;
+            width: 380px;
+            height: 550px;
+            background-color: #4d5259;
+
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<h1>some</h1>
+
+
+
+<div id="chat-window">
+
+</div>
+
+
+<div id="bottom-icon" onclick="open_close_chat();" class="bottom-icon">
+    <div class="b-icon-container">
+        <img src="chat-icon.png" style="width: 25px;height: 25px;" />
+        <div class="b-icon-text"> открыть бота </div>
+    </div>
+
+</div>
+
+<script>
+
+    let bottom_icon;
+
+    let chat_open = false;
+
+    function open_close_chat() {
+        //let chat_icon = document.getElementById('chat-icon');
+        let chat_window = document.getElementById('chat-window');
+
+        if (chat_open) {
+            chat_open = !chat_open;
+            //chat_icon.classList.add("closed-chat");
+            //chat_icon.classList.remove("opened-chat");
+
+
+            chat_window.classList.add("chat-window-closed");
+            chat_window.classList.remove("chat-window-opened");
+        } else {
+            chat_open = !chat_open;
+            //chat_icon.classList.add("opened-chat");
+            //chat_icon.classList.remove("closed-chat");
+
+            chat_window.classList.add("chat-window-opened");
+            chat_window.classList.remove("chat-window-closed");
+        }
+    }
+
+    function reposite_icon() {
+        let window_height = window.innerHeight;
+        console.log(window_height);
+
+        bottom_icon.style.top = window_height - 45 + "px";
+    }
+
+
+    window.onload = function () {
+        bottom_icon = document.getElementById("bottom-icon");
+
+        let chat_window = document.getElementById('chat-window');
+        chat_window.classList.add("chat-window-closed");
+
+
+
+        reposite_icon();
+    }
+
+
+    window.onchange = function () {
+        reposite_icon();
+    }
+
+    window.onresize = function () {
+        reposite_icon();
+    }
+
+
+</script>
+
+
+</body>
+</html>

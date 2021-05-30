@@ -1,0 +1,1337 @@
+
+<style>
+
+.card-bordered {
+    border: 1px solid #ebebeb
+}
+
+.card {
+    border: 0;
+    border-radius: 0px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.03);
+    -webkit-transition: .5s;
+    transition: .5s;
+
+    overflow-x: hidden;
+}
+
+.padding {
+    padding: 3rem !important
+}
+
+body {
+    background-color: #f9f9fa
+}
+
+.card-header:first-child {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+    background-color: #FFCC55;
+}
+
+.card-header {
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #FFCC55;
+    border-bottom: 1px solid rgba(77, 82, 89, 0.07);
+    border-radius: 0px 0px 20px 20px;
+}
+
+.card-header .card-title {
+    padding: 0;
+    border: none
+}
+
+h4.card-title {
+    font-size: 17px
+}
+
+.card-header > *:last-child {
+    margin-right: 0
+}
+
+.card-header > * {
+    margin-left: 8px;
+    margin-right: 8px
+}
+
+.btn-secondary {
+    color: #4d5259 !important;
+    background-color: #e4e7ea;
+    border-color: #e4e7ea;
+    color: #fff
+}
+
+.btn-xs {
+    font-size: 11px;
+    padding: 2px 8px;
+    line-height: 18px
+}
+
+.btn-xs:hover {
+    color: #fff !important
+}
+
+.card-title {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(77, 82, 89, 0.07)
+}
+
+.ps-container {
+    position: relative
+}
+
+.ps-container {
+    -ms-touch-action: auto;
+    touch-action: auto;
+    overflow: hidden !important;
+    -ms-overflow-style: none
+}
+
+.media-chat {
+    padding-right: 64px;
+    margin-bottom: 0
+}
+
+.media {
+    padding: 4px 12px;
+    -webkit-transition: background-color .2s linear;
+    transition: background-color .2s linear
+}
+
+.media .avatar {
+    flex-shrink: 0
+}
+
+.avatar {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #f5f6f7;
+    color: #8b95a5;
+    text-transform: uppercase
+}
+
+.media-chat .media-body {
+    -webkit-box-flex: initial;
+    flex: initial;
+    display: table
+}
+
+.media-body {
+    min-width: 0
+}
+
+.media-chat .media-body p {
+    position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #f5f6f7;
+    border-radius: 3px;
+    font-weight: 100;
+    color: #9b9b9b
+}
+
+.media > * {
+    margin: 0 8px
+}
+
+.media-chat .media-body p.meta {
+    background-color: transparent !important;
+    padding: 0;
+    opacity: .8
+}
+
+.media-meta-day {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 0;
+    color: #8b95a5;
+    opacity: .8;
+    font-weight: 400
+}
+
+.media {
+    padding: 16px 12px;
+    -webkit-transition: background-color .2s linear;
+    transition: background-color .2s linear
+}
+
+.media-meta-day::before {
+    margin-right: 16px
+}
+
+.media-meta-day::before,
+.media-meta-day::after {
+    content: '';
+    -webkit-box-flex: 1;
+    flex: 1 1;
+    border-top: 1px solid #ebebeb
+}
+
+.media-meta-day::after {
+    content: '';
+    -webkit-box-flex: 1;
+    flex: 1 1;
+    border-top: 1px solid #ebebeb
+}
+
+.media-meta-day::after {
+    margin-left: 16px
+}
+
+.media-chat.media-chat-reverse {
+    padding-right: 12px;
+    padding-left: 64px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    flex-direction: row-reverse
+}
+
+.media-chat {
+    padding-right: 64px;
+    margin-bottom: 0
+}
+
+.media {
+    padding: 16px 12px;
+    -webkit-transition: background-color .2s linear;
+    transition: background-color .2s linear
+}
+
+.media-chat.media-chat-reverse .media-body p {
+    float: right;
+    clear: right;
+    background-color: #FFCC55;
+    color: #2C2C2C;
+    font-weight: 350;
+    border-radius: 15px 15px 0 15px;
+    font-family: Roboto, sans-serif;
+}
+
+.media-chat .media-body p {
+    position: relative;
+    padding: 6px 8px;
+    margin: 4px 0;
+    background-color: #FF7C74;
+    border-radius: 15px 15px 15px 0;
+    color: #2C2C2C;
+    font-weight: 350;
+    font-family: Roboto, sans-serif;
+}
+
+.border-light {
+    border-color: #f1f2f3 !important
+}
+
+.bt-1 {
+    border-top: 1px solid #ebebeb !important
+}
+
+.publisher {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 12px 20px;
+    background-color: #f9fafb
+}
+
+.publisher > *:first-child {
+    margin-left: 0
+}
+
+.publisher > * {
+    margin: 0 8px
+}
+
+.publisher-input {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border: none;
+    outline: none !important;
+    background-color: transparent
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: Roboto, sans-serif;
+    font-weight: 300
+}
+
+.publisher-btn {
+    background-color: transparent;
+    border: none;
+    color: #8b95a5;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: -moz-hidden-unscrollable;
+    -webkit-transition: .2s linear;
+    transition: .2s linear
+}
+
+.file-group {
+    position: relative;
+    overflow: hidden
+}
+
+.publisher-btn {
+    background-color: transparent;
+    border: none;
+    color: #cac7c7;
+    font-size: 16px;
+    cursor: pointer;
+    overflow: -moz-hidden-unscrollable;
+    -webkit-transition: .2s linear;
+    transition: .2s linear
+}
+
+.file-group input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+    width: 20px
+}
+
+.text-info {
+    color: #48b0f7 !important;
+    margin-bottom: 0.5em;
+}
+
+
+/*
+------------------------------------------------------------------
+*/
+
+.send-email-btn {
+    margin-bottom: 0px;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright: 0px;
+}
+
+.send-email-input {
+    margin-top: 0px;
+    display: flex;
+}
+
+.email-input-group {
+    background-color: #d1d1d1;
+    display: block;
+    width: 95%;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.email-input {
+    background-color: #d1d1d1;
+    border: none;
+    width: 84%;
+}
+
+.clickable:hover {
+    padding-left: 10px;
+    margin-left: 1px;
+    text-shadow: #48b0f7;
+}
+
+.email-btn {
+    background-color: #5278FF;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 0px 0px 15px 15px;
+}
+
+
+/*
+
+-----------------------------------------------------------------
+
+*/
+
+.hidden-menu {
+  display: block;
+  /*position: fixed;*/
+    position: absolute;
+
+  list-style:none;
+  padding: 10px;
+  margin: 0;
+  box-sizing: border-box;
+  width: 300px;
+  background-color: #FFCC55;
+  height: 100%;
+  top: 0;
+  left: -300px;
+  transition: left .2s;
+  z-index: 2;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+
+    border-radius: 0px 20px 20px 0px;
+
+}
+
+.hidden-menu-ticker {
+  display: none;
+}
+
+.btn-menu {
+  color: #fff;
+  background-color: #FFCC55;
+  padding: 7px;
+  /*position: fixed;*/
+    position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  transition: left .23s;
+  z-index: 3;
+  width: 25px;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+.btn-menu span {
+  display: block;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0 0;
+  transition: all .1s linear .23s;
+  position: relative;
+}
+.btn-menu span.first {
+  margin-top: 0;
+}
+
+/*.hidden-menu-ticker:checked ~ .btn-menu {*/
+/*  left: 160px;*/
+/*}*/
+
+.hidden-menu-ticker:checked ~ .hidden-menu {
+  left: 0;
+}
+
+.hidden-menu-ticker:checked ~ .btn-menu span.first {
+  -webkit-transform: rotate(45deg);
+  top: 8px;
+}
+
+.hidden-menu-ticker:checked ~ .btn-menu span.second {
+  opacity: 0;
+}
+.hidden-menu-ticker:checked ~ .btn-menu span.third {
+  -webkit-transform: rotate(-45deg);
+  top: -8px;
+}
+
+
+.hidden-menu-ticker:checked ~ .hidden-menu {
+  box-shadow: 250px 0 rgba(77, 82, 89, 0.56);
+}
+
+/*
+-------------------------------------------
+ */
+
+
+
+.msg-input-wrapper{
+    width: 100%;
+    position: relative;
+
+}
+
+
+/*
+-------------------------------------------
+--------------------------------------------------------------
+ */
+
+
+.close-btn{
+
+    cursor: pointer;
+    margin-left: 5px;
+
+}
+
+
+.hidden-menu-text{
+
+    font-size: 15px;
+
+    padding-right: 2px;
+    padding-left: 0px;
+
+}
+
+.hidden-menu-btn{
+    background-color: #FFCC55;
+    font-size: 19px;
+    margin: 2px;
+    text-align: left;
+}
+
+
+.btn-link{
+    margin-left: 3px;
+    font-size: 15px;
+}
+
+.hidden-menu-bottom{
+    font-family: Calibri;
+    font-size: 15px;
+    color: #505050;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+.img-sender{
+    width: 25px;
+}
+
+
+.chat-img{
+    width: 240px;
+    height: 200px;
+}
+
+
+.media-chat-btn{
+    margin-top: 5px;
+    margin-bottom: 1px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.hidden-menu-header{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    padding-top: 5px;
+}
+
+.input-upper-cmds{
+    position: absolute;
+    bottom: 100%;
+    right: 25px;
+    width: 40px;
+    height: 15px;
+}
+
+.upper-cmds-btn{
+    position: absolute;
+    bottom: 100%;
+    right: 25px;
+    width: 60px;
+    height: 25px;
+
+    border-radius: 15px 15px 0 0;
+
+    background-color: #FFCC55;
+}
+
+.upper-cmds-btn{
+    position: absolute;
+    bottom: 100%;
+    right: 25px;
+    width: 60px;
+    height: 25px;
+
+    border-radius: 15px 15px 0px 0px;
+
+    background-color: #FFCC55;
+}
+
+
+.upper-drop-down{
+    width: 95%;
+    right: 0px;
+    background-color: #FFCC55;
+    overflow: hidden;
+
+}
+
+.dropdown-item:hover{
+    background-color: #fabd28;
+}
+
+
+.drop-down-btn{
+    background-color: inherit;
+    width: 100%;
+}
+
+.drop-down-btn:hover{
+    background-color: #fabd28;
+}
+
+.chat-msg{
+    border-radius: 10px 10px 10px 0;
+}
+
+.bot-cmd{
+    font-weight: 350;
+    color: #2C2C2C;
+    border-radius: 10px 10px 10px 0;
+    background-color: #9DC4FF;
+    border: none;
+}
+
+.bot-cmd:hover{
+    font-weight: 350;
+    color: white;
+    border-radius: 10px 10px 10px 0;
+    background-color: #2535BF;
+}
+
+
+
+/*.menu-cmd{*/
+/*    margin-top: 5px;*/
+/*}*/
+
+
+.centered-img{
+    margin-bottom: 3px;
+}
+
+body{
+    font-family: Roboto, sans-serif;
+}
+
+.chat-main-container{
+    font-family: Roboto, sans-serif;
+}
+
+.helper-msg{
+    margin-left: 15px;
+    margin-right: 15px;
+    color: #4d5259;
+}
+
+
+.app-container{
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+</style>
+
+
+
+
+
+
+
+
+<div class="chat-main-container">
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Snippet - BBBootstrap</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/chat2.css">
+    <link rel="stylesheet" href="css/elements.css">
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript"></script>
+</head>
+
+
+
+<div class="page-content page-container" id="page-content">
+    <div  id="v-app">
+
+
+        <div class="row container d-flex justify-content-center app-container"
+        style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
+
+
+            <div class="col-md-6"
+            style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
+
+
+                <div class="card card-bordered">
+
+                    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+                    <label class="btn-menu" for="hmt">
+                        <img src="icons/Union.svg"/>
+                        <!--
+                        <span class="first"></span>
+                        <span class="second"></span>
+                        <span class="third"></span>
+                        -->
+
+                    </label>
+
+                    <ul class="hidden-menu hidden-menu-text">
+                        <h6 class="hidden-menu-header">Выберите действие</h6>
+
+                        <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/shopping-cart%201.svg">
+                            <span class="pull-left menu-cmd">ZGC SHOP</span>
+
+                        </div>
+
+                        <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/turkmenistan%201.svg">
+                            <span class="pull-left menu-cmd">Для Туркменистана</span>
+
+                        </div>
+
+
+                        <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/key%201.svg">
+                            <span class="pull-left menu-cmd">Пробный период</span>
+
+                        </div>
+
+                        <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/customer-service%201.svg">
+                            <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+
+                        </div>
+                        <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/Vector.svg">
+                            <span class="pull-left menu-cmd">Оплата</span>
+
+                        </div>
+
+
+                        <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/info-button%201.svg">
+                            <span class="pull-left menu-cmd">Узнать больше</span>
+
+                        </div>
+
+                        <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                             class="row btn btn-lg hidden-menu-btn drop-down-btn">
+
+                            <img class="centered-img" src="icons/hand-shake%201.svg">
+                            <span class="pull-left menu-cmd">Сотрудничество</span>
+
+                        </div>
+
+
+                        <div class="hidden-menu-bottom">
+                            <hr/>
+                            <div>
+                                Поддержка в чате отвечает в будние дни с 17:00 до 22:00 по Китаю
+                            </div>
+
+                        </div>
+
+                    </ul>
+
+
+                    <div class="card-header">
+
+                        <h4 class="card-title" style="margin-left: 20px"><strong>Support</strong></h4>
+
+                        <div class="close-btn">
+                            <img src="icons/close.svg"/>
+                        </div>
+
+                    </div>
+
+
+                    <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+                         style="overflow-y: scroll !important; height:400px !important;">
+
+
+                        <div v-if="messages.length === 0" class="helper-msg">
+                            в левом верхнем углу и в правом нижнем
+                            углу(над вводом текста) есть выезжающие панели
+                            со списком команд
+                        </div>
+
+
+                        <div v-for="(message, index) in messages" :key="index">
+
+                            <div v-if="message.from==='user'" class="media media-chat media-chat-reverse">
+                                <div class="media-body">
+                                    <p>{{ message.message }}</p>
+                                </div>
+                            </div>
+
+                            <div v-if="message.from==='bot'" class="media media-chat">
+                                <div class="media-body chat-msg">
+                                    <p>
+                                        {{ message.message }}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div v-if="message.from === 'bot_link'" class="incoming_msg">
+                                <div class="incoming_msg_img"></div>
+                                <div class="received_msg">
+                                    <p class="btn btn-link">
+                                        {{ message.message }}
+                                        <br/>
+                                        <a v-bind:href="message.cmd" target="_blank">{{ message.cmd }}</a>
+
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div v-if="message.from==='bot_cmd'" class="media media-chat media-chat-btn">
+                                <div class="media-body">
+                                    <button class="btn btn-primary bot-cmd"
+                                            @click="(e)=>{ sendCmd(message.cmd); }">{{ message.message }}</button>
+                                </div>
+                            </div>
+
+
+                            <div v-if="message.from==='user_img'" class="media media-chat media-chat-reverse">
+                                <div class="media-body">
+                                    <p>
+                                        <img v-bind:src="message.url" class="chat-img"/>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <div id="bottom_msg">.</div>
+
+                        <!--
+                        <div v-if="userEmail === ''">
+                            <div>
+                                {{ startMessage }}
+                            </div>
+                            <div>
+                                <div class="email-input-group "
+                                     v-bind:style="{ backgroundColor: emailColor }">
+                                    <div class="input-group  send-email-input"
+                                         style="margin-left: 20px; margin-bottom: 1px;">
+                                        <input v-model="enteringEmail" type="text" class="email-input"
+                                               placeholder="email..."
+                                               v-bind:style="{ backgroundColor: emailColor }"
+                                        />
+                                        <div @click="clearEmail" class="input-group-append"
+                                             style="cursor: pointer; border: none;">
+                                            <span class="input-group-text"
+                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
+                                        </div>
+                                    </div>
+
+                                    <button class="email-btn" @click="sendEmail"> send</button>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                            <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                            <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
+                        </div>
+                    </div>
+
+
+                    <div class="msg-input-wrapper">
+
+                        <div v-if="userEmail === ''">
+                            <div>
+                                {{ startMessage }}
+                            </div>
+                            <div>
+                                <div class="email-input-group "
+                                     v-bind:style="{ backgroundColor: emailColor }">
+                                    <div class="input-group  send-email-input"
+                                         style="margin-left: 20px; margin-bottom: 1px;">
+                                        <input v-model="enteringEmail" type="text" class="email-input"
+                                               placeholder="email..."
+                                               v-bind:style="{ backgroundColor: emailColor }"
+                                        />
+                                        <div @click="clearEmail" class="input-group-append"
+                                             style="cursor: pointer; border: none;">
+                                            <span class="input-group-text"
+                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
+                                        </div>
+                                    </div>
+
+                                    <button class="email-btn" @click="sendEmail"> send</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div v-if="userEmail !== ''"  class="publisher bt-1 border-light">
+
+                            <input class="publisher-input" type="text"
+                                   placeholder="Введите сообщение..."
+                                   v-model="messageText"/>
+
+                            <div class="image-upload">
+                                <label for="file-input">
+                                    <img src="icons/clip.svg"/>
+                                </label>
+
+                                <input id="file-input" style="display: none;" type="file" @change="sendImg"/>
+                            </div>
+
+
+                            <button class="btn btn-secondary dropdown-toggle upper-cmds-btn" type="button"
+                                    id="dropdownMenuButton3"
+                                    data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+
+                            </button>
+                            <div class="dropdown-menu upper-drop-down"
+                                 aria-labelledby="dropdownMenuButton"
+                                 x-placement="bottom-start">
+
+
+                                <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
+                                     class="row dropdown-item  btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/shopping-cart%201.svg">
+                                    <span class="pull-left menu-cmd">ZGC SHOP</span>
+
+                                </div>
+
+                                <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/turkmenistan%201.svg">
+                                    <span class="pull-left menu-cmd">Для Туркменистана</span>
+
+                                </div>
+
+
+                                <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/key%201.svg">
+                                    <span class="pull-left menu-cmd">Пробный период</span>
+
+                                </div>
+
+                                <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/customer-service%201.svg">
+                                    <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+
+                                </div>
+                                <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/Vector.svg">
+                                    <span class="pull-left menu-cmd">Оплата</span>
+
+                                </div>
+
+
+                                <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/info-button%201.svg">
+                                    <span class="pull-left menu-cmd">Узнать больше</span>
+
+                                </div>
+
+                                <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                                     class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
+
+                                    <img class="centered-img" src="icons/hand-shake%201.svg">
+                                    <span class="pull-left menu-cmd">Сотрудничество</span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div @click="(e)=>{ sendMessage(); }" class="publisher-btn text-info" data-abc="true">
+                                <img src="icons/send%201.svg"/>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<script type="text/javascript">
+
+    let msg_container = null;
+
+
+    let bottom_msg;
+
+
+    function goToBottom() {
+        let bottom_el = document.getElementById('bottom_msg');
+        bottom_el.scrollIntoView();
+    }
+
+
+    async function postData(url = '/chat', data = {}) {
+        // Default options are marked with *
+        const response = await fetch(url, {
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            credentials: 'same-origin', // include, *same-origin, omit
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *client
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        });
+        return await response.json(); // parses JSON response into native JavaScript objects
+    }
+
+
+    function initWS() {
+
+        let socket = new WebSocket("ws://localhost:5500/");
+
+        socket.onopen = function (e) {
+            console.log("[open] Соединение установлено");
+            console.log("Отправляем данные на сервер+ email - " + this.userEmail);
+
+            let data = JSON.stringify({'email': app.userEmail, 'type': 'init'});
+
+            console.log(data + ' - init data');
+
+            socket.send(data);
+        };
+
+        socket.onmessage = function (event) {
+            console.log(`[message] Данные получены с сервера: ${event.data}`);
+
+            let data = JSON.parse(event.data);
+
+            app.messages.push(data);
+
+            console.log(data);
+        };
+
+        socket.onclose = function (event) {
+            if (event.wasClean) {
+                console.log(`[close] Соединение закрыто чисто, код=${event.code} причина=${event.reason}`);
+            } else {
+                // например, сервер убил процесс или сеть недоступна
+                // обычно в этом случае event.code 1006
+                console.log('[close] Соединение прервано');
+            }
+        };
+
+        socket.onerror = function (error) {
+            alert(`[error] ${error.message}`);
+        };
+
+        return socket;
+
+    }
+
+
+    var app = new Vue({
+        el: '#v-app',
+        data: {
+            messageText: '',
+            messages: [
+
+            ],
+
+
+            emailValid: true,
+
+            userEmail: '',
+
+            enteringEmail: '',
+
+            commands: [],
+
+            conn_to_sup_cmds: ["/market", "/Связаться с поддержкой", "/Оплата"],
+            through_msgs: ["/market"],
+
+            ws: null,
+
+            startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
+
+
+        },
+
+        created: () => {
+            msg_container = document.querySelector('#chat-content');
+
+            bottom_msg = document.getElementById('bottom_msg');
+
+            console.log(msg_container);
+            console.log('created');
+
+            const getCmds = function () {
+                fetch('/commands')
+                    .then((response) => {
+                        return response.json();
+                    })
+                    .then((data) => {
+
+                        app.commands = data['data']
+                    });
+            }
+
+            //setTimeout(getCmds, 1000);
+            //setTimeout(getCmds, 3000);
+
+        },
+
+        computed: {
+
+            emailColor() {
+                if (this.emailValid) {
+                    return '#d1d1d1';
+                } else {
+                    return '#FFBFBF';
+                }
+            }
+
+        },
+
+        methods: {
+
+            sendImg() {
+
+
+                let input = document.querySelector('#file-input');
+
+                console.log(input.files[0]);
+
+                let data = new FormData();
+                data.append('file', input.files[0]);
+                data.append('user', app.userEmail);
+
+                console.log(data);
+
+                fetch('/photo', {
+                    method: 'POST',
+                    body: data
+                }).then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        console.log('omnomnomnom');
+                        if (data.status === "ok") {
+
+                            console.log(data);
+                            app.messages.push({from: 'user_img', url: data.url});
+                        }
+                    });
+
+                setTimeout(1000, goToBottom());
+                setTimeout(3000, goToBottom());
+            },
+
+            connectToSupport() {
+                this.ws = initWS();
+            },
+
+            sendMessage() {
+
+                if (this.messageText.trim() === '') {
+                    return;
+                }
+
+                if (this.ws !== null && !this.messageText.startsWith('/')) {
+                    this.sendWsMsg(this.messageText);
+                    this.messageText = '';
+
+                    if (this.conn_to_sup_cmds.includes(this.messageText)) {
+                        this.sendCmd(this.messageText);
+                    }
+                    return;
+                }
+
+                this.sendCmd(this.messageText);
+
+            },
+
+            sendEmail() {
+                let validation = this.validateEmail(this.enteringEmail);
+
+                if (validation === true) {
+                    this.userEmail = this.enteringEmail;
+
+
+                    postData("/email", {email: this.enteringEmail})
+                        .then((data) => {
+
+                        });
+
+
+                } else {
+                    this.emailValid = false;
+                }
+            },
+
+            validateEmail(mail) {
+                if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
+                    return (true)
+                }
+                return (false)
+            },
+
+            clearEmail() {
+                console.log('clear');
+                this.enteringEmail = '';
+            },
+
+            sendCmd(msg) {
+
+                if (msg.trim() === '') {
+                    console.log('error - command is empty')
+                    return;
+                }
+
+                let userMessage = {from: 'user', message: msg}
+
+                this.messages.push(userMessage);
+
+                const processMessage = (bot_message) => {
+                    let message = {from: 'bot', 'message': bot_message.answer};
+                    let cmd_messages = bot_message.commands;
+                    this.messages.push(message);
+                    let regex = new RegExp('^http.://.');
+
+                    for (let i = 0; i < cmd_messages.length; i++) {
+                        if (cmd_messages[i][1].match(regex) != null) {
+                            this.messages.push({
+                                from: 'bot_link',
+                                message: cmd_messages[i][0],
+                                cmd: cmd_messages[i][1]
+                            });
+                        }
+
+                        let hash = cmd_messages[i][1][0];
+                        console.log(hash);
+
+                        if (hash === '/') {
+                            this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
+                        }
+                    }
+                    //console.log(this.messages);
+
+
+                    console.log(bottom_msg);
+
+                    goToBottom();
+                    setTimeout(goToBottom, 20);
+                    setTimeout(goToBottom, 200);
+                }
+
+                postData('/chat', {message: msg})
+                    .then((data) => {
+                        processMessage(data);
+                        if (this.conn_to_sup_cmds.includes(msg)) {
+
+                            let now = new Date();
+                            let utc_timestamp = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(),
+                                now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds(), now.getUTCMilliseconds());
+
+                            console.log(now);
+                            console.log(now.getUTCHours());
+                            console.log('-----------');
+
+                            // 17 < time < 22
+                            // разница меж китаем и UTC - 8 часов
+                            if ((9 < now.getUTCHours()) && (now.getUTCHours() < 14)) {
+                                let non_working = 'Мы работаем по Пекину с 17:00 до 22:00 в рабочие дни и сейчас не можем ответить на ваши вопросы. Если у вас есть срочный вопрос - нажмите кнопку Срочная связь и мы постараемся ответить как можно быстрее';
+                                app.messages.push({from: 'bot', message: non_working});
+                            }
+
+
+                            this.connectToSupport();
+                        }
+
+                        goToBottom();
+                    });
+                this.messageText = '';
+            },
+
+            sendWsMsg(msg_text) {
+                let msg = {message: msg_text, email: this.userEmail};
+                postData('/support/message', msg)
+                    .then((data) => {
+
+                    });
+                this.messages.push({from: 'user', message: this.messageText});
+            }
+
+        }
+    })
+
+
+</script>
+
+
+
+
+
+</div>
