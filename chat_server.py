@@ -42,7 +42,7 @@ def client_info_msg(col_name, value):
 
 @app.route('/')
 def hello():
-    return redirect("/static/chat_app_2/chat.html", code=302)
+    return redirect("/static/chat_app/chat.html", code=302)
 
 
 def send_img_to_tg(name, email):

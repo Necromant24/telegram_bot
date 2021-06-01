@@ -20,13 +20,15 @@
 
 
 <div class="page-content page-container" id="page-content">
-    <div class="padding" id="v-app">
+    <div  id="v-app">
 
 
-        <div class="row container d-flex justify-content-center">
+        <div class="row container d-flex justify-content-center app-container"
+        style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
-            <div class="col-md-6">
+            <div class="col-md-6"
+            style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
                 <div class="card card-bordered">
@@ -186,32 +188,7 @@
 
                         <div id="bottom_msg">.</div>
 
-                        <!--
-                        <div v-if="userEmail === ''">
-                            <div>
-                                {{ startMessage }}
-                            </div>
-                            <div>
-                                <div class="email-input-group "
-                                     v-bind:style="{ backgroundColor: emailColor }">
-                                    <div class="input-group  send-email-input"
-                                         style="margin-left: 20px; margin-bottom: 1px;">
-                                        <input v-model="enteringEmail" type="text" class="email-input"
-                                               placeholder="email..."
-                                               v-bind:style="{ backgroundColor: emailColor }"
-                                        />
-                                        <div @click="clearEmail" class="input-group-append"
-                                             style="cursor: pointer; border: none;">
-                                            <span class="input-group-text"
-                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
-                                        </div>
-                                    </div>
 
-                                    <button class="email-btn" @click="sendEmail"> send</button>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                         </div>
@@ -482,9 +459,6 @@
                         app.commands = data['data']
                     });
             }
-
-            //setTimeout(getCmds, 1000);
-            //setTimeout(getCmds, 3000);
 
         },
 

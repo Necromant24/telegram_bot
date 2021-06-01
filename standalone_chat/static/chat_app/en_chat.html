@@ -45,7 +45,7 @@
                     </label>
 
                     <ul class="hidden-menu hidden-menu-text">
-                        <h6 class="hidden-menu-header">Выберите действие</h6>
+                        <h6 class="hidden-menu-header">Choose command</h6>
 
                         <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
@@ -59,7 +59,7 @@
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/turkmenistan%201.svg">
-                            <span class="pull-left menu-cmd">Для Туркменистана</span>
+                            <span class="pull-left menu-cmd">For Turkmenistan</span>
 
                         </div>
 
@@ -68,7 +68,7 @@
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/key%201.svg">
-                            <span class="pull-left menu-cmd">Пробный период</span>
+                            <span class="pull-left menu-cmd">Trial period</span>
 
                         </div>
 
@@ -76,14 +76,14 @@
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/customer-service%201.svg">
-                            <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+                            <span class="pull-left menu-cmd">Contact support</span>
 
                         </div>
                         <div @click="(e)=>{ sendCmd('/Оплата'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/Vector.svg">
-                            <span class="pull-left menu-cmd">Оплата</span>
+                            <span class="pull-left menu-cmd">Payment</span>
 
                         </div>
 
@@ -92,7 +92,7 @@
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/info-button%201.svg">
-                            <span class="pull-left menu-cmd">Узнать больше</span>
+                            <span class="pull-left menu-cmd">Learn more</span>
 
                         </div>
 
@@ -100,7 +100,7 @@
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/hand-shake%201.svg">
-                            <span class="pull-left menu-cmd">Сотрудничество</span>
+                            <span class="pull-left menu-cmd">Partnership</span>
 
                         </div>
 
@@ -108,7 +108,7 @@
                         <div class="hidden-menu-bottom">
                             <hr/>
                             <div>
-                                Поддержка в чате отвечает в будние дни с 17:00 до 22:00 по Китаю
+                                Live chat support responds on weekdays from 17: 00 to 22: 00 in China
                             </div>
 
                         </div>
@@ -132,9 +132,8 @@
 
 
                         <div v-if="messages.length === 0" class="helper-msg">
-                            в левом верхнем углу и в правом нижнем
-                            углу(над вводом текста) есть выезжающие панели
-                            со списком команд
+                            in left top corner and right bottom corner there are
+                            pop up menus with list of commands for bot
                         </div>
 
 
@@ -188,32 +187,7 @@
 
                         <div id="bottom_msg">.</div>
 
-                        <!--
-                        <div v-if="userEmail === ''">
-                            <div>
-                                {{ startMessage }}
-                            </div>
-                            <div>
-                                <div class="email-input-group "
-                                     v-bind:style="{ backgroundColor: emailColor }">
-                                    <div class="input-group  send-email-input"
-                                         style="margin-left: 20px; margin-bottom: 1px;">
-                                        <input v-model="enteringEmail" type="text" class="email-input"
-                                               placeholder="email..."
-                                               v-bind:style="{ backgroundColor: emailColor }"
-                                        />
-                                        <div @click="clearEmail" class="input-group-append"
-                                             style="cursor: pointer; border: none;">
-                                            <span class="input-group-text"
-                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
-                                        </div>
-                                    </div>
 
-                                    <button class="email-btn" @click="sendEmail"> send</button>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                         <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
                             <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
                         </div>
@@ -255,7 +229,7 @@
                         <div v-if="userEmail !== ''"  class="publisher bt-1 border-light">
 
                             <input class="publisher-input" type="text"
-                                   placeholder="Введите сообщение..."
+                                   placeholder="Enter message..."
                                    v-model="messageText"/>
 
                             <div class="image-upload">
@@ -290,7 +264,7 @@
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/turkmenistan%201.svg">
-                                    <span class="pull-left menu-cmd">Для Туркменистана</span>
+                                    <span class="pull-left menu-cmd">For Turkmenistan</span>
 
                                 </div>
 
@@ -299,7 +273,7 @@
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/key%201.svg">
-                                    <span class="pull-left menu-cmd">Пробный период</span>
+                                    <span class="pull-left menu-cmd">Trial period</span>
 
                                 </div>
 
@@ -307,14 +281,14 @@
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/customer-service%201.svg">
-                                    <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+                                    <span class="pull-left menu-cmd">Contact support</span>
 
                                 </div>
                                 <div @click="(e)=>{ sendCmd('/Оплата'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/Vector.svg">
-                                    <span class="pull-left menu-cmd">Оплата</span>
+                                    <span class="pull-left menu-cmd">Payment</span>
 
                                 </div>
 
@@ -323,7 +297,7 @@
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/info-button%201.svg">
-                                    <span class="pull-left menu-cmd">Узнать больше</span>
+                                    <span class="pull-left menu-cmd">Learn more</span>
 
                                 </div>
 
@@ -331,7 +305,7 @@
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/hand-shake%201.svg">
-                                    <span class="pull-left menu-cmd">Сотрудничество</span>
+                                    <span class="pull-left menu-cmd">Partnership</span>
 
                                 </div>
 
@@ -444,9 +418,7 @@
         data: {
             messageText: '',
             messages: [
-
             ],
-
 
             emailValid: true,
 
@@ -461,7 +433,7 @@
 
             ws: null,
 
-            startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
+            startMessage: 'Hello. To get started with the service, please specify your email address',
 
 
         },
@@ -484,9 +456,6 @@
                         app.commands = data['data']
                     });
             }
-
-            //setTimeout(getCmds, 1000);
-            //setTimeout(getCmds, 3000);
 
         },
 
@@ -622,8 +591,6 @@
                             this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
                         }
                     }
-                    //console.log(this.messages);
-
 
                     console.log(bottom_msg);
 
@@ -673,8 +640,6 @@
         }
     })
 
-
 </script>
-
 
 </html>
