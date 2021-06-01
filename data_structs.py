@@ -32,6 +32,36 @@ command_answers = \
 
     }
 
+
+
+en_command_answers = {
+        "/Payment": { "answer": messages.en_pay_type, "commands": [("В рублях ₽ или в гривнах ₴",'/rub'), ("В юанях ¥", "/yuan"), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
+        "/Trial period": { "answer": messages.en_trial_text, "commands":[("Оплата",'/Оплата'), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
+        "/Learn more": { "answer": "Узнайте как заблокировать рекламу, какие появились сервера и многое другое", "commands": [["Blog",'https://market.zgc.su/zgcvpnblog']]},
+        "/For Turkmenistan":  { "answer": messages.turk, "commands":[("Сайт обслуживания",'https://tm.zgc.su/'), ("Как подключить?",'https://sites.google.com/view/zgcvpn/try?authuser=0')]},
+        "/Partnership": { "answer": messages.coop, "commands":[["Сделать предложение",'https://zgcvpn.ru/partnership']]},
+        "/ZGC SHOP": { "answer": messages.shop, "commands":[("ZGC SHOP",'https://market.zgc.su/'), ("Связаться с поддержкой", '/market') ]},
+        "/Contact support": { "answer": messages.coop, "commands":[("Первичная настройка", "/install"),("Другое", "/other"), ('ZGC SHOP','/market')]},
+
+
+
+        "/urgent": {"answer": messages.first_install, "commands":[]},
+        "/install": {"answer": messages.first_install, "commands":[]},
+        "/other": {"answer": messages.support, "commands":[]},
+        "/market": {"answer": 'Здравствуйте! Укажите, пожалуйста, продукт и вопросы по нему', "commands":[]},
+        "/rub": {"answer": messages.rub_text, "commands":[]},
+        "/yuan": {"answer": messages.yuan_text, "commands":[]},
+}
+
+
+
+
+
+
+
+
+
+
 # после такой команты открывается еще и диалог с тех поддержкой
 open_dialog_cmds = ["/market"]
 
