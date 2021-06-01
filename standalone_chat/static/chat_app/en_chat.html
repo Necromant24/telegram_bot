@@ -55,7 +55,7 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                        <div @click="(e)=>{ sendCmd('/For Turkmenistan'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/turkmenistan%201.svg">
@@ -64,7 +64,7 @@
                         </div>
 
 
-                        <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                        <div @click="(e)=>{ sendCmd('/Trial period'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/key%201.svg">
@@ -72,14 +72,14 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                        <div @click="(e)=>{ sendCmd('/Contact support'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/customer-service%201.svg">
                             <span class="pull-left menu-cmd">Contact support</span>
 
                         </div>
-                        <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                        <div @click="(e)=>{ sendCmd('/Payment'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/Vector.svg">
@@ -88,7 +88,7 @@
                         </div>
 
 
-                        <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                        <div @click="(e)=>{ sendCmd('/Learn more'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/info-button%201.svg">
@@ -96,7 +96,7 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                        <div @click="(e)=>{ sendCmd('/Partnership'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/hand-shake%201.svg">
@@ -260,7 +260,7 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                                <div @click="(e)=>{ sendCmd('/For Turkmenistan'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/turkmenistan%201.svg">
@@ -269,7 +269,7 @@
                                 </div>
 
 
-                                <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                                <div @click="(e)=>{ sendCmd('/Trial period'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/key%201.svg">
@@ -277,14 +277,14 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                                <div @click="(e)=>{ sendCmd('/Contact support'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/customer-service%201.svg">
                                     <span class="pull-left menu-cmd">Contact support</span>
 
                                 </div>
-                                <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                                <div @click="(e)=>{ sendCmd('/Payment'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/Vector.svg">
@@ -293,7 +293,7 @@
                                 </div>
 
 
-                                <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                                <div @click="(e)=>{ sendCmd('/Learn more'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/info-button%201.svg">
@@ -301,7 +301,7 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                                <div @click="(e)=>{ sendCmd('/Partnership'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/hand-shake%201.svg">
@@ -573,7 +573,7 @@
                 this.messages.push(userMessage);
 
                 const processMessage = (bot_message) => {
-                    let message = {from: 'bot', 'message': bot_message.answer};
+                    let message = {from: 'bot', message: bot_message.answer};
                     let cmd_messages = bot_message.commands;
                     this.messages.push(message);
                     let regex = new RegExp('^http.://.');
@@ -602,7 +602,7 @@
                     setTimeout(goToBottom, 200);
                 }
 
-                postData('/chat', {message: msg})
+                postData('/chat', {message: msg, language: site_lang})
                     .then((data) => {
                         processMessage(data);
                         if (this.conn_to_sup_cmds.includes(msg)) {

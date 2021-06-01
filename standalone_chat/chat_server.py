@@ -105,11 +105,25 @@ def chat_message():
     meth = request.method
 
     command = request.json['message']
+    lang = 'ru'
+
+    try:
+        lang = request.json['language']
+    except Exception:
+        print('not defined key - language')
 
     answer = {}
 
+    commands = []
+    if lang == 'en':
+        commands = ds.en_command_answers
+    else:
+        commands = ds.command_answers
+
+
+
     if (command in ds.all_commands):
-        answer = ds.command_answers[command]
+        answer = commands[command]
     else:
         answer = {"answer": "unknown command", "commands": []}
 
