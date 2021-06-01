@@ -44,7 +44,6 @@ en_command_answers = {
         "/Contact support": { "answer": messages.coop, "commands":[("Первичная настройка", "/install"),("Другое", "/other"), ('ZGC SHOP','/market')]},
 
 
-
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
         "/other": {"answer": messages.support, "commands":[]},

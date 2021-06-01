@@ -122,7 +122,7 @@ def chat_message():
 
 
 
-    if (command in ds.all_commands):
+    if (command in commands.keys()):
         answer = commands[command]
     else:
         answer = {"answer": "unknown command", "commands": []}
