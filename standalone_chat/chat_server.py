@@ -1,10 +1,8 @@
-import datetime
 import sqlite3 as sql
 import config
 
 from flask import Flask, request, send_from_directory, redirect
 import data_structs as ds
-import messages
 
 app = Flask(__name__)
 
