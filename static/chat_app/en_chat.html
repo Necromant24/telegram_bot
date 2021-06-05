@@ -45,7 +45,7 @@
                     </label>
 
                     <ul class="hidden-menu hidden-menu-text">
-                        <h6 class="hidden-menu-header">Выберите действие</h6>
+                        <h6 class="hidden-menu-header">Choose command</h6>
 
                         <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
@@ -55,52 +55,52 @@
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                        <div @click="(e)=>{ sendCmd('/For Turkmenistan'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/turkmenistan%201.svg">
-                            <span class="pull-left menu-cmd">Для Туркменистана</span>
+                            <span class="pull-left menu-cmd">For Turkmenistan</span>
 
                         </div>
 
 
-                        <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                        <div @click="(e)=>{ sendCmd('/Trial period'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/key%201.svg">
-                            <span class="pull-left menu-cmd">Пробный период</span>
+                            <span class="pull-left menu-cmd">Trial period</span>
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                        <div @click="(e)=>{ sendCmd('/Contact support'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/customer-service%201.svg">
-                            <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+                            <span class="pull-left menu-cmd">Contact support</span>
 
                         </div>
-                        <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                        <div @click="(e)=>{ sendCmd('/Payment'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/Vector.svg">
-                            <span class="pull-left menu-cmd">Оплата</span>
+                            <span class="pull-left menu-cmd">Payment</span>
 
                         </div>
 
 
-                        <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                        <div @click="(e)=>{ sendCmd('/Learn more'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/info-button%201.svg">
-                            <span class="pull-left menu-cmd">Узнать больше</span>
+                            <span class="pull-left menu-cmd">Learn more</span>
 
                         </div>
 
-                        <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                        <div @click="(e)=>{ sendCmd('/Partnership'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
                             <img class="centered-img" src="icons/hand-shake%201.svg">
-                            <span class="pull-left menu-cmd">Сотрудничество</span>
+                            <span class="pull-left menu-cmd">Partnership</span>
 
                         </div>
 
@@ -108,7 +108,7 @@
                         <div class="hidden-menu-bottom">
                             <hr/>
                             <div>
-                                Поддержка в чате отвечает в будние дни с 17:00 до 22:00 по Китаю
+                                Live chat support responds on weekdays from 17: 00 to 22: 00 in China
                             </div>
 
                         </div>
@@ -132,9 +132,8 @@
 
 
                         <div v-if="messages.length === 0" class="helper-msg">
-                            в левом верхнем углу и в правом нижнем
-                            углу(над вводом текста) есть выезжающие панели
-                            со списком команд
+                            in left top corner and right bottom corner there are
+                            pop up menus with list of commands for bot
                         </div>
 
 
@@ -230,7 +229,7 @@
                         <div v-if="userEmail !== ''"  class="publisher bt-1 border-light">
 
                             <input class="publisher-input" type="text"
-                                   placeholder="Введите сообщение..."
+                                   placeholder="Enter message..."
                                    v-model="messageText"/>
 
                             <div class="image-upload">
@@ -261,52 +260,52 @@
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
+                                <div @click="(e)=>{ sendCmd('/For Turkmenistan'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/turkmenistan%201.svg">
-                                    <span class="pull-left menu-cmd">Для Туркменистана</span>
+                                    <span class="pull-left menu-cmd">For Turkmenistan</span>
 
                                 </div>
 
 
-                                <div @click="(e)=>{ sendCmd('/Пробный период'); }"
+                                <div @click="(e)=>{ sendCmd('/Trial period'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/key%201.svg">
-                                    <span class="pull-left menu-cmd">Пробный период</span>
+                                    <span class="pull-left menu-cmd">Trial period</span>
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
+                                <div @click="(e)=>{ sendCmd('/Contact support'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/customer-service%201.svg">
-                                    <span class="pull-left menu-cmd">Связаться с поддержкой</span>
+                                    <span class="pull-left menu-cmd">Contact support</span>
 
                                 </div>
-                                <div @click="(e)=>{ sendCmd('/Оплата'); }"
+                                <div @click="(e)=>{ sendCmd('/Payment'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/Vector.svg">
-                                    <span class="pull-left menu-cmd">Оплата</span>
+                                    <span class="pull-left menu-cmd">Payment</span>
 
                                 </div>
 
 
-                                <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
+                                <div @click="(e)=>{ sendCmd('/Learn more'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/info-button%201.svg">
-                                    <span class="pull-left menu-cmd">Узнать больше</span>
+                                    <span class="pull-left menu-cmd">Learn more</span>
 
                                 </div>
 
-                                <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
+                                <div @click="(e)=>{ sendCmd('/Partnership'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
                                     <img class="centered-img" src="icons/hand-shake%201.svg">
-                                    <span class="pull-left menu-cmd">Сотрудничество</span>
+                                    <span class="pull-left menu-cmd">Partnership</span>
 
                                 </div>
 
@@ -344,9 +343,6 @@
 
     let bottom_msg;
 
-    let url_prefix = "/botweb";
-    let ws_prefix = "/botws";
-
 
     function goToBottom() {
         let bottom_el = document.getElementById('bottom_msg');
@@ -354,9 +350,8 @@
     }
 
 
-    async function postData(url = url_prefix + '/chat', data = {}) {
+    async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
-        url = url_prefix + url;
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -376,7 +371,7 @@
 
     function initWS() {
 
-        let socket = new WebSocket("wss://zgc.su/"+ws_prefix);
+        let socket = new WebSocket("ws://localhost:5500/");
 
         socket.onopen = function (e) {
             console.log("[open] Соединение установлено");
@@ -417,14 +412,15 @@
 
     }
 
-    let site_lang = "ru";
+
+    let site_lang = "en";
+
 
     var app = new Vue({
         el: '#v-app',
         data: {
             messageText: '',
             messages: [
-
             ],
 
             emailValid: true,
@@ -440,7 +436,7 @@
 
             ws: null,
 
-            startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
+            startMessage: 'Hello. To get started with the service, please specify your email address',
 
 
         },
@@ -454,7 +450,7 @@
             console.log('created');
 
             const getCmds = function () {
-                fetch(url_prefix + '/commands')
+                fetch('/commands')
                     .then((response) => {
                         return response.json();
                     })
@@ -493,7 +489,7 @@
 
                 console.log(data);
 
-                fetch(url_prefix+'/photo', {
+                fetch('/photo', {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())
@@ -577,7 +573,7 @@
                 this.messages.push(userMessage);
 
                 const processMessage = (bot_message) => {
-                    let message = {from: 'bot', 'message': bot_message.answer};
+                    let message = {from: 'bot', message: bot_message.answer};
                     let cmd_messages = bot_message.commands;
                     this.messages.push(message);
                     let regex = new RegExp('^http.://.');
@@ -598,8 +594,6 @@
                             this.messages.push({from: 'bot_cmd', message: cmd_messages[i][0], cmd: cmd_messages[i][1]});
                         }
                     }
-                    //console.log(this.messages);
-
 
                     console.log(bottom_msg);
 
@@ -608,7 +602,7 @@
                     setTimeout(goToBottom, 200);
                 }
 
-                postData('/chat', {message: msg})
+                postData('/chat', {message: msg, language: site_lang})
                     .then((data) => {
                         processMessage(data);
                         if (this.conn_to_sup_cmds.includes(msg)) {
@@ -649,8 +643,6 @@
         }
     })
 
-
 </script>
-
 
 </html>

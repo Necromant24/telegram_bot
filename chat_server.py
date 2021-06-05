@@ -1,10 +1,13 @@
 import sqlite3 as sql
 import config
 
-from flask import Flask, request, send_from_directory, redirect
+from flask import Flask, request, send_from_directory, redirect, Blueprint
 import data_structs as ds
 
 app = Flask(__name__)
+
+
+url_prefix = "/botweb"
 
 
 def db_find_value(col_name, value):
@@ -20,7 +23,6 @@ def db_find_value(col_name, value):
             return res[0]
 
         return 0
-
 
 # --------------------------------------------------
 def client_info_msg(col_name, value):
@@ -39,13 +41,17 @@ def client_info_msg(col_name, value):
 
 
 @app.route('/')
+def hello2():
+    return redirect(url_prefix+"/static/chat_app/chat.html", code=302)
+
+@app.route(url_prefix+'/')
 def hello():
-    return redirect("/static/chat_app/chat.html", code=302)
+    return redirect(url_prefix+"/static/chat_app/chat.html", code=302)
 
 
 def send_img_to_tg(name, email):
     import telebot
-    import config
+
 
     bot = telebot.TeleBot(config.tg_token)
 
@@ -55,7 +61,7 @@ def send_img_to_tg(name, email):
         bot.send_photo(chat_id=config.group_id, photo=f, caption=message)
 
 
-@app.route("/email", methods=['POST'])
+@app.route(url_prefix+"/email", methods=['POST'])
 def email():
     client_email = request.json['email']
 
@@ -69,7 +75,7 @@ def email():
     return {"status": "already exists"}
 
 
-@app.route('/photo', methods=['POST'])
+@app.route(url_prefix+'/photo', methods=['POST'])
 def photo():
     file = request.files['file']
     email = request.form['user']
@@ -81,10 +87,10 @@ def photo():
     return {"status": "ok", "url": "/static/web_files/" + file.filename}
 
 
-@app.route('/support/message', methods=['POST'])
+@app.route(url_prefix+'/support/message', methods=['POST'])
 def support_message():
     import telebot
-    import config
+
     email = request.json['email']
     message = request.json['message']
 
@@ -98,7 +104,7 @@ def support_message():
     return {'status': 'ok'}
 
 
-@app.route('/chat', methods=['POST', 'GET'])
+@app.route(url_prefix+'/chat', methods=['POST', 'GET'])
 def chat_message():
     meth = request.method
 
@@ -128,16 +134,19 @@ def chat_message():
     return answer
 
 
-@app.route('/static/<path:path>')
+@app.route(url_prefix+'/static/<path:path>')
 def serve_static(path):
     return send_from_directory('static', path)
 
 
-@app.route('/commands')
+@app.route(url_prefix+'/commands')
 def all_commands():
     answer = {'data': list(ds.viewed_cmds)}
     return answer
 
 
 def serve(app, host, port):
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, ssl_context='adhoc')
+
+
+app.run(port=5501)
