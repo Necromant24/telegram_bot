@@ -374,7 +374,7 @@
 
     function initWS() {
 
-        let socket = new WebSocket("wss://zgc.su/"+ws_prefix);
+        let socket = new WebSocket("wss://zgc.su/botws");
 
         socket.onopen = function (e) {
             console.log("[open] Соединение установлено");

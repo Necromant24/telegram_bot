@@ -40,12 +40,14 @@ async def initWsConn(ws, path):
 
 
 def start_ws_server():
+
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-    start_server = websockets.serve(initWsConn, "0.0.0.0", 5500)
+    start_server = websockets.serve(initWsConn, "0.0.0.0", 5500, ssl='adhoc')
 
     asyncio.get_event_loop().run_until_complete(start_server)
+    print('ws server started')
     asyncio.get_event_loop().run_forever()
 
     print('ws server stopped')
