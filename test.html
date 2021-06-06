@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+<div>
+    <iframe src="https://zgcs.su/botweb/static/chat_app/chat.html" />
+</div>
+-->
+<button onclick="connToWS();">conn</button>
+<div>skjfnskjfnkjsdnfkjn</div>
+<div>skjfnskjfnkjsdnfkjn</div>
+
+
+</body>
+<script>
+
+    function connToWS(){
+
+        let site_url2 = 'ws://3.114.209.229:5500';
+        let site_url = 'ws://zgc.su:5501/botws';
+        let test_url = 'ws://127.0.0.1:5500';
+
+        let ws = new WebSocket(site_url);
+
+        ws.onopen = function (e){
+            console.log('open');
+            console.log(e);
+
+            ws.send('{ "email": "some_mail" }');
+        }
+
+        ws.onerror = function (e){
+            console.log('err');
+            console.log(e);
+        }
+
+        ws.onclose = function (e){
+            console.log('close');
+            console.log(e);
+        }
+
+        ws.onmessage  = function (e){
+            console.log('msg');
+            console.log(e);
+        }
+
+    }
+
+</script>
+</html>

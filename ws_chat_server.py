@@ -3,16 +3,8 @@ import json
 
 import websockets
 
-import bot
 import data_structs as ds
 
-
-unauthed_sockets = set()
-
-# support - support client
-support = set()
-
-support_client_dict = {}
 
 async def hello(websocket, path):
     print(path)
@@ -25,31 +17,14 @@ async def hello(websocket, path):
     print(f"> {greeting}")
 
 
-
-#unused
-async def accept(websocket, path):
-    print("ok"+path)
-    async for message in websocket:
-
-        msg = json.loads(message)
-
-
-
-
-        await websocket.send(message)
-
-
-    await websocket.send("connected")
-
-
-
-
-
 async def initWsConn(ws, path):
+    print('new ws conn')
     ws_msg = await ws.recv()
     msg = json.loads(ws_msg)
     email = msg['email']
+
     ds.add_ws_conn(email, ws)
+    print('added ws conn')
 
     message = json.dumps({'type': 'cmd', 'message': 'connected succsessfully'})
     await ds.send_ws_msg(email, message)
@@ -68,18 +43,10 @@ def start_ws_server():
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
-
-    start_server = websockets.serve(initWsConn, "localhost", 5500)
+    start_server = websockets.serve(initWsConn, "0.0.0.0", 5500)
 
     asyncio.get_event_loop().run_until_complete(start_server)
     asyncio.get_event_loop().run_forever()
 
+    print('ws server stopped')
 
-# import threading
-# t1 = threading.Thread(target=bot.start_bot)
-#
-# t1.start()
-#
-# start_ws_server()
-#
-# inp = input("enter any key to close: ")

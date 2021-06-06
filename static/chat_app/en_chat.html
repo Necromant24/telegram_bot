@@ -120,9 +120,7 @@
 
                         <h4 class="card-title" style="margin-left: 20px"><strong>Support</strong></h4>
 
-                        <div class="close-btn">
-                            <img src="icons/close.svg"/>
-                        </div>
+
 
                     </div>
 
@@ -352,6 +350,7 @@
 
     async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
+        url = url_prefix+url;
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -368,10 +367,12 @@
         return await response.json(); // parses JSON response into native JavaScript objects
     }
 
+    let ws_prefix = "botws/";
+    let url_prefix = "/botweb";
 
     function initWS() {
 
-        let socket = new WebSocket("ws://localhost:5500/");
+        let socket = new WebSocket("ws://localhost:5500/"+ws_prefix);
 
         socket.onopen = function (e) {
             console.log("[open] Соединение установлено");
@@ -489,7 +490,7 @@
 
                 console.log(data);
 
-                fetch('/photo', {
+                fetch(url_prefix+'/photo', {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())

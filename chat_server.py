@@ -7,7 +7,7 @@ import data_structs as ds
 app = Flask(__name__)
 
 
-url_prefix = "/botweb"
+url_prefix = ""
 
 
 def db_find_value(col_name, value):
@@ -16,7 +16,7 @@ def db_find_value(col_name, value):
 
     with sql.connect(config.db_file) as con:
         cur = con.cursor()
-        cur.execute(f"SELECT * FROM clients WHERE {col_name} = ?", (str(value).lower(),))
+        cur.execute("SELECT * FROM clients WHERE "+col_name+" = ?", (str(value).lower(),))
         res = cur.fetchall()
 
         if res:
@@ -32,10 +32,10 @@ def client_info_msg(col_name, value):
     if not info:
         return "No info about client"
 
-    message = f"\U00002139\nemail: {info[0]}\n" \
-              f"date: {info[1]}\n" \
-              f"tariff: {info[2]}\n" \
-              f"sub: {info[3]}\n"
+    message = "\U00002139\nemail: "+info[0]+"\n" \
+              "date: "+info[1]+"\n" \
+              "tariff: "+info[2]+"\n" \
+              "sub: "+info[3]+"\n"
 
     return message
 
@@ -51,10 +51,7 @@ def hello():
 
 def send_img_to_tg(name, email):
     import telebot
-
-
     bot = telebot.TeleBot(config.tg_token)
-
     message = client_info_msg("email", email) + "\nWeb_client"
 
     with open("static/web_files/" + name, 'rb') as f:
@@ -68,7 +65,7 @@ def email():
     if client_info_msg('email', client_email) == 'No info about client':
         with sql.connect(config.db_file) as con:
             cur = con.cursor()
-            cur.execute(f"INSERT INTO clients (email) VALUES (?)", (client_email,))
+            cur.execute("INSERT INTO clients (email) VALUES (?)", (client_email,))
 
             return {"status": "created new row"}
 
@@ -84,7 +81,7 @@ def photo():
 
     send_img_to_tg(file.filename, email)
 
-    return {"status": "ok", "url": "/static/web_files/" + file.filename}
+    return {"status": "ok", "url": url_prefix+"/static/web_files/" + file.filename}
 
 
 @app.route(url_prefix+'/support/message', methods=['POST'])
@@ -144,9 +141,7 @@ def all_commands():
     answer = {'data': list(ds.viewed_cmds)}
     return answer
 
-
 def serve(app, host, port):
     app.run(host=host, port=port, ssl_context='adhoc')
 
-
-app.run(port=5501)
+serve(app, '127.0.0.1', 5501)
