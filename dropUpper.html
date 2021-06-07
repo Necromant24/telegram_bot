@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #FFCC00;
+  color: #4d5259;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropup {
+  position: relative;
+  display: inline-block;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content div:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
+}
+
+.drop-item{
+    cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<div class="dropup">
+  <button id="lang-node" class="dropbtn">select lang</button>
+
+  <div class="dropup-content">
+    <div class="drop-item" onclick="selectLang('ru')" >Russian</div>
+    <div class="drop-item" onclick="selectLang('en')" >English</div>
+  </div>
+</div>
+
+<script>
+    let lang_src = {
+        ru: "https://zgc.su/botweb/static/chat_app/chat.html",
+        en: "https://zgc.su/botweb/static/chat_app/en_chat.html"
+    }
+
+    function selectLang(lang){
+        let preLangText = "lang: ";
+        let langNode = document.getElementById('lang-node');
+        let frameNode = document.getElementById('chat-frame');
+
+        langNode.innerText = preLangText + lang;
+        frameNode.src = lang_src[lang];
+    }
+</script>
+
+</body>
+</html>

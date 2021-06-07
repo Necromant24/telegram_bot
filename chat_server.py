@@ -7,7 +7,7 @@ import data_structs as ds
 app = Flask(__name__)
 
 
-url_prefix = ""
+url_prefix = "/botweb"
 
 
 def db_find_value(col_name, value):
@@ -144,4 +144,7 @@ def all_commands():
 def serve(app, host, port):
     app.run(host=host, port=port, ssl_context='adhoc')
 
-serve(app, '127.0.0.1', 5501)
+
+if __name__ == "__main__":
+
+    serve(app, '127.0.0.1', 5501)

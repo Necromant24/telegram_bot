@@ -35,21 +35,21 @@ command_answers = \
 
 
 en_command_answers = {
-        "/Payment": { "answer": messages.en_pay_type, "commands": [("В рублях ₽ или в гривнах ₴",'/rub'), ("В юанях ¥", "/yuan"), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
-        "/Trial period": { "answer": messages.en_trial_text, "commands":[("Оплата",'/Оплата'), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
-        "/Learn more": { "answer": "Узнайте как заблокировать рекламу, какие появились сервера и многое другое", "commands": [["Blog",'https://market.zgc.su/zgcvpnblog']]},
-        "/For Turkmenistan":  { "answer": messages.turk, "commands":[("Сайт обслуживания",'https://tm.zgc.su/'), ("Как подключить?",'https://sites.google.com/view/zgcvpn/try?authuser=0')]},
-        "/Partnership": { "answer": messages.coop, "commands":[["Сделать предложение",'https://zgcvpn.ru/partnership']]},
-        "/ZGC SHOP": { "answer": messages.shop, "commands":[("ZGC SHOP",'https://market.zgc.su/'), ("Связаться с поддержкой", '/market') ]},
-        "/Contact support": { "answer": messages.coop, "commands":[("Первичная настройка", "/install"),("Другое", "/other"), ('ZGC SHOP','/market')]},
+        "/Payment": { "answer": messages.en_pay_type, "commands": [("In roubles ₽ or in hryvnia ₴",'/rub'), ("In yuan ¥", "/yuan"), ("Connect to support",'/Contact support')]},
+        "/Trial period": { "answer": messages.en_trial_text, "commands":[("Payment",'/Payment'), ("Contact support",'/Contact support')]},
+        "/Learn more": { "answer": "Learn how to block ads, which servers have appeared, and much more", "commands": [["Blog",'https://market.zgc.su/zgcvpnblog']]},
+        "/For Turkmenistan":  { "answer": messages.en_turk, "commands":[("Service site",'https://tm.zgc.su/'), ("How to connect?",'https://sites.google.com/view/zgcvpn/try?authuser=0')]},
+        "/Partnership": { "answer": messages.en_coop, "commands":[["Make an offer",'https://zgcvpn.ru/partnership']]},
+        "/ZGC SHOP": { "answer": messages.en_shop, "commands":[("ZGC SHOP",'https://market.zgc.su/'), ("Contact support", '/market') ]},
+        "/Contact support": { "answer": messages.en_coop, "commands":[("Initial setup", "/install"),("Other", "/other"), ('ZGC SHOP','/market')]},
 
 
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
-        "/other": {"answer": messages.support, "commands":[]},
-        "/market": {"answer": 'Здравствуйте! Укажите, пожалуйста, продукт и вопросы по нему', "commands":[]},
-        "/rub": {"answer": messages.rub_text, "commands":[]},
-        "/yuan": {"answer": messages.yuan_text, "commands":[]},
+        "/other": {"answer": messages.en_support, "commands":[]},
+        "/market": {"answer": 'Hello! Please specify the product and questions about it', "commands":[]},
+        "/rub": {"answer": messages.en_rub_text, "commands":[]},
+        "/yuan": {"answer": messages.en_yuan_text, "commands":[]},
 }
 
 

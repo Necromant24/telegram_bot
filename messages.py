@@ -8,6 +8,17 @@ yuan_text = "[Тарифы](https://zgcvpn.ru/#tariffs)\n\n" \
             "https://zgc.su/pay/wechat.png\n\n" \
             "*Пришлите пожалуйста скриншот оплаты*."
 
+
+en_yuan_text = "[Rates](https://zgcvpn.ru/#tariffs)\n\n " \
+            " Payment details:\n\n" \
+            "Alipay:\n" \
+            "https://zgc.su/pay/alipay.jpeg\n\n" \
+            "WeChat pay:\n" \
+            "https://zgc.su/pay/wechat.png\n\n" \
+            "*Please send a screenshot of the payment*."
+
+
+
 yuan_text_vk = "Тарифы: https://zgcvpn.ru/#tariffs\n\n" \
             "Реквизиты для оплаты:\n\n" \
             "Alipay:\n" \
@@ -35,6 +46,26 @@ rub_text = """Тарифы можно посмотреть тут https://zgcvpn
 
 Яндекс деньги:
 410013783404504"""
+
+
+en_rub_text = """Rates can be viewed here https://zgcvpn.ru/#tariffs
+
+❗ ️ Please DO NOT SPECIFY ANYTHING IN THE COMMENTS to the translation.
+Send a screenshot of the payment or pay on the website zgcvpn.ru/#tarrifs.
+
+SBERBANK: 5336690304854526
+
+
+Tinkoff: 5536913845542568
+
+
+Private (hryvnia):
+4731185619221168
+
+Kiwi:
++79258852363
+
+Yandex Money: 410013783404504"""
 
 rub_text_vk = """Тарифы можно посмотреть тут https://zgcvpn.ru/#tariffs
 
@@ -122,12 +153,19 @@ turk = "Для перехода на сайт для жителей Туркме
        "В случае возникновения срочного вопроса пишите на почту с темой письма «ТМ» vpn@zgc.su"
 
 
+en_turk = "To go to the website for residents of Turkmenistan, click on 'Service site' \n\n" \
+        "To get information on connection, click on 'How to connect?'\n\n" \
+        "In case of an urgent question, write to the email with the subject line \"TM\" vpn@zgc.su"
+
+
 
 
 
 coop = "Вы можете описать свое предложение, перейдя по ссылке ниже"
+en_coop = "You can describe your offer by clicking on the link below"
 
 shop = "Узнайте все о наших продуктах"
+en_shop = "Learn all about our products"
 
 support = "Для решения проблемы укажите:\n" \
           "1) Устройство\n" \
@@ -136,6 +174,17 @@ support = "Для решения проблемы укажите:\n" \
           "4) На каких сайтах или ресурсах\n" \
           "5) Пришлите скриншот (снимок экрана, на котором видно проблему)\n\n" \
           "Вы также можете попробовать найти решение проблемы в нашем [FAQ](market.zgc.su/vpnfaq)"
+
+en_support = "To solve the problem, specify:\n" \
+        "1) Device\n" \
+        "2) Selected server\n" \
+        "3) After which the problem occurred\n" \
+        "4) On which sites or resources\n" \
+        "5) Send a screenshot (a screenshot showing the problem)\n" \
+        "You can also try to find a solution to the problem in our [FAQ] (market.zgc.su/vpnfaq)"
+
+
+
 
 support_vk = "Для решения проблемы укажите:\n" \
           "1) Устройство\n" \
@@ -148,6 +197,13 @@ support_vk = "Для решения проблемы укажите:\n" \
 type_support = "Чат с поддержкой открыт\n\n" \
                "Какая проблема требует помощи? Первичная настройка (для недавно подключившихся клиентов) " \
                "или что-то другое?\n\n"
+
+en_type_support = "Support chat is open\n\n" \
+                "What problem needs help? Primary setup (for recently connected clients) " \
+                "or something else?\n\n"
+
+
+
 
 get_better = "Пожалуйста, опишите одним сообщением, что нам стоит улучшить в работе сервиса?"
 

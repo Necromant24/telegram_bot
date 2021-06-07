@@ -18,3 +18,7 @@ def get_email_from_message(message):
             break
 
     return email
+
+
+def replace_endl(text):
+    return text.replace('\n', "")

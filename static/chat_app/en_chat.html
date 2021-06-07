@@ -372,7 +372,7 @@
 
     function initWS() {
 
-        let socket = new WebSocket("ws://localhost:5500/"+ws_prefix);
+        let socket = new WebSocket("wss://zgc.su/botws");
 
         socket.onopen = function (e) {
             console.log("[open] Соединение установлено");
