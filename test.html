@@ -20,55 +20,13 @@
 
 </head>
 <body>
-<!--
-<div>
-    <iframe src="https://zgcs.su/botweb/static/chat_app/chat.html" />
-</div>
 
-<button onclick="connToWS();">conn</button>
-<div>skjfnskjfnkjsdnfkjn</div>
-<div>skjfnskjfnkjsdnfkjn</div>
--->
 
-<div class="png-test">
-    <img class="icon" src="chat-icon.png" />
 
-</div>
 
 </body>
 <script>
 
-    function connToWS(){
-
-        let site_url2 = 'ws://3.114.209.229:5500';
-        let site_url = 'wss://zgc.su/botws';
-        let test_url = 'ws://127.0.0.1:5500';
-
-        let ws = new WebSocket(site_url);
-
-        ws.onopen = function (e){
-            console.log('open');
-            console.log(e);
-
-            ws.send('{ "email": "some_mail" }');
-        }
-
-        ws.onerror = function (e){
-            console.log('err');
-            console.log(e);
-        }
-
-        ws.onclose = function (e){
-            console.log('close');
-            console.log(e);
-        }
-
-        ws.onmessage  = function (e){
-            console.log('msg');
-            console.log(e);
-        }
-
-    }
 
 </script>
 </html>

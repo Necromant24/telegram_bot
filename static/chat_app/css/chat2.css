@@ -1,6 +1,7 @@
 
 .card-bordered {
-    border: 1px solid #ebebeb
+    border: 1px solid #ebebeb;
+    margin-bottom: 0 !important;
 }
 
 .card {
@@ -343,7 +344,7 @@ textarea {
 .email-input {
     background-color: #d1d1d1;
     border: none;
-    width: 84%;
+    width: 80%;
 }
 
 .clickable:hover {

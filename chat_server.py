@@ -1,14 +1,10 @@
 import sqlite3 as sql
 import config
-
-from flask import Flask, request, send_from_directory, redirect, Blueprint
+from flask import Flask, request, send_from_directory, redirect
 import data_structs as ds
 
 app = Flask(__name__)
-
-
-url_prefix = "/botweb"
-
+url_prefix = ""
 
 def db_find_value(col_name, value):
     """ Check if value exists in database and return corresponding row, 'col_name' must be name of DB column
@@ -145,6 +141,6 @@ def serve(app, host, port):
     app.run(host=host, port=port, ssl_context='adhoc')
 
 
-if __name__ == "__main__":
 
-    serve(app, '127.0.0.1', 5501)
+print('starting server')
+serve(app, '127.0.0.1', 5443)

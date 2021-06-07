@@ -16,7 +16,7 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript"></script>
 </head>
-<body oncontextmenu="return false" class="snippet-body">
+<body oncontextmenu="return false" class="snippet-body" style="overflow: hidden;">
 
 
 <div class="page-content page-container" id="page-content">
@@ -31,7 +31,7 @@
             style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
-                <div class="card card-bordered">
+                <div class="card card-bordered" v-bind:style="styleObject">
 
                     <input type="checkbox" id="hmt" class="hidden-menu-ticker">
                     <label class="btn-menu" for="hmt">
@@ -184,6 +184,7 @@
                         </div>
 
 
+
                         <div id="bottom_msg">.</div>
 
 
@@ -193,12 +194,7 @@
                         <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
-                    </div>
-
-
-                    <div class="msg-input-wrapper">
-
-                        <div v-if="userEmail === ''">
+                        <div v-if="userEmail === ''" class="start-block">
                             <div>
                                 {{ startMessage }}
                             </div>
@@ -222,6 +218,11 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+
+                    <div class="msg-input-wrapper">
+
 
 
 
@@ -317,6 +318,7 @@
 
 
                         </div>
+
                     </div>
 
 
@@ -426,6 +428,10 @@
             messages: [
 
             ],
+
+            styleObject: {
+              overflow: 'hidden'
+            },
 
             emailValid: true,
 
@@ -540,7 +546,7 @@
 
                 if (validation === true) {
                     this.userEmail = this.enteringEmail;
-
+                    this.styleObject = null;
 
                     postData("/email", {email: this.enteringEmail})
                         .then((data) => {
