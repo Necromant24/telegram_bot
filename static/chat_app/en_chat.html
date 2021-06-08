@@ -20,27 +20,26 @@
 
 
 <div class="page-content page-container" id="page-content">
-    <div  id="v-app">
+    <div id="v-app">
 
 
         <div class="row container d-flex justify-content-center app-container"
-        style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
+             style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
             <div class="col-md-6"
-            style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
+                 style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
-                <div class="card card-bordered" v-bind:style="styleObject">
+                <div class="card card-bordered" v-bind:style="styleObject" id="cb_el">
 
-                    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-                    <label class="btn-menu" for="hmt">
+
+                    <input v-if="userEmail !== ''" type="checkbox" id="hmt" v-model="burger_check" class="hidden-menu-ticker">
+
+
+                    <label class="btn-menu" for="hmt" @click="checkEmailSet">
                         <img src="icons/Union.svg"/>
-                        <!--
-                        <span class="first"></span>
-                        <span class="second"></span>
-                        <span class="third"></span>
-                        -->
+
 
                     </label>
 
@@ -108,7 +107,7 @@
                         <div class="hidden-menu-bottom">
                             <hr/>
                             <div>
-                                Live chat support responds on weekdays from 17: 00 to 22: 00 in China
+                                Live chat support responds on weekdays from 17: 00 to 22: 00 in Beijing time
                             </div>
 
                         </div>
@@ -119,7 +118,6 @@
                     <div class="card-header">
 
                         <h4 class="card-title" style="margin-left: 20px"><strong>Support</strong></h4>
-
 
 
                     </div>
@@ -192,8 +190,8 @@
                         <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
-                        <div v-if="userEmail === ''"  class="start-block" >
-                            <div>
+                        <div v-if="userEmail === ''" class="start-block">
+                            <div style="margin-left: 5px;">
                                 {{ startMessage }}
                             </div>
                             <div>
@@ -203,6 +201,7 @@
                                          style="margin-left: 20px; margin-bottom: 1px;">
                                         <input v-model="enteringEmail" type="text" class="email-input"
                                                placeholder="email..."
+                                               onkeypress="return emailEnter(event);"
                                                v-bind:style="{ backgroundColor: emailColor }"
                                         />
                                         <div @click="clearEmail" class="input-group-append"
@@ -221,10 +220,11 @@
 
                     <div class="msg-input-wrapper">
 
-                        <div v-if="userEmail !== ''"  class="publisher bt-1 border-light">
+                        <div v-if="userEmail !== ''" class="publisher bt-1 border-light">
 
                             <input class="publisher-input" type="text"
                                    placeholder="Enter message..."
+                                   onkeypress="return msgEnter(event);"
                                    v-model="messageText"/>
 
                             <div class="image-upload">
@@ -339,6 +339,26 @@
     let bottom_msg;
 
 
+    function emailEnter(e){
+        if (e.which == 13 || e.keyCode == 13) {
+            //code to execute here
+            console.log('enter pressed');
+            app.sendEmail();
+            return false;
+        }
+    }
+
+    function msgEnter(e) {
+
+        if (e.which == 13 || e.keyCode == 13) {
+            //code to execute here
+            console.log('enter pressed');
+            app.sendMessage();
+            return false;
+        }
+    }
+
+
     function goToBottom() {
         let bottom_el = document.getElementById('bottom_msg');
         bottom_el.scrollIntoView();
@@ -347,7 +367,7 @@
 
     async function postData(url = '/chat', data = {}) {
         // Default options are marked with *
-        url = url_prefix+url;
+        url = url_prefix + url;
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -390,6 +410,7 @@
             app.messages.push(data);
 
             console.log(data);
+            setTimeout(goToBottom, 500);
         };
 
         socket.onclose = function (event) {
@@ -418,9 +439,7 @@
         el: '#v-app',
         data: {
             messageText: '',
-            messages: [
-
-            ],
+            messages: [],
 
 
             initialMessages: [
@@ -436,15 +455,21 @@
 
             emailValid: true,
 
+            burger_check: false,
+
+            // card card-bordered styles - chat container
             styleObject: {
-              overflow: 'hidden'
+                overflow: 'hidden'
             },
+
 
             userEmail: '',
 
             enteringEmail: '',
 
             commands: [],
+
+            first_msg_was: false,
 
             conn_to_sup_cmds: ["/market", "/Связаться с поддержкой", "/Оплата"],
             through_msgs: ["/market"],
@@ -491,6 +516,35 @@
 
         methods: {
 
+            /*
+            topper(){
+                let cb_el = document.getElementById('cb_el');
+                cb_el.style.top = '10px';
+            },
+
+            firstMsgAction(){
+                if(!this.first_msg_was){
+                    // card card-bordered
+
+                    setTimeout(this.topper, 500);
+                    setTimeout(this.topper, 700);
+                    setTimeout(this.topper, 1000);
+                    setTimeout(this.topper, 1500);
+                    setTimeout(this.topper, 2000);
+                    this.first_msg_was = true;
+                    console.log('first msg action');
+                }
+            },
+
+             */
+
+            checkEmailSet() {
+                if (this.userEmail === '') {
+                    alert(this.startMessage);
+                }
+            },
+
+
             sendImg() {
 
 
@@ -504,7 +558,7 @@
 
                 console.log(data);
 
-                fetch(url_prefix+'/photo', {
+                fetch(url_prefix + '/photo', {
                     method: 'POST',
                     body: data
                 }).then(response => response.json())
@@ -544,6 +598,8 @@
 
                 this.sendCmd(this.messageText);
 
+                setTimeout(400, goToBottom());
+                setTimeout(800, goToBottom());
             },
 
             sendEmail() {
@@ -645,6 +701,8 @@
                         goToBottom();
                     });
                 this.messageText = '';
+                this.burger_check = false;
+
             },
 
             sendWsMsg(msg_text) {
@@ -654,6 +712,7 @@
 
                     });
                 this.messages.push({from: 'user', message: this.messageText});
+                setTimeout(goToBottom, 500);
             }
 
         }

@@ -8,6 +8,8 @@ yuan_text = "[Тарифы](https://zgcvpn.ru/#tariffs)\n\n" \
             "https://zgc.su/pay/wechat.png\n\n" \
             "*Пришлите пожалуйста скриншот оплаты*."
 
+ru_site_yuan_text = """После оплаты пришлите скриншот."""
+
 
 en_yuan_text = "[Rates](https://zgcvpn.ru/#tariffs)\n\n " \
             " Payment details:\n\n" \
@@ -17,6 +19,8 @@ en_yuan_text = "[Rates](https://zgcvpn.ru/#tariffs)\n\n " \
             "https://zgc.su/pay/wechat.png\n\n" \
             "*Please send a screenshot of the payment*."
 
+
+en_site_yuan_text = "After payment, please send a screenshot."
 
 
 yuan_text_vk = "Тарифы: https://zgcvpn.ru/#tariffs\n\n" \
@@ -48,6 +52,16 @@ rub_text = """Тарифы можно посмотреть тут https://zgcvpn
 410013783404504"""
 
 
+ru_site_rub_text = """
+
+Пожалуйста, НИЧЕГО НЕ УКАЗЫВАЙТЕ В КОММЕНТАРИЯХ к переводу. 
+Пришлите скриншот оплаты. СБЕРБАНК: 5336690304854526 
+Тинькофф: 5536913845542568 Приват (гривны): 4731185619221168 
+Киви: +79258852363 Яндекс деньги: 410013783404504
+
+"""
+
+
 en_rub_text = """Rates can be viewed here https://zgcvpn.ru/#tariffs
 
 ❗ ️ Please DO NOT SPECIFY ANYTHING IN THE COMMENTS to the translation.
@@ -66,6 +80,19 @@ Kiwi:
 +79258852363
 
 Yandex Money: 410013783404504"""
+
+
+en_site_rub_text = """
+Please DO NOT SPECIFY ANYTHING IN THE COMMENTS to the translation.
+Send a screenshot of the payment. SBERBANK: 5336690304854526
+Tinkoff: 5536913845542568 Private (hryvnia): 4731185619221168
+Kiwi: +79258852363 Yandex Money: 410013783404504
+"""
+
+
+
+
+
 
 rub_text_vk = """Тарифы можно посмотреть тут https://zgcvpn.ru/#tariffs
 
@@ -92,6 +119,14 @@ trial_text = "Чтобы получить пробный период перей
 
 en_trial_text = "To get a trial period, go to (http://zgcvpn.ru) and send us your  e-mail. \n \n"\
               "If you have any problems during setup, please contact us!"
+
+
+ru_site_trial_text = "Чтобы получить пробный период укажите вашу почту на сайте. Сделать это можно только один раз."
+
+en_site_trial_text = "To get a free trial period, enter your email address on the site. This can only be done once."
+
+
+
 
 
 trial_text_vk = "Чтобы получить пробный период перейдите на сайт http://zgcvpn.ru и укажите вашу почту.\n\n" \
@@ -182,6 +217,23 @@ en_support = "To solve the problem, specify:\n" \
         "4) On which sites or resources\n" \
         "5) Send a screenshot (a screenshot showing the problem)\n" \
         "You can also try to find a solution to the problem in our [FAQ] (market.zgc.su/vpnfaq)"
+
+
+ru_site_support = """
+Для решения проблемы укажите: 
+1) Устройство 2) Выбранный сервер 
+3) После чего возникла проблема 4) На каких сайтах или ресурсах 
+5) Пришлите скриншот (снимок экрана, на котором видно проблему) 
+Вы также можете попробовать найти решение проблемы в нашем FAQ –
+"""
+
+en_site_support = """
+To solve the problem, specify:
+1) Device 2) Selected Server
+3) After which the problem occurred 4) On which sites or resources
+5) Send a screenshot (a screenshot showing the problem).)
+You can also try to find a solution to the problem in our FAQ –
+"""
 
 
 

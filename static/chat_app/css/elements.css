@@ -180,6 +180,19 @@ body{
 }
 
 .show .upper-cmds-btn{
-    border-radius: 0 0 0 10px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: none;
 }
 
+.upper-cmds-btn{
+    box-shadow: none;
+}
+
+.upper-cmds-btn:focus{
+    box-shadow: none;
+}
+
+.email-delete{
+    width: 8px;
+    height: 8px;
+}

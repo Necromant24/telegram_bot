@@ -247,6 +247,18 @@ h4.card-title {
     font-family: Roboto, sans-serif;
 }
 
+.media-chat .media-body p::after{
+    content: "";
+    position: absolute;
+    right: -5px;
+    bottom: 0;
+
+    border-bottom: 8px solid #FF7C74;
+    border-left: 8px solid transparent;
+    margin-left: 0;
+    right: 100%;
+}
+
 .border-light {
     border-color: #f1f2f3 !important
 }
@@ -343,13 +355,14 @@ textarea {
 .send-email-input {
     margin-top: 0px;
     display: flex;
+    height: 36px;
 }
 
 .email-input-group {
     background-color: #d1d1d1;
     display: block;
     width: 95%;
-    border-radius: 10px;
+    border-radius: 15px;
     margin: 5px;
 }
 
@@ -357,6 +370,7 @@ textarea {
     background-color: #d1d1d1;
     border: none;
     width: 80%;
+    outline: none;
 }
 
 .clickable:hover {

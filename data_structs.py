@@ -14,7 +14,7 @@ ZGC SHOP,
 command_answers = \
     {
         "/Оплата": { "answer": messages.pay_type, "commands": [("В рублях ₽ или в гривнах ₴",'/rub'), ("В юанях ¥", "/yuan"), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
-        "/Пробный период": { "answer": messages.trial_text, "commands":[("Оплата",'/Оплата'), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
+        "/Пробный период": { "answer": messages.ru_site_trial_text, "commands":[('http://zgcvpn.ru','http://zgcvpn.ru'),("Оплата",'/Оплата'), ("Связаться с поддержкой",'/Связаться с поддержкой')]},
         "/Узнать больше": { "answer": "Узнайте как заблокировать рекламу, какие появились сервера и многое другое", "commands": [["Блог",'https://market.zgc.su/zgcvpnblog']]},
         "/Для Туркменистана":  { "answer": messages.turk, "commands":[("Сайт обслуживания",'https://tm.zgc.su/'), ("Как подключить?",'https://sites.google.com/view/zgcvpn/try?authuser=0')]},
         "/Сотрудничество": { "answer": messages.coop, "commands":[["Сделать предложение",'https://zgcvpn.ru/partnership']]},
@@ -25,10 +25,10 @@ command_answers = \
 
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
-        "/other": {"answer": messages.support, "commands":[]},
+        "/other": {"answer": messages.ru_site_support, "commands":[('https://market.zgc.su/vpnfaq', 'https://market.zgc.su/vpnfaq')]},
         "/market": {"answer": 'Здравствуйте! Укажите, пожалуйста, продукт и вопросы по нему', "commands":[]},
-        "/rub": {"answer": messages.rub_text, "commands":[]},
-        "/yuan": {"answer": messages.yuan_text, "commands":[]},
+        "/rub": {"answer": messages.ru_site_rub_text, "commands":[('Тарифы можно посмотреть тут','https://zgcvpn.ru/#tariffs')]},
+        "/yuan": {"answer": messages.ru_site_yuan_text, "commands":[('Реквизиты для оплаты: Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:', 'https://zgc.su/pay/wechat.png')]},
 
     }
 
@@ -36,7 +36,7 @@ command_answers = \
 
 en_command_answers = {
         "/Payment": { "answer": messages.en_pay_type, "commands": [("In roubles ₽ or in hryvnia ₴",'/rub'), ("In yuan ¥", "/yuan"), ("Connect to support",'/Contact support')]},
-        "/Trial period": { "answer": messages.en_trial_text, "commands":[("Payment",'/Payment'), ("Contact support",'/Contact support')]},
+        "/Trial period": { "answer": messages.en_site_trial_text, "commands":[('http://zgcvpn.ru', 'http://zgcvpn.ru'),("Payment",'/Payment'), ("Contact support",'/Contact support')]},
         "/Learn more": { "answer": "Learn how to block ads, which servers have appeared, and much more", "commands": [["Blog",'https://market.zgc.su/zgcvpnblog']]},
         "/For Turkmenistan":  { "answer": messages.en_turk, "commands":[("Service site",'https://tm.zgc.su/'), ("How to connect?",'https://sites.google.com/view/zgcvpn/try?authuser=0')]},
         "/Partnership": { "answer": messages.en_coop, "commands":[["Make an offer",'https://zgcvpn.ru/partnership']]},
@@ -46,10 +46,10 @@ en_command_answers = {
 
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
-        "/other": {"answer": messages.en_support, "commands":[]},
+        "/other": {"answer": messages.en_site_support, "commands":[('https://market.zgc.su/vpnfaq', 'https://market.zgc.su/vpnfaq')]},
         "/market": {"answer": 'Hello! Please specify the product and questions about it', "commands":[]},
-        "/rub": {"answer": messages.en_rub_text, "commands":[]},
-        "/yuan": {"answer": messages.en_yuan_text, "commands":[]},
+        "/rub": {"answer": messages.en_site_rub_text, "commands":[('Rates can be viewed here','https://zgcvpn.ru/#tariffs')]},
+        "/yuan": {"answer": messages.en_yuan_text, "commands":[('Requisites for payment : Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:','https://zgc.su/pay/wechat.png')]},
 }
 
 

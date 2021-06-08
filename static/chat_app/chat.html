@@ -31,16 +31,12 @@
                  style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
 
 
-                <div class="card card-bordered" v-bind:style="styleObject">
+                <div class="card card-bordered" v-bind:style="styleObject" id="cb_el">
 
-                    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-                    <label class="btn-menu" for="hmt">
+                    <input v-if="userEmail !== ''" type="checkbox" id="hmt" v-model="burger_check" class="hidden-menu-ticker">
+                    <label class="btn-menu" for="hmt" @click="checkEmailSet">
                         <img src="icons/Union.svg"/>
-                        <!--
-                        <span class="first"></span>
-                        <span class="second"></span>
-                        <span class="third"></span>
-                        -->
+
 
                     </label>
 
@@ -195,7 +191,7 @@
 
 
                         <div v-if="userEmail === ''" class="start-block">
-                            <div>
+                            <div style="margin-left: 5px;">
                                 {{ startMessage }}
                             </div>
                             <div>
@@ -204,13 +200,18 @@
                                     <div class="input-group  send-email-input"
                                          style="margin-left: 20px; margin-bottom: 1px;">
                                         <input v-model="enteringEmail" type="text" class="email-input"
-                                               placeholder="email..."
+                                               placeholder="E-mail..."
+                                               onkeypress="return emailEnter(event);"
                                                v-bind:style="{ backgroundColor: emailColor }"
                                         />
                                         <div @click="clearEmail" class="input-group-append"
                                              style="cursor: pointer; border: none;">
                                             <span class="input-group-text"
-                                                  v-bind:style="{ backgroundColor: emailColor }">x</span>
+                                                  v-bind:style="{ backgroundColor: emailColor }">
+
+                                                <img class="email-delete" src="icons/close%20(small).svg"/>
+
+                                            </span>
                                         </div>
                                     </div>
 
@@ -343,12 +344,12 @@
 
     function getEventType(event) {
 
-        console.log( event.type + '\n');
+        console.log(event.type + '\n');
     }
 
-    function initDropUpper(){
+    function initDropUpper() {
         dropUpBtn = document.getElementById('dropdownMenuButton3');
-        dropUpBtn.addEventListener('click',getEventType, false);
+        dropUpBtn.addEventListener('click', getEventType, false);
     }
 
     window.onload = function () {
@@ -371,6 +372,16 @@
             //code to execute here
             console.log('enter pressed');
             app.sendMessage();
+            return false;
+        }
+    }
+
+
+    function emailEnter(e){
+        if (e.which == 13 || e.keyCode == 13) {
+            //code to execute here
+            console.log('enter pressed');
+            app.sendEmail();
             return false;
         }
     }
@@ -425,6 +436,7 @@
             app.messages.push(data);
 
             console.log(data);
+            setTimeout(goToBottom, 500);
         };
 
         socket.onclose = function (event) {
@@ -478,10 +490,14 @@
 
             commands: [],
 
+            first_msg_was: false,
+
             conn_to_sup_cmds: ["/market", "/Связаться с поддержкой", "/Оплата"],
             through_msgs: ["/market"],
 
             ws: null,
+
+            burger_check: false,
 
             startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
 
@@ -522,6 +538,35 @@
         },
 
         methods: {
+
+            /*
+            topper(){
+                let cb_el = document.getElementById('cb_el');
+                cb_el.style.top = '10px';
+            },
+
+            firstMsgAction(){
+                if(!this.first_msg_was){
+                    // card card-bordered
+
+                    setTimeout(this.topper, 500);
+                    setTimeout(this.topper, 700);
+                    setTimeout(this.topper, 1000);
+                    setTimeout(this.topper, 1500);
+                    setTimeout(this.topper, 2000);
+                    this.first_msg_was = true;
+                    console.log('first msg action');
+                }
+            },
+
+             */
+
+            checkEmailSet() {
+                if (this.userEmail === '') {
+                    alert(this.startMessage);
+                }
+            },
+
 
             sendImg() {
 
@@ -575,6 +620,9 @@
                 }
 
                 this.sendCmd(this.messageText);
+
+                setTimeout(400, goToBottom());
+                setTimeout(800, goToBottom());
 
             },
 
@@ -645,13 +693,14 @@
                     }
 
                     goToBottom();
-                    setTimeout(goToBottom, 150);
-                    setTimeout(goToBottom, 400);
+                    setTimeout(goToBottom, 250);
+                    setTimeout(goToBottom, 600);
                 }
 
                 postData('/chat', {message: msg})
                     .then((data) => {
                         processMessage(data);
+
                         if (this.conn_to_sup_cmds.includes(msg)) {
 
                             let now = new Date();
@@ -675,7 +724,10 @@
 
                         goToBottom();
                     });
+
+
                 this.messageText = '';
+                this.burger_check = false;
             },
 
             sendWsMsg(msg_text) {
@@ -685,6 +737,7 @@
 
                     });
                 this.messages.push({from: 'user', message: this.messageText});
+                setTimeout(goToBottom, 500);
             }
 
         }
