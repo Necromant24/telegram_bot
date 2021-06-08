@@ -419,7 +419,20 @@
         data: {
             messageText: '',
             messages: [
+
             ],
+
+
+            initialMessages: [
+                {from: 'bot_cmd', message: "Payment", cmd: "/Payment"},
+                {from: 'bot_cmd', message: "Trial period", cmd: "/Trial period"},
+                {from: 'bot_cmd', message: "Learn more", cmd: "/Learn more"},
+                {from: 'bot_cmd', message: "For Turkmenistan", cmd: "/For Turkmenistan"},
+                {from: 'bot_cmd', message: "Partnership", cmd: "/Partnership"},
+                {from: 'bot_cmd', message: "ZGC SHOP", cmd: "/ZGC SHOP"},
+                {from: 'bot_cmd', message: "Contact support", cmd: "/Contact support"},
+            ],
+
 
             emailValid: true,
 
@@ -501,7 +514,7 @@
                         if (data.status === "ok") {
 
                             console.log(data);
-                            app.messages.push({from: 'user_img', url: data.url});
+                            app.messages.push({from: 'user_img', url: url_prefix + data.url});
                         }
                     });
 
@@ -539,6 +552,7 @@
                 if (validation === true) {
                     this.userEmail = this.enteringEmail;
                     this.styleObject = null;
+                    this.messages = this.initialMessages;
 
                     postData("/email", {email: this.enteringEmail})
                         .then((data) => {
