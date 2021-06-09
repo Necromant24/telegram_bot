@@ -432,3 +432,25 @@ def log_report(message, error):
     with open('log.txt', 'a+') as log:
         log.write(f"{datetime.datetime.today()}\n{message}\n"
                   f"Line {line_number}\n{error}\n##################################\n\n")
+
+
+
+
+def send_msg_to_tg(message_data):
+    bot.send_message(config.group_id, message_data)
+
+
+def get_email_from_message(message):
+    lines = message.split('\n')
+    email = ""
+
+    for line in lines:
+        if line.startswith("email:"):
+            email = line.split(":")[1].strip()
+            break
+
+    return email
+
+
+def replace_endl(text):
+    return text.replace('\n', "")

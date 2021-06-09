@@ -125,9 +125,8 @@
 
 
                         <div v-if="messages.length === 0" class="helper-msg">
-                            в левом верхнем углу и в правом нижнем
-                            углу(над вводом текста) есть выезжающие панели
-                            со списком команд
+                            В левом верхнем углу и в правом
+                            нижнем углу есть меню со списком команд.
                         </div>
 
 
@@ -150,7 +149,7 @@
                             <div v-if="message.from === 'bot_link'" class="incoming_msg">
                                 <div class="incoming_msg_img"></div>
                                 <div class="received_msg">
-                                    <p class="btn btn-link">
+                                    <p class="bot-link">
                                         {{ message.message }}
                                         <br/>
                                         <a v-bind:href="message.cmd" target="_blank">{{ message.cmd }}</a>
@@ -191,8 +190,8 @@
 
 
                         <div v-if="userEmail === ''" class="start-block">
-                            <div style="margin-left: 5px;">
-                                {{ startMessage }}
+                            <div style="position: relative;padding: 6px 8px;margin: 4px 0;background-color: #FF7C74;border-radius: 15px 15px 15px 15px;color: #2C2C2C;font-weight: 350;font-family: Roboto, sans-serif;margin-right: 15px;margin-left: 5px;">
+                                Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту
                             </div>
                             <div>
                                 <div class="email-input-group "
@@ -521,6 +520,15 @@
 
             startMessage: 'Здравствуйте. Для начала работы с сервисом, укажите, пожалуйста, свою электронную почту',
 
+            dialogOpenedMsg1: 'Сообщение отправлено в поддержку! Если вы не можете дождаться ответа, мы пришлем вам E-mail или можете написать в VK или telegram. Мы работаем с 17:00–22:00 по будням.',
+            dialogOpenedMsg2: 'Для связи в VK пришлите вашу почту в директ',
+            dialogOpenedMsg3: 'https://vk.com/ZhongGuoCu',
+            dialogOpenedMsg4: 'Для связи в Telegram пришлите вашу почту и используйте меню:',
+            dialogOpenedMsg5: 'https://t.me/ZGC_VPN_BOT',
+
+
+
+            first_ws_msg_was: false,
 
         },
 
@@ -559,27 +567,23 @@
 
         methods: {
 
-            /*
-            topper(){
-                let cb_el = document.getElementById('cb_el');
-                cb_el.style.top = '10px';
+            firstWsMsgAction(){
+                this.messages.push({from: 'bot', message: this.dialogOpenedMsg1});
+
+                this.messages.push({
+                                from: 'bot_link',
+                                message: this.dialogOpenedMsg2,
+                                cmd: this.dialogOpenedMsg3
+                            });
+
+                this.messages.push({
+                                from: 'bot_link',
+                                message: this.dialogOpenedMsg4,
+                                cmd: this.dialogOpenedMsg5
+                            });
+
+                this.first_ws_msg_was = true;
             },
-
-            firstMsgAction(){
-                if(!this.first_msg_was){
-                    // card card-bordered
-
-                    setTimeout(this.topper, 500);
-                    setTimeout(this.topper, 700);
-                    setTimeout(this.topper, 1000);
-                    setTimeout(this.topper, 1500);
-                    setTimeout(this.topper, 2000);
-                    this.first_msg_was = true;
-                    console.log('first msg action');
-                }
-            },
-
-             */
 
             checkEmailSet() {
                 if (this.userEmail === '') {
@@ -758,6 +762,10 @@
                     });
                 this.messages.push({from: 'user', message: this.messageText});
                 setTimeout(goToBottom, 500);
+
+                if(!this.first_ws_msg_was){
+                    this.firstWsMsgAction();
+                }
             }
 
         }

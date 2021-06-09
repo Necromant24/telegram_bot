@@ -152,7 +152,7 @@
                             <div v-if="message.from === 'bot_link'" class="incoming_msg">
                                 <div class="incoming_msg_img"></div>
                                 <div class="received_msg">
-                                    <p class="btn btn-link">
+                                    <p class="bot-link">
                                         {{ message.message }}
                                         <br/>
                                         <a v-bind:href="message.cmd" target="_blank">{{ message.cmd }}</a>
@@ -191,7 +191,7 @@
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
                         <div v-if="userEmail === ''" class="start-block">
-                            <div style="margin-left: 5px;">
+                            <div style="/* margin-left: 10px; */position: relative;padding: 6px 8px;margin: 4px 0;background-color: #FF7C74;border-radius: 15px 15px 15px 15px;color: #2C2C2C;font-weight: 350;font-family: Roboto, sans-serif;margin-right: 15px;margin-left: 5px;">
                                 {{ startMessage }}
                             </div>
                             <div>
@@ -471,13 +471,21 @@
 
             first_msg_was: false,
 
-            conn_to_sup_cmds: ["/market", "/Связаться с поддержкой", "/Оплата"],
+            conn_to_sup_cmds: ["/market", "/Payment", "/Связаться с поддержкой", "/Оплата", "/Contact support"],
             through_msgs: ["/market"],
 
             ws: null,
 
             startMessage: 'Hello. To get started with the service, please specify your email address',
 
+            dialogOpenedMsg1: "Message sent to support! If you can't wait for a response, we will send you an E-mail or you can write to VK or telegram. We work from 17: 00-22: 00 on weekdays.",
+            dialogOpenedMsg2: 'To contact VK, send your email to Yandex. direct',
+            dialogOpenedMsg3: 'https://vk.com/ZhongGuoCu',
+            dialogOpenedMsg4: 'To communicate in Telegram, send your email and use the menu:',
+            dialogOpenedMsg5: 'https://t.me/ZGC_VPN_BOT',
+
+
+            first_ws_msg_was: false,
 
         },
 
@@ -516,27 +524,25 @@
 
         methods: {
 
-            /*
-            topper(){
-                let cb_el = document.getElementById('cb_el');
-                cb_el.style.top = '10px';
+
+            firstWsMsgAction(){
+                this.messages.push({from: 'bot', message: this.dialogOpenedMsg1});
+
+                this.messages.push({
+                                from: 'bot_link',
+                                message: this.dialogOpenedMsg2,
+                                cmd: this.dialogOpenedMsg3
+                            });
+
+                this.messages.push({
+                                from: 'bot_link',
+                                message: this.dialogOpenedMsg4,
+                                cmd: this.dialogOpenedMsg5
+                            });
+
+                this.first_ws_msg_was = true;
             },
 
-            firstMsgAction(){
-                if(!this.first_msg_was){
-                    // card card-bordered
-
-                    setTimeout(this.topper, 500);
-                    setTimeout(this.topper, 700);
-                    setTimeout(this.topper, 1000);
-                    setTimeout(this.topper, 1500);
-                    setTimeout(this.topper, 2000);
-                    this.first_msg_was = true;
-                    console.log('first msg action');
-                }
-            },
-
-             */
 
             checkEmailSet() {
                 if (this.userEmail === '') {
@@ -713,6 +719,13 @@
                     });
                 this.messages.push({from: 'user', message: this.messageText});
                 setTimeout(goToBottom, 500);
+
+
+                if(!this.first_ws_msg_was){
+                    this.firstWsMsgAction();
+                }
+
+
             }
 
         }

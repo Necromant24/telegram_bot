@@ -153,12 +153,13 @@ body{
 .helper-msg{
     margin-left: 15px;
     margin-right: 15px;
+    margin-top: 10px;
     color: #4d5259;
 }
 
 
 .start-block{
-    margin-top: 160px;
+    margin-top: 130px;
     padding-left: 10px;
 }
 
@@ -196,3 +197,20 @@ body{
     width: 8px;
     height: 8px;
 }
+
+
+
+.initial-message{
+
+}
+
+
+
+.bot-link{
+    font-weight: 400;
+    color: #007bff;
+    background-color: transparent;
+    margin-left: 17px;
+    margin-right: 17px;
+}
+

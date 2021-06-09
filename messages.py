@@ -8,7 +8,7 @@ yuan_text = "[Тарифы](https://zgcvpn.ru/#tariffs)\n\n" \
             "https://zgc.su/pay/wechat.png\n\n" \
             "*Пришлите пожалуйста скриншот оплаты*."
 
-ru_site_yuan_text = """После оплаты пришлите скриншот."""
+ru_site_yuan_text = """После оплаты ОБЯЗАТЕЛЬНО пришлите скриншот успешного перевода! Реквизиты для оплаты по ссылкам ниже:"""
 
 
 en_yuan_text = "[Rates](https://zgcvpn.ru/#tariffs)\n\n " \
@@ -20,7 +20,7 @@ en_yuan_text = "[Rates](https://zgcvpn.ru/#tariffs)\n\n " \
             "*Please send a screenshot of the payment*."
 
 
-en_site_yuan_text = "After payment, please send a screenshot."
+en_site_yuan_text = "After payment, BE SURE to send a screenshot of the successful transfer! Payment details for the links below:"
 
 
 yuan_text_vk = "Тарифы: https://zgcvpn.ru/#tariffs\n\n" \
@@ -224,7 +224,7 @@ ru_site_support = """
 1) Устройство 2) Выбранный сервер 
 3) После чего возникла проблема 4) На каких сайтах или ресурсах 
 5) Пришлите скриншот (снимок экрана, на котором видно проблему) 
-Вы также можете попробовать найти решение проблемы в нашем FAQ –
+Вы также можете попробовать найти решение проблемы в нашем FAQ:
 """
 
 en_site_support = """
@@ -232,7 +232,7 @@ To solve the problem, specify:
 1) Device 2) Selected Server
 3) After which the problem occurred 4) On which sites or resources
 5) Send a screenshot (a screenshot showing the problem).)
-You can also try to find a solution to the problem in our FAQ –
+You can also try to find a solution to the problem in our FAQ:
 """
 
 

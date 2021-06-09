@@ -25,10 +25,10 @@ command_answers = \
 
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
-        "/other": {"answer": messages.ru_site_support, "commands":[('https://market.zgc.su/vpnfaq', 'https://market.zgc.su/vpnfaq')]},
+        "/other": {"answer": messages.ru_site_support, "commands":[('.', 'https://market.zgc.su/vpnfaq')]},
         "/market": {"answer": 'Здравствуйте! Укажите, пожалуйста, продукт и вопросы по нему', "commands":[]},
         "/rub": {"answer": messages.ru_site_rub_text, "commands":[('Тарифы можно посмотреть тут','https://zgcvpn.ru/#tariffs')]},
-        "/yuan": {"answer": messages.ru_site_yuan_text, "commands":[('Реквизиты для оплаты: Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:', 'https://zgc.su/pay/wechat.png')]},
+        "/yuan": {"answer": messages.ru_site_yuan_text, "commands":[('Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:', 'https://zgc.su/pay/wechat.png')]},
 
     }
 
@@ -46,10 +46,10 @@ en_command_answers = {
 
         "/urgent": {"answer": messages.first_install, "commands":[]},
         "/install": {"answer": messages.first_install, "commands":[]},
-        "/other": {"answer": messages.en_site_support, "commands":[('https://market.zgc.su/vpnfaq', 'https://market.zgc.su/vpnfaq')]},
+        "/other": {"answer": messages.en_site_support, "commands":[('.', 'https://market.zgc.su/vpnfaq')]},
         "/market": {"answer": 'Hello! Please specify the product and questions about it', "commands":[]},
         "/rub": {"answer": messages.en_site_rub_text, "commands":[('Rates can be viewed here','https://zgcvpn.ru/#tariffs')]},
-        "/yuan": {"answer": messages.en_yuan_text, "commands":[('Requisites for payment : Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:','https://zgc.su/pay/wechat.png')]},
+        "/yuan": {"answer": messages.en_site_yuan_text, "commands":[('Alipay:', 'https://zgc.su/pay/alipay.jpeg'), ('WeChat pay:','https://zgc.su/pay/wechat.png')]},
 }
 
 
