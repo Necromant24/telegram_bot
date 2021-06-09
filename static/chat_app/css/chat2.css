@@ -44,7 +44,8 @@ body {
 
 .card-header .card-title {
     padding: 0;
-    border: none
+    border: none;
+    margin-left: 30px;
 }
 
 h4.card-title {
@@ -355,7 +356,7 @@ textarea {
 .send-email-input {
     margin-top: 0px;
     display: flex;
-    height: 36px;
+    height: 38px;
 }
 
 .email-input-group {
@@ -437,6 +438,7 @@ textarea {
   width: 25px;
   -webkit-transform: translateZ(0);
   -webkit-backface-visibility: hidden;
+    margin-left: 4px;
 }
 .btn-menu span {
   display: block;

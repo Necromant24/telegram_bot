@@ -107,7 +107,7 @@ def get_open_dialogues():
 
 
 # --------------------------------------------------
-#def update_pinned_top():
+def update_pinned_top():
     """ Update upper part of pinned message that contains IDs of clients with open dialogues """
 
     # Pinned message text is stored in file
@@ -136,7 +136,7 @@ def get_open_dialogues():
 
 
 # -------------------------------------------------
-#def update_pinned_bottom(emails_list):
+def update_pinned_bottom(emails_list):
     """ Update bottom part of pinned message that contains emails of clients who were reminded about expiring tariff """
 
     # Pinned message text is stored in file

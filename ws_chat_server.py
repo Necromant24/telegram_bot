@@ -5,16 +5,10 @@ import websockets
 
 import data_structs as ds
 
+import helpers
 
-async def hello(websocket, path):
-    print(path)
-    name = await websocket.recv()
-    print(f"< {name}")
 
-    greeting = f"Hello {name}!"
 
-    await websocket.send(greeting)
-    print(f"> {greeting}")
 
 
 async def initWsConn(ws, path):
@@ -35,6 +29,8 @@ async def initWsConn(ws, path):
         except websockets.exceptions.ConnectionClosed:
             print("Client disconnected.  Do cleanup")
             ds.remove_ws_conn(email)
+
+
             break
         await asyncio.sleep(15)
 

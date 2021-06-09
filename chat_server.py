@@ -4,7 +4,7 @@ from flask import Flask, request, send_from_directory, redirect
 import data_structs as ds
 
 app = Flask(__name__)
-url_prefix = ""
+url_prefix = "/botweb"
 
 def db_find_value(col_name, value):
     """ Check if value exists in database and return corresponding row, 'col_name' must be name of DB column
@@ -28,10 +28,10 @@ def client_info_msg(col_name, value):
     if not info:
         return "No info about client"
 
-    message = "\U00002139\nemail: "+info[0]+"\n" \
-              "date: "+info[1]+"\n" \
-              "tariff: "+info[2]+"\n" \
-              "sub: "+info[3]+"\n"
+    message = f"\U00002139\nemail: {info[0]}\n" \
+              f"date: {info[1]}\n" \
+              f"tariff: {info[2]}\n" \
+              f"sub: {info[3]}\n"
 
     return message
 
