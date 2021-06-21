@@ -1,0 +1,272 @@
+<style>
+
+
+        .bottom-icon {
+            background-color: #FFCC00;
+            width: 167px;
+            height: 49px;
+            border-radius: 15px 15px 0 0;
+
+            right: 30px;
+
+            position: fixed;
+            display: flex;
+
+        }
+
+        .b-icon-container {
+            display: flex;
+            margin-top: 10px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .b-icon-text{
+            font-family: Arial,Helvetica,sans-serif !important;
+            margin-left: 10px;
+            white-space: nowrap!important;
+            padding-top: 3px;
+            color: #595959 !important;
+            font-size: 18px !important;
+        }
+
+        .chat-pop-up {
+            background-color: #FFCC55;
+            width: 40px;
+            height: 40px;
+        }
+
+        .chat-popuper {
+            width: inherit;
+            height: inherit;
+        }
+
+        .chat-popuper:checked ~ .chat-pop-up {
+            background-color: #48b0f7;
+
+        }
+
+        label {
+            width: 32px; /* Ширина рисунка */
+            height: 26px; /* Высота рисунка */
+            display: block; /* Блочный элемент */
+            position: relative; /* Относительное позиционирование */
+        }
+
+
+
+
+        .chat-window-opened {
+            display: block;
+        }
+
+        .chat-window-closed {
+            display: none;
+        }
+
+        .opened-chat {
+            background-color: #48b0f7;
+            width: 50px;
+            height: 50px;
+        }
+
+        .closed-chat {
+            background-color: #FFCC55;
+            width: 50px;
+            height: 50px;
+        }
+
+
+        #chat-window {
+            position: fixed;
+            bottom: 55px;
+            right: 30px;
+            width: 380px;
+            height: 520px;
+            border-radius: 20px;
+
+        }
+
+        .chat-frame{
+            width: 99%;
+            height: 99%;
+            border-radius: 20px;
+            margin-top: 3px;
+            margin-left: 3px;
+            border: none;
+            box-shadow: 0 0 3px rgb(0 0 0);
+        }
+
+
+
+
+    </style>
+
+<style>
+.dropbtn {
+  background-color: #FFCC00;
+  color: #4d5259;
+  padding: 16px;
+  font-size: 16px;
+  border-radius: 15px 15px 0 0;
+
+
+}
+
+.dropup {
+  position: fixed;
+  display: inline-block;
+  bottom: 0px;
+
+    border-block-color: #FFCC00;
+    right: 205px;
+    height: 45px;
+}
+
+.dropup-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  bottom: 50px;
+  z-index: 1;
+}
+
+.dropup-content div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropup-content div:hover {background-color: #ccc}
+
+.dropup:hover .dropup-content {
+  display: block;
+}
+
+.dropup:hover .dropbtn {
+  background-color: #2980B9;
+}
+
+.drop-item{
+    cursor: pointer;
+}
+
+</style>
+
+
+<style>
+
+    .close{
+        width: 14px;
+        height: 14px;
+        position: fixed;
+        bottom: 540px;
+        right: 50px;
+        cursor: pointer;
+    }
+
+</style>
+
+
+
+<div id="chat-window">
+    <img onclick="open_close_chat();" class="close" src="https://zgc.su/botweb/static/chat_app/icons/close.svg" />
+    <iframe id="chat-frame" class="chat-frame" src="https://zgc.su/botweb/static/chat_app/chat.html" ></iframe>
+</div>
+
+
+
+
+    <div id="bottom-icon" onclick="open_close_chat();" class="bottom-icon">
+        <div class="b-icon-container">
+            <img src="https://zgc.su/botweb/static/chat_app/icons/chat%201.svg" style="width: 25px;height: 25px;" />
+            <div class="b-icon-text"> Поддержка </div>
+        </div>
+
+    </div>
+
+    <div id="dropper" class="dropup">
+          <button id="lang-node" class="dropbtn">select lang</button>
+
+          <div class="dropup-content" style="bottom: 37px;">
+            <div class="drop-item" onclick="selectLang('ru')" >Russian</div>
+            <div class="drop-item" onclick="selectLang('en')" >English</div>
+          </div>
+    </div>
+
+
+
+<script>
+    let lang_src = {
+        ru: "https://zgc.su/botweb/static/chat_app/chat.html",
+        en: "https://zgc.su/botweb/static/chat_app/en_chat.html"
+    }
+
+    function selectLang(lang){
+        let preLangText = "lang: ";
+        let langNode = document.getElementById('lang-node');
+        let frameNode = document.getElementById('chat-frame');
+
+        langNode.innerText = preLangText + lang;
+        frameNode.src = lang_src[lang];
+    }
+</script>
+
+<script>
+
+    let bottom_icon;
+
+    let chat_open = false;
+
+    function open_close_chat() {
+        //let chat_icon = document.getElementById('chat-icon');
+        let chat_window = document.getElementById('chat-window');
+
+        if (chat_open) {
+            chat_open = !chat_open;
+            //chat_icon.classList.add("closed-chat");
+            //chat_icon.classList.remove("opened-chat");
+
+
+            chat_window.classList.add("chat-window-closed");
+            chat_window.classList.remove("chat-window-opened");
+        } else {
+            chat_open = !chat_open;
+            //chat_icon.classList.add("opened-chat");
+            //chat_icon.classList.remove("closed-chat");
+
+            chat_window.classList.add("chat-window-opened");
+            chat_window.classList.remove("chat-window-closed");
+        }
+    }
+
+    function reposite_icon() {
+        let window_height = window.innerHeight;
+        console.log(window_height);
+
+        bottom_icon.style.top = window_height - 45 + "px";
+    }
+
+
+    window.onload = function () {
+        bottom_icon = document.getElementById("bottom-icon");
+        let chat_window = document.getElementById('chat-window');
+        chat_window.classList.add("chat-window-closed");
+        reposite_icon();
+    }
+
+
+    window.onchange = function () {
+        reposite_icon();
+    }
+
+    window.onresize = function () {
+        reposite_icon();
+    }
+
+
+</script>
+
+
