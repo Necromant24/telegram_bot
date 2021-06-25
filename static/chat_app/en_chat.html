@@ -22,6 +22,11 @@
 <div class="page-content page-container" id="page-content">
     <div id="v-app">
 
+        <div v-if="isMobile()" style="position: fixed; top: 15px; right: 15px; z-index: 9999;">
+            <a v-bind:href="from_url">
+                <img src="icons/close.svg" style="width: 20px; height: 20px;"/>
+            </a>
+        </div>
 
         <div class="row container d-flex justify-content-center app-container"
              style="margin-right: 0;margin-left: 0;padding-right: 0;padding-left: 0;">
@@ -190,7 +195,7 @@
                         <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
                             <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;"></div>
                         </div>
-                        <div v-if="userEmail === ''" class="start-block">
+                        <div v-if="userEmail === ''" class="start-block" id="start-block">
                             <div style="/* margin-left: 10px; */position: relative;padding: 6px 8px;margin: 4px 0;background-color: #FF7C74;border-radius: 15px 15px 15px 15px;color: #2C2C2C;font-weight: 350;font-family: Roboto, sans-serif;margin-right: 15px;margin-left: 5px;">
                                 {{ startMessage }}
                             </div>
@@ -402,13 +407,23 @@
         console.log(window.innerHeight);
 
         let msg_container = document.getElementById('chat-content');
+        let start_block = document.getElementById('start-block');
 
-        let new_msg_container_style = "height: "+ (window.innerHeight - 120) +"px !important;"
+        let new_msg_container_style = "height: " + (window.innerHeight - 120) + "px !important;";
+        let start_block_style = "margin-top: "+(window.innerHeight - 380) + "px !important;";
 
         console.log(new_msg_container_style);
 
         msg_container.style = new_msg_container_style;
+        start_block.style = start_block_style;
 
+
+    }
+
+    function initFromUrl() {
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        const params = Object.fromEntries(urlSearchParams.entries());
+        app.from_url = params.from_url;
     }
 
     function initWS() {
@@ -431,10 +446,15 @@
 
             let data = JSON.parse(event.data);
 
-            app.messages.push(data);
+            if (data.type !== 'ping') {
+                app.messages.push(data);
 
-            console.log(data);
-            setTimeout(goToBottom, 500);
+                console.log(data);
+                setTimeout(goToBottom, 200);
+                setTimeout(goToBottom, 500);
+                app.playRecieveAudio();
+            }
+
         };
 
         socket.onclose = function (event) {
@@ -494,6 +514,7 @@
             client_state: '',
 
             commands: [],
+            from_url: '',
 
             first_msg_was: false,
 
@@ -534,6 +555,16 @@
                     });
             }
 
+
+            setTimeout(initFromUrl, 2000);
+            setTimeout(initFromUrl, 6000);
+
+
+            let cached_email = localStorage.getItem("email");
+            if(cached_email !== null){
+                setTimeout(function (){ app.enteringEmail = cached_email; }, 400);
+                setTimeout(function (){ app.enteringEmail = cached_email; }, 600);
+            }
         },
 
         computed: {
@@ -549,6 +580,16 @@
         },
 
         methods: {
+
+            playSendAudio() {
+                let audio = new Audio('sounds/sound1.mp3');
+                audio.play();
+            },
+
+            playRecieveAudio() {
+                let audio = new Audio('sounds/sound2.mp3');
+                audio.play();
+            },
 
 
             firstWsMsgAction(){
@@ -602,6 +643,8 @@
 
                             console.log(data);
                             app.messages.push({from: 'user_img', url: url_prefix + data.url});
+
+                            this.playSendAudio();
                         }
                     });
 
@@ -648,6 +691,7 @@
 
                         });
 
+                    localStorage.setItem("email", this.enteringEmail);
 
                 } else {
                     this.emailValid = false;
@@ -666,8 +710,18 @@
                 this.enteringEmail = '';
             },
 
+
+            isMobile() {
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+
             sendCmd(msg) {
 
+                this.playSendAudio();
 
                 if(msg === '/Payment'){
                     this.client_state = 'pay';

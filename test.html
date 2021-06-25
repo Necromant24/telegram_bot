@@ -11,20 +11,41 @@
 </head>
 <body>
 
-<input id="inp" onkeyup="return some(event);" >
+<input id="inp" onkeyup="return some(event);">
 
+<button onclick="playTest();">click mysic test</button>
+<button onclick="playTest2();">click mysic test 2</button>
 
 
 </body>
 <script>
 
+    function playTest2() {
+        let audio = new Audio('static/chat_app/sounds/sound2.mp3');
+        audio.play();
+    }
 
-    function some(e){
+    function playTest() {
+        let audio = new Audio('static/chat_app/sounds/sound1.mp3');
+        audio.play();
+    }
+
+    function playSendAudio() {
+        let audio = new Audio('static/chat_app/sounds/sound1.mp3');
+        audio.play();
+    }
+
+    function playRecieveAudio() {
+        let audio = new Audio('static/chat_app/sounds/sound1.mp3');
+        audio.play();
+    }
+
+    function some(e) {
         let el = document.getElementById('inp');
         if (e.which == 13 || e.keyCode == 13) {
-        //code to execute here
+            //code to execute here
             alert(el.value);
-        return false;
+            return false;
         }
 
     }
