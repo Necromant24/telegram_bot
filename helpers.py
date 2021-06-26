@@ -35,6 +35,10 @@ def send_msg_to_tg(message_data):
 
 
 def get_email_from_message(message):
+
+
+
+
     lines = message.split('\n')
     email = ""
 

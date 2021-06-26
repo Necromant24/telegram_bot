@@ -229,7 +229,7 @@
                     </div>
 
 
-                    <div class="msg-input-wrapper">
+                    <div class="msg-input-wrapper" id="input-area">
 
 
                         <div v-if="userEmail !== ''" class="publisher bt-1 border-light">
@@ -396,6 +396,9 @@
         msg_container.style = new_msg_container_style;
         start_block.style = start_block_style;
 
+
+        let input_area = document.getElementById("input-area");
+        let input_area_style = 'position: fixed; z-index: 99999; '
 
     }
 
