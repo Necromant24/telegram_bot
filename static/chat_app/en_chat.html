@@ -420,6 +420,20 @@
 
     }
 
+
+    window.onresize = function () {
+        let msg_container = document.getElementById('chat-content');
+        let start_block = document.getElementById('start-block');
+
+        let new_msg_container_style = "height: " + (window.innerHeight - 120) + "px !important;";
+        let start_block_style = "margin-top: " + (window.innerHeight - 380) + "px !important;";
+
+        console.log(new_msg_container_style);
+
+        msg_container.style = new_msg_container_style;
+        start_block.style = start_block_style;
+    }
+
     function initFromUrl() {
         const urlSearchParams = new URLSearchParams(window.location.search);
         const params = Object.fromEntries(urlSearchParams.entries());
@@ -512,6 +526,7 @@
             enteringEmail: '',
 
             client_state: '',
+            pay_type: 'rub',
 
             commands: [],
             from_url: '',
@@ -629,6 +644,7 @@
                 data.append('file', input.files[0]);
                 data.append('user', app.userEmail);
                 data.append('client_state', this.client_state);
+                data.append('pay_type', this.pay_type);
 
                 console.log(data);
 
@@ -723,9 +739,15 @@
 
                 this.playSendAudio();
 
-                if(msg === '/Payment'){
+                if (msg === '/Оплата') {
                     this.client_state = 'pay';
-                }else {
+                } else if(msg === '/yuan'){
+                    this.client_state = 'pay';
+                    this.pay_type = 'yuan';
+                } else if(msg === '/rub'){
+                    this.client_state = 'pay';
+                    this.pay_type = 'rub';
+                } else {
                     this.client_state = '';
                 }
 

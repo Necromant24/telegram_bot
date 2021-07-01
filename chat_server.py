@@ -4,7 +4,7 @@ from flask import Flask, request, send_from_directory, redirect
 import data_structs as ds
 
 app = Flask(__name__)
-url_prefix = ""
+url_prefix = "/botweb"
 
 def db_find_value(col_name, value):
     """ Check if value exists in database and return corresponding row, 'col_name' must be name of DB column

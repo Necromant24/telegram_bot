@@ -1096,6 +1096,9 @@ def telegram():
 
                 replied_message = message.reply_to_message.text
 
+                if replied_message == None:
+                    replied_message = message.reply_to_message.caption
+
                 reply_email = helpers.get_email_from_message(replied_message)
 
                 ws_message = json.dumps({'from': 'bot', 'message': message.text})

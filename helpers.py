@@ -20,14 +20,14 @@ import requests
 bot = telebot.TeleBot(config.tg_token, skip_pending=True)
 
 # Vkontakte bot
-vk_session = vk_api.VkApi(token=config.token_vk)
-vk = vk_session.get_api()
+#vk_session = vk_api.VkApi(token=config.token_vk)
+#vk = vk_session.get_api()
 
 # Facebook bot
-fb_bot = Bot(config.fb_access_token)
+#fb_bot = Bot(config.fb_access_token)
 
 # Google sheets authorization
-gc = gspread.service_account(filename=config.cred_final)
+#gc = gspread.service_account(filename=config.cred_final)
 
 
 def send_msg_to_tg(message_data):
