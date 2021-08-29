@@ -39,14 +39,15 @@
                 <div class="card card-bordered" v-bind:style="styleObject" id="cb_el">
 
 
-                    <input v-if="userEmail !== ''" type="checkbox" id="hmt" v-model="burger_check" class="hidden-menu-ticker">
+                    <input v-if="userEmail !== ''" type="checkbox" id="hmt" v-model="burger_check"
+                           class="hidden-menu-ticker">
 
 
                     <label class="btn-menu" for="hmt" @click="checkEmailSet">
                         <img src="icons/Union.svg"/>
 
 
-                    </label >
+                    </label>
 
                     <ul class="hidden-menu hidden-menu-text">
                         <h6 class="hidden-menu-header">Choose command</h6>
@@ -128,7 +129,9 @@
                     </div>
 
 
-                    <div class="ps-container ps-theme-default ps-active-y" id="chat-content"
+                    <div class="ps-container ps-theme-default ps-active-y"
+                         id="chat-content"
+                         @click="(e)=>{ burger_check=false; }"
                          style="overflow-y: scroll !important; height:400px !important;">
 
 
@@ -344,7 +347,7 @@
     let bottom_msg;
 
 
-    function emailEnter(e){
+    function emailEnter(e) {
         if (e.which == 13 || e.keyCode == 13) {
             //code to execute here
             console.log('enter pressed');
@@ -393,7 +396,6 @@
     let url_prefix = "/botweb";
 
 
-
     function isMobile() {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
             return true;
@@ -410,7 +412,7 @@
         let start_block = document.getElementById('start-block');
 
         let new_msg_container_style = "height: " + (window.innerHeight - 120) + "px !important;";
-        let start_block_style = "margin-top: "+(window.innerHeight - 380) + "px !important;";
+        let start_block_style = "margin-top: " + (window.innerHeight - 380) + "px !important;";
 
         console.log(new_msg_container_style);
 
@@ -576,9 +578,13 @@
 
 
             let cached_email = localStorage.getItem("email");
-            if(cached_email !== null){
-                setTimeout(function (){ app.enteringEmail = cached_email; }, 400);
-                setTimeout(function (){ app.enteringEmail = cached_email; }, 600);
+            if (cached_email !== null) {
+                setTimeout(function () {
+                    app.enteringEmail = cached_email;
+                }, 400);
+                setTimeout(function () {
+                    app.enteringEmail = cached_email;
+                }, 600);
             }
         },
 
@@ -607,20 +613,20 @@
             },
 
 
-            firstWsMsgAction(){
+            firstWsMsgAction() {
                 this.messages.push({from: 'bot', message: this.dialogOpenedMsg1});
 
                 this.messages.push({
-                                from: 'bot_link',
-                                message: this.dialogOpenedMsg2,
-                                cmd: this.dialogOpenedMsg3
-                            });
+                    from: 'bot_link',
+                    message: this.dialogOpenedMsg2,
+                    cmd: this.dialogOpenedMsg3
+                });
 
                 this.messages.push({
-                                from: 'bot_link',
-                                message: this.dialogOpenedMsg4,
-                                cmd: this.dialogOpenedMsg5
-                            });
+                    from: 'bot_link',
+                    message: this.dialogOpenedMsg4,
+                    cmd: this.dialogOpenedMsg5
+                });
 
                 this.first_ws_msg_was = true;
             },
@@ -664,8 +670,8 @@
                         }
                     });
 
-                setTimeout(1000, goToBottom());
-                setTimeout(3000, goToBottom());
+                setTimeout(goToBottom, 1000);
+                setTimeout(goToBottom, 3000);
             },
 
             connectToSupport() {
@@ -741,10 +747,10 @@
 
                 if (msg === '/Оплата') {
                     this.client_state = 'pay';
-                } else if(msg === '/yuan'){
+                } else if (msg === '/yuan') {
                     this.client_state = 'pay';
                     this.pay_type = 'yuan';
-                } else if(msg === '/rub'){
+                } else if (msg === '/rub') {
                     this.client_state = 'pay';
                     this.pay_type = 'rub';
                 } else {
@@ -808,6 +814,12 @@
                             if ((9 < now.getUTCHours()) && (now.getUTCHours() < 14)) {
                                 let non_working = 'Мы работаем по Пекину с 17:00 до 22:00 в рабочие дни и сейчас не можем ответить на ваши вопросы. Если у вас есть срочный вопрос - нажмите кнопку Срочная связь и мы постараемся ответить как можно быстрее';
                                 app.messages.push({from: 'bot', message: non_working});
+
+                                let vk_link = "https://Vk.com/Zhongguocu";
+                                let tg_link = "https://T.me/ZGC_VPN_BOT";
+
+                                app.messages.push({from: 'bot_link', message: '', cmd: vk_link});
+                                app.messages.push({from: 'bot_link', message: '', cmd: tg_link});
                             }
 
 
@@ -831,7 +843,7 @@
                 setTimeout(goToBottom, 500);
 
 
-                if(!this.first_ws_msg_was){
+                if (!this.first_ws_msg_was) {
                     this.firstWsMsgAction();
                 }
 

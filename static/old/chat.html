@@ -7,8 +7,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/chat2.css">
-    <link rel="stylesheet" href="css/elements.css">
+    <link rel="stylesheet" href="../chat_app/css/chat2.css">
+    <link rel="stylesheet" href="../chat_app/css/elements.css">
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -25,7 +25,7 @@
 
         <div v-if="isMobile()" style="position: fixed; top: 15px; right: 15px; z-index: 9999;">
             <a v-bind:href="from_url">
-                <img src="icons/close.svg" style="width: 20px; height: 20px;"/>
+                <img src="../chat_app/icons/close.svg" style="width: 20px; height: 20px;"/>
             </a>
         </div>
 
@@ -43,7 +43,7 @@
                     <input v-if="userEmail !== ''" type="checkbox" id="hmt" v-model="burger_check"
                            class="hidden-menu-ticker">
                     <label class="btn-menu" for="hmt" @click="checkEmailSet">
-                        <img src="icons/Union.svg"/>
+                        <img src="../chat_app/icons/Union.svg"/>
 
 
                     </label>
@@ -54,7 +54,7 @@
                         <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/shopping-cart%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/shopping-cart%201.svg">
                             <span class="pull-left menu-cmd">ZGC SHOP</span>
 
                         </div>
@@ -62,7 +62,7 @@
                         <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/turkmenistan%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/turkmenistan%201.svg">
                             <span class="pull-left menu-cmd">Для Туркменистана</span>
 
                         </div>
@@ -71,7 +71,7 @@
                         <div @click="(e)=>{ sendCmd('/Пробный период'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/key%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/key%201.svg">
                             <span class="pull-left menu-cmd">Пробный период</span>
 
                         </div>
@@ -79,14 +79,14 @@
                         <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/customer-service%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/customer-service%201.svg">
                             <span class="pull-left menu-cmd">Связаться с поддержкой</span>
 
                         </div>
                         <div @click="(e)=>{ sendCmd('/Оплата'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/Vector.svg">
+                            <img class="centered-img" src="../chat_app/icons/Vector.svg">
                             <span class="pull-left menu-cmd">Оплата</span>
 
                         </div>
@@ -95,7 +95,7 @@
                         <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/info-button%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/info-button%201.svg">
                             <span class="pull-left menu-cmd">Узнать больше</span>
 
                         </div>
@@ -103,7 +103,7 @@
                         <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
                              class="row btn btn-lg hidden-menu-btn drop-down-btn">
 
-                            <img class="centered-img" src="icons/hand-shake%201.svg">
+                            <img class="centered-img" src="../chat_app/icons/hand-shake%201.svg">
                             <span class="pull-left menu-cmd">Сотрудничество</span>
 
                         </div>
@@ -218,7 +218,7 @@
                                             <span class="input-group-text"
                                                   v-bind:style="{ backgroundColor: emailColor }">
 
-                                                <img class="email-delete" src="icons/close%20(small).svg"/>
+                                                <img class="email-delete" src="../chat_app/icons/close%20(small).svg"/>
 
                                             </span>
                                         </div>
@@ -244,7 +244,7 @@
 
                             <div class="image-upload">
                                 <label for="file-input">
-                                    <img src="icons/clip.svg"/>
+                                    <img src="../chat_app/icons/clip.svg"/>
                                 </label>
 
                                 <input id="file-input" style="display: none;" type="file" @change="sendImg"/>
@@ -265,7 +265,7 @@
                                 <div @click="(e)=>{ sendCmd('/ZGC SHOP'); }"
                                      class="row dropdown-item  btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/shopping-cart%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/shopping-cart%201.svg">
                                     <span class="pull-left menu-cmd">ZGC SHOP</span>
 
                                 </div>
@@ -273,7 +273,7 @@
                                 <div @click="(e)=>{ sendCmd('/Для Туркменистана'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/turkmenistan%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/turkmenistan%201.svg">
                                     <span class="pull-left menu-cmd">Для Туркменистана</span>
 
                                 </div>
@@ -282,7 +282,7 @@
                                 <div @click="(e)=>{ sendCmd('/Пробный период'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/key%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/key%201.svg">
                                     <span class="pull-left menu-cmd">Пробный период</span>
 
                                 </div>
@@ -290,14 +290,14 @@
                                 <div @click="(e)=>{ sendCmd('/Связаться с поддержкой'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/customer-service%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/customer-service%201.svg">
                                     <span class="pull-left menu-cmd">Связаться с поддержкой</span>
 
                                 </div>
                                 <div @click="(e)=>{ sendCmd('/Оплата'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/Vector.svg">
+                                    <img class="centered-img" src="../chat_app/icons/Vector.svg">
                                     <span class="pull-left menu-cmd">Оплата</span>
 
                                 </div>
@@ -306,7 +306,7 @@
                                 <div @click="(e)=>{ sendCmd('/Узнать больше'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/info-button%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/info-button%201.svg">
                                     <span class="pull-left menu-cmd">Узнать больше</span>
 
                                 </div>
@@ -314,7 +314,7 @@
                                 <div @click="(e)=>{ sendCmd('/Сотрудничество'); }"
                                      class="row dropdown-item btn btn-lg hidden-menu-btn drop-down-btn">
 
-                                    <img class="centered-img" src="icons/hand-shake%201.svg">
+                                    <img class="centered-img" src="../chat_app/icons/hand-shake%201.svg">
                                     <span class="pull-left menu-cmd">Сотрудничество</span>
 
                                 </div>
@@ -323,7 +323,7 @@
 
 
                             <div @click="(e)=>{ sendMessage(); }" class="publisher-btn text-info" data-abc="true">
-                                <img src="icons/send%201.svg"/>
+                                <img src="../chat_app/icons/send%201.svg"/>
                             </div>
 
 
