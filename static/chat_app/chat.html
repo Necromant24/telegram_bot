@@ -419,8 +419,6 @@
     }
 
 
-
-
     let msg_container = null;
 
 
@@ -476,6 +474,22 @@
         return await response.json(); // parses JSON response into native JavaScript objects
     }
 
+    async function updateDialogCache() {
+        console.log("update cache");
+        localStorage.setItem("dialog", JSON.stringify(cachedDialog));
+    }
+
+    function loadCachedDialog()
+    {
+        console.log("load cache dialog");
+        let msg_arr = JSON.parse(localStorage.getItem("dialog"));
+
+        for (let i = 0; i < msg_arr.length; i++) {
+            app.messages.push(msg_arr[i]);
+        }
+    }
+
+    const cachedDialog = [];
 
     function initWS() {
 
@@ -500,10 +514,14 @@
             if (data.type !== 'ping') {
                 app.messages.push(data);
 
+                cachedDialog.push({from: 'bot', message: data.message});
+
                 console.log(data);
                 setTimeout(goToBottom, 200);
                 setTimeout(goToBottom, 500);
                 app.playRecieveAudio();
+
+                updateDialogCache();
             }
 
         };
@@ -618,6 +636,7 @@
 
 
             let cached_email = localStorage.getItem("email");
+
             if (cached_email !== null) {
                 setTimeout(function () {
                     app.enteringEmail = cached_email;
@@ -626,6 +645,7 @@
                     app.enteringEmail = cached_email;
                 }, 600);
             }
+
 
         },
 
@@ -653,7 +673,6 @@
                 audio.play();
             },
 
-
             firstWsMsgAction() {
                 this.messages.push({from: 'bot', message: this.dialogOpenedMsg1});
 
@@ -678,7 +697,6 @@
                 }
             },
 
-
             isMobile() {
                 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent)) {
                     return true;
@@ -686,7 +704,6 @@
                     return false;
                 }
             },
-
 
             sendImg() {
 
@@ -771,10 +788,13 @@
                         });
 
                     localStorage.setItem("email", this.userEmail);
+                    loadCachedDialog();
 
                 } else {
                     this.emailValid = false;
                 }
+
+
             },
 
             validateEmail(mail) {
@@ -797,10 +817,10 @@
 
                 if (msg === '/Оплата') {
                     this.client_state = 'pay';
-                } else if(msg === '/yuan'){
+                } else if (msg === '/yuan') {
                     this.client_state = 'pay';
                     this.pay_type = 'yuan';
-                } else if(msg === '/rub'){
+                } else if (msg === '/rub') {
                     this.client_state = 'pay';
                     this.pay_type = 'rub';
                 } else {
@@ -893,6 +913,8 @@
 
                     });
                 this.messages.push({from: 'user', message: this.messageText});
+                cachedDialog.push({from: 'user', message: this.messageText});
+                updateDialogCache();
                 setTimeout(goToBottom, 500);
 
                 if (!this.first_ws_msg_was) {
